@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanDash | Dashboard de Finanças Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variáveis e Reset */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0ea5e9;
+            --accent: #22d3ee;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f0f9ff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Ticker Styles */
+        .ticker-container {
+            background: var(--dark);
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker-scroll 20s linear infinite;
+        }
+
+        .ticker-item {
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .ticker-item i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Header/Hero Styles */
+        header {
+            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .header-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .header-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .header-text p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .header-image {
+            flex: 1;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-placeholder {
+            padding: 30px;
+            text-align: center;
+            color: var(--dark);
+        }
+
+        .image-placeholder i {
+            font-size: 4rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .image-placeholder h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .image-placeholder p {
+            color: var(--gray);
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background-color: white;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .problem-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .problem-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .problem-card p {
+            color: var(--gray);
+        }
+
+        /* Solution Section */
+        .solution-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .solution-text {
+            flex: 1;
+        }
+
+        .solution-text h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .benefits-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .benefits-list i {
+            color: var(--success);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+
+        .solution-image {
+            flex: 1;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: linear-gradient(to bottom, #f0f9ff, #e0f2fe);
+        }
+
+        .gallery-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .gallery-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .gallery-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            scroll-snap-align: start;
+            position: relative;
+        }
+
+        .gallery-image {
+            background: white;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 30px;
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .gallery-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--gray);
+            opacity: 0.5;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-dot.active {
+            background: var(--primary);
+            opacity: 1;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.1;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            margin-bottom: 25px;
+            font-style: italic;
+            color: var(--dark);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+        }
+
+        .testimonial-info h4 {
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+
+        .testimonial-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Bonus Section */
+        .bonus-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bonus-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bonus-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .bonus-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .bonus-items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .bonus-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            width: 250px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .bonus-item i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .bonus-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .guarantee-badge {
+            background: white;
+            color: var(--dark);
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .guarantee-badge i {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+
+        .guarantee-badge h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--success);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: white;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.8rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.4rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-links i {
+            width: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .solution-content {
+                flex-direction: column;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .header-text h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 70px 0;
+            }
+            
+            .header-text h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 2.2rem;
+            }
+            
+            .bonus-title {
+                font-size: 2.2rem;
+            }
+            
+            .ticker-item {
+                font-size: 0.9rem;
+                padding: 0 20px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-text h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .ticker-item {
+                font-size: 0.8rem;
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Anúncio Rolante -->
+    <div class="ticker-container">
+        <div class="ticker">
+            <div class="ticker-item"><i class="fas fa-check-circle"></i> Mais de 1.000 empreendedores organizados</div>
+            <div class="ticker-item"><i class="fas fa-tag"></i> Últimas unidades disponíveis</div>
+            <div class="ticker-item"><i class="fas fa-chart-line"></i> Aumente seu lucro com organização</div>
+            <div class="ticker-item"><i class="fas fa-lock"></i> Controle total em um só lugar</div>
+            <div class="ticker-item"><i class="fas fa-check-circle"></i> Mais de 1.000 empreendedores organizados</div>
+        </div>
+    </div>
+
+    <!-- Header/Hero Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Você ainda controla suas finanças em um caderno desorganizado?</h1>
+                    <p>Descubra como nosso dashboard pode transformar sua rotina financeira em poucos cliques.</p>
+                    <a href="#cta" class="btn btn-large">Começar agora mesmo</a>
+                </div>
+                <div class="header-image">
+                    <div class="image-placeholder">
+                       
+                        <h3>Tudo em um só lugar</h3>
+                        <img src="imagem/4.jpg" alt="">
+                        <p>Todos ja estão automatizando seus negocios , você vai ficar pra trás nesse mundo de tecnologia mesmo?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção de Problemas -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Você se identifica com algum desses problemas?</h2>
+                <p>Estes são os desafios mais comuns enfrentados por empreendedores sem um sistema de controle financeiro adequado</p>
+            </div>
+            
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h3>Falta de controle financeiro</h3>
+                    <p>Sem saber exatamente quanto entra e sai do seu negócio, fica impossível tomar decisões estratégicas.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <i class="fas fa-boxes"></i>
+                    <h3>Estoque desorganizado</h3>
+                    <p>Produtos perdidos, excesso ou falta de itens essenciais e dificuldade em acompanhar inventário.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Recebimentos atrasados</h3>
+                    <p>Esquecimento de cobranças, controle manual de contas a receber e fluxo de caixa imprevisível.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Falta de visão analítica</h3>
+                    <p>Dificuldade em identificar produtos mais lucrativos, sazonalidade e oportunidades de crescimento.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Perda de tempo com burocracia</h3>
+                    <p>Horas preciosas gastas com planilhas complexas e processos manuais que poderiam ser automatizados.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Risco de fraudes e erros</h3>
+                    <p>Sistemas manuais são mais suscetíveis a erros humanos e práticas desonestas de colaboradores.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#cta" class="btn">Quero resolver esses problemas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Solução -->
+    <section class="solution-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Como o FinanDash resolve seus problemas</h2>
+                <p>Um sistema completo que simplifica a gestão financeira e oferece insights valiosos para o seu negócio</p>
+            </div>
+            
+            <div class="solution-content">
+                <div class="solution-text">
+                    <h3>Tudo o que você precisa em um só lugar</h3>
+                    <p>O FinanDash foi desenvolvido para pequenos e médios empreendedores que precisam de controle financeiro sem complicação. Com uma interface intuitiva, você tem acesso a todos os dados importantes do seu negócio em tempo real.</p>
+                    
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check-circle"></i> Acesso 100% online de qualquer dispositivo</li>
+                        <li><i class="fas fa-check-circle"></i> Totalmente personalizável para o seu tipo de negócio</li>
+                        <li><i class="fas fa-check-circle"></i> Sem mensalidade - pague apenas uma vez</li>
+                        <li><i class="fas fa-check-circle"></i> Organize estoque e vendas em minutos</li>
+                        <li><i class="fas fa-check-circle"></i> Relatórios automáticos e exportáveis</li>
+                        <li><i class="fas fa-check-circle"></i> Suporte especializado 24/7</li>
+                        <li><i class="fas fa-check-circle"></i> Salve os arquivos em seu dispositivo para se organizar</li>
+                        <li><i class="fas fa-check-circle"></i> Controle total sobre suass vendas</li>
+                    </ul>
+                    
+                    <a href="#cta" class="btn" style="margin-top: 30px;">Acessar o Dashboard</a>
+                </div>
+                
+                <div class="solution-image">
+                    <div class="image-placeholder">
+                        
+                        <h3>INSIRA SUA IMAGEM AQUI</h3>
+<img src="imagem/23.jpg" alt="">
+
+                        <p>Mostre um recurso específico do seu sistema (ex: gráfico de vendas)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria de Imagens -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Veja o FinanDash em Ação</h2>
+                <p>Confira como nossos clientes estão utilizando o sistema para transformar seus negócios</p>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-slide">
+                        <div class="gallery-image">
+                            
+                            <h3 style="margin: 30px 0 15px;">Pare de perder vendas por falta de organização!</h3>
+                            <img src="imagem/6.jpg" alt="">
+                            <br>
+                            <p>Seus produtos estão em estoque, mas você não sabe onde? Com nosso dashboard, você vê o que mais vende, quanto ainda tem e para onde seu dinheiro está indo — tudo em tempo real.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-image">
+                           
+                            <h3 style="margin: 30px 0 15px;">Tenha o controle do seu negócio na palma da mão!</h3>
+<img src="imagem/15.jpg" alt="">
+<br>
+                            <p>Chega de anotar no caderno e fazer contas no fim do mês. Automatize sua rotina, ganhe tempo e aumente seus lucros com uma ferramenta feita para quem vende de verdade.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-image">
+                          
+                            <h3 style="margin: 30px 0 15px;">Transforme papelada em lucro com um clique!</h3>
+<img src="imagem/20.jpg" alt="">
+<br>
+                            <p>Enquanto você tenta se organizar manualmente, outros estão lucrando com tecnologia simples. Comece hoje a controlar estoque, vendas e despesas sem dor de cabeça — com um dashboard intuitivo e 100% online.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-nav" id="galleryNav">
+                    <div class="gallery-dot active" data-slide="0"></div>
+                    <div class="gallery-dot" data-slide="1"></div>
+                    <div class="gallery-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>O que dizem nossos clientes</h2>
+                <p>Veja depoimentos reais de empreendedores que transformaram seus negócios com o FinanDash</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-content">"O FinanDash mudou completamente a forma como gerencio meu negócio. Em 3 meses, consegui reduzir custos em 25% e aumentar meu lucro líquido em 40%. A parte de controle de estoque salvou meu negócio!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Carlos Mendes</h4>
+                            <p>Dono de loja de materiais de construção</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-content">"Depois de anos sofrendo com planilhas confusas e informações desencontradas, finalmente encontrei uma solução que realmente funciona. O dashboard é intuitivo e os relatórios me dão insights que eu nunca teria sozinha."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Juliana Santos</h4>
+                            <p>Proprietária de loja de roupas</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-content">"O suporte é incrível e o sistema superou todas as minhas expectativas. O melhor investimento que fiz no meu negócio nos últimos anos. Agora consigo focar no crescimento, sabendo que minhas finanças estão sob controle."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Roberto Almeida</h4>
+                            <p>Restaurante e Delivery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#cta" class="btn btn-secondary">Quero resultados como esses</a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- CTA Final -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="cta-title">Pronto para transformar sua gestão financeira?</h2>
+            <p class="cta-subtitle">Junte-se a mais de 1.000 empreendedores que já dominaram suas finanças com o FinanDash</p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-large">Começar agora mesmo</a>
+                <a href="#bonus" class="btn btn-secondary btn-large">Ver oferta com bônus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FinanDash</h3>
+                    <p style="color: #cbd5e1; margin-top: 20px;">Solução completa para gestão financeira de pequenos e médios negócios.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Início</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Recursos</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Depoimentos</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Oferta</a></li>
+                    </ul>
+                </div>
+                
+              
+                
+             
+      
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Galeria de Imagens
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('gallerySlider');
+            const dots = document.querySelectorAll('.gallery-dot');
+            let currentSlide = 0;
+            
+            // Navegação por pontos
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-slide'));
+                    goToSlide(slideIndex);
+                });
+            });
+            
+            // Função para mudar slide
+            function goToSlide(index) {
+                currentSlide = index;
+                slider.scrollTo({
+                    left: slider.clientWidth * index,
+                    behavior: 'smooth'
+                });
+                
+                // Atualizar pontos de navegação
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+            
+            // Mudança automática de slides
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % dots.length;
+                goToSlide(currentSlide);
+            }, 5000);
+            
+            // Botão Voltar ao Topo
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Suavizar âncoras
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
