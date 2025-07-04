@@ -1,114 +1,74 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinanDash | Dashboard de Finanças Online</title>
+    <title>Dashboard Financeiro para Microempreendedores | Controle Total do Seu Negócio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
-        /* Variáveis e Reset */
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #0ea5e9;
-            --accent: #22d3ee;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-            --border-radius: 12px;
+            --primary-blue: #0d6efd;
+            --dark-blue: #0b5ed7;
+            --deep-blue: #084298;
+            --light-blue: #cfe2ff;
+            --accent-yellow: #ffc107;
+            --danger-red: #dc3545;
+            --success-green: #198754;
+            --light-gray: #f8f9fa;
+            --dark-text: #212529;
+            --section-spacing: 100px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: #f0f9ff;
+            background-color: #f8fbff;
+            color: var(--dark-text);
+            line-height: 1.7;
             overflow-x: hidden;
+            font-size: 18px;
         }
 
         .container {
-            width: 90%;
-            max-width: 1200px;
+            width: 100%;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
         }
 
         section {
-            padding: 100px 0;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-large {
-            padding: 18px 40px;
-            font-size: 20px;
+            padding: var(--section-spacing) 0;
+            position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
             position: relative;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 20px;
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--deep-blue);
+            text-transform: uppercase;
+            line-height: 1.2;
         }
 
         .section-title p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 700px;
+            font-size: 1.6rem;
+            max-width: 900px;
             margin: 0 auto;
+            color: #444;
         }
 
         .section-title::after {
@@ -117,464 +77,842 @@
             bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-yellow));
+            border-radius: 3px;
         }
 
-        /* Ticker Styles */
-        .ticker-container {
-            background: var(--dark);
-            color: white;
-            padding: 10px 0;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .ticker {
-            display: flex;
-            white-space: nowrap;
-            animation: ticker-scroll 20s linear infinite;
-        }
-
-        .ticker-item {
-            padding: 0 40px;
-            display: flex;
-            align-items: center;
-            font-size: 1.1rem;
-        }
-
-        .ticker-item i {
-            margin-right: 10px;
-            color: var(--accent);
-        }
-
-        @keyframes ticker-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* Header/Hero Styles */
-        header {
-            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
-            color: white;
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 50px;
-        }
-
-        .header-text {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .header-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .header-text p {
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .header-image {
-            flex: 1;
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            position: relative;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .image-placeholder {
-            padding: 30px;
+        .btn {
+            display: inline-block;
+            padding: 18px 45px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
             text-align: center;
-            color: var(--dark);
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .image-placeholder i {
-            font-size: 4rem;
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-
-        .image-placeholder h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .image-placeholder p {
-            color: var(--gray);
-        }
-
-        /* Problem Section */
-        .problem-section {
-            background-color: white;
-        }
-
-        .problems-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .problem-card {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .problem-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .problem-card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .problem-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .problem-card p {
-            color: var(--gray);
-        }
-
-        /* Solution Section */
-        .solution-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            margin-bottom: 60px;
-        }
-
-        .solution-text {
-            flex: 1;
-        }
-
-        .solution-text h3 {
-            font-size: 2rem;
-            margin-bottom: 25px;
-            color: var(--dark);
-        }
-
-        .benefits-list {
-            list-style: none;
-            margin-top: 30px;
-        }
-
-        .benefits-list li {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .benefits-list i {
-            color: var(--success);
-            font-size: 1.5rem;
-            margin-right: 15px;
-            min-width: 30px;
-        }
-
-        .solution-image {
-            flex: 1;
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Gallery Section */
-        .gallery-section {
-            background: linear-gradient(to bottom, #f0f9ff, #e0f2fe);
-        }
-
-        .gallery-container {
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--deep-blue));
+            color: white;
             position: relative;
-            max-width: 1000px;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20px;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(25deg);
+            transition: all 0.6s;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--deep-blue), var(--primary-blue));
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(13, 110, 253, 0.4);
+        }
+
+        .btn-primary:hover::after {
+            left: 120%;
+        }
+
+        .btn-lg {
+            padding: 22px 55px;
+            font-size: 1.6rem;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(135deg, var(--deep-blue), var(--primary-blue));
+            color: white;
+            padding: 180px 0 120px;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,128L48,117.3C96,107,192,85,288,106.7C384,128,480,192,576,192C672,192,768,128,864,106.7C960,85,1056,107,1152,128C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        .gallery-slider {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            border-radius: var(--border-radius);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        .hero-content h1 {
+            font-size: 4.2rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
         }
 
-        .gallery-slider::-webkit-scrollbar {
-            display: none;
+        .hero-content p {
+            font-size: 2rem;
+            margin-bottom: 50px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .gallery-slide {
-            min-width: 100%;
-            scroll-snap-align: start;
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--accent-yellow);
+            color: var(--deep-blue);
+            padding: 12px 35px;
+            border-radius: 40px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            font-size: 1.3rem;
+            animation: pulse 2s infinite;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dashboard Screenshot Slot */
+        .screenshot-container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            margin: 70px auto;
+            max-width: 1100px;
             position: relative;
+            overflow: hidden;
+            border: 3px solid var(--accent-yellow);
         }
 
-        .gallery-image {
-            background: white;
-            min-height: 500px;
+        .screenshot-placeholder {
+            background: linear-gradient(135deg, #e0e7ff, #d1e0fd);
+            height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
+            border-radius: 15px;
+            border: 2px dashed var(--primary-blue);
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-align: center;
             padding: 30px;
         }
 
-        .gallery-nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-            gap: 15px;
+        .screenshot-caption {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: var(--deep-blue);
+            font-weight: 700;
         }
 
-        .gallery-dot {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: var(--gray);
-            opacity: 0.5;
-            cursor: pointer;
-            transition: var(--transition);
+        /* Pain Section */
+        #pain-points {
+            background-color: white;
+            padding-bottom: 150px;
         }
 
-        .gallery-dot.active {
-            background: var(--primary);
-            opacity: 1;
+        .pain-container {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 25px;
+            padding: 60px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
-        /* Testimonials Section */
-        .testimonials-grid {
+        .pain-intro {
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 60px;
+            font-weight: 500;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .pain-item {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease;
+            border-left: 5px solid var(--danger-red);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pain-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(220, 53, 69, 0.15);
+        }
+
+        .pain-icon {
+            font-size: 3.5rem;
+            color: var(--danger-red);
+            margin-bottom: 25px;
+        }
+
+        .pain-content h3 {
+            color: var(--danger-red);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .pain-content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .pain-stat {
+            font-weight: 800;
+            color: var(--danger-red);
+            font-size: 1.3rem;
+        }
+
+        /* Financial Loss Calculator */
+        .calculator {
+            background: linear-gradient(135deg, var(--deep-blue), #06357a);
+            border-radius: 25px;
+            padding: 50px;
+            margin-top: 70px;
+            color: white;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .calculator h3 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .calculator-input {
+            margin-bottom: 25px;
+        }
+
+        .calculator-input label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .calculator-input input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        .calculator-result {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .calculator-result h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .loss-amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent-yellow);
+            margin: 20px 0;
+        }
+
+        /* Solution Section */
+        #solution {
+            background: linear-gradient(to bottom, #e6f0ff, #cfe2ff);
+            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+            padding: 150px 0;
+        }
+
+        .solution-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            gap: 40px;
+            margin-top: 40px;
         }
 
-        .testimonial-card {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
+        .solution-card {
+            background-color: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease;
+            border-top: 8px solid var(--primary-blue);
             position: relative;
+            overflow: hidden;
         }
 
-        .testimonial-card::before {
-            content: '"';
+        .solution-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(13, 110, 253, 0.2);
+        }
+
+        .solution-icon {
+            font-size: 4rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+        }
+
+        .solution-card h3 {
+            color: var(--deep-blue);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .solution-card p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .solution-features {
+            list-style: none;
+        }
+
+        .solution-features li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .solution-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: 800;
+        }
+
+        /* Steps Section */
+        #steps {
+            background-color: white;
+            padding: 150px 0;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, var(--light-blue), #e6f0ff);
+            border-radius: 25px;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease;
+        }
+
+        .step-card:hover {
+            transform: scale(1.03);
+        }
+
+        .step-number {
+            font-size: 6rem;
+            font-weight: 900;
+            color: rgba(13, 110, 253, 0.1);
             position: absolute;
             top: 20px;
-            left: 20px;
-            font-size: 5rem;
-            color: var(--primary);
-            opacity: 0.1;
-            font-family: serif;
+            right: 30px;
             line-height: 1;
         }
 
-        .testimonial-content {
+        .step-icon {
+            font-size: 4rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+        }
+
+        .step-card h3 {
+            font-size: 2rem;
+            color: var(--deep-blue);
             margin-bottom: 25px;
+        }
+
+        .step-card p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .step-time {
+            display: inline-block;
+            background: var(--accent-yellow);
+            color: var(--deep-blue);
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials */
+        #testimonials {
+            background: linear-gradient(to bottom, #084298, #0b5ed7);
+            color: white;
+            padding: 150px 0;
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .testimonial-card i {
+            color: var(--accent-yellow);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
             font-style: italic;
-            color: var(--dark);
-            position: relative;
-            z-index: 1;
+            margin-bottom: 30px;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 15px;
+            margin-top: 20px;
         }
 
-        .testimonial-image {
+        .author-avatar {
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background: var(--light);
+            background-color: var(--light-blue);
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            border: 3px solid var(--primary);
-        }
-
-        .testimonial-info h4 {
-            font-size: 1.2rem;
-            color: var(--dark);
-        }
-
-        .testimonial-info p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* Bonus Section */
-        .bonus-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bonus-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .bonus-title {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-
-        .bonus-subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        .bonus-items {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .bonus-item {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            width: 250px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .bonus-item i {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .bonus-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .guarantee-badge {
-            background: white;
-            color: var(--dark);
-            max-width: 400px;
-            margin: 40px auto;
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .guarantee-badge i {
-            font-size: 4rem;
-            color: var(--success);
-            margin-bottom: 20px;
-        }
-
-        .guarantee-badge h3 {
+            margin-right: 20px;
+            color: var(--deep-blue);
+            font-weight: 800;
             font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: var(--success);
+            flex-shrink: 0;
         }
 
-        /* CTA Section */
-        .cta-section {
-            background: white;
-            text-align: center;
+        .author-info {
+            text-align: left;
         }
 
-        .cta-title {
-            font-size: 2.8rem;
-            color: var(--dark);
-            margin-bottom: 20px;
-        }
-
-        .cta-subtitle {
+        .author-info strong {
+            display: block;
             font-size: 1.4rem;
-            color: var(--gray);
-            margin-bottom: 40px;
-            max-width: 700px;
+        }
+
+        .author-info small {
+            display: block;
+            opacity: 0.8;
+        }
+
+        .results-stats {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 70px;
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .cta-buttons {
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent-yellow);
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+        }
+
+        /* Offer Section */
+        #offer {
+            background-color: white;
+            padding: 150px 0;
+        }
+
+        .offer-card {
+            background: linear-gradient(135deg, var(--light-blue), #e6f0ff);
+            border-radius: 30px;
+            padding: 70px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(13, 110, 253, 0.25);
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border: 4px solid var(--primary-blue);
+        }
+
+        .offer-card::before {
+            content: 'OFERTA LIMITADA';
+            position: absolute;
+            top: 25px;
+            right: -45px;
+            background-color: var(--danger-red);
+            color: white;
+            padding: 10px 50px;
+            transform: rotate(45deg);
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .offer-header {
+            margin-bottom: 50px;
+        }
+
+        .offer-header h3 {
+            font-size: 2.8rem;
+            color: var(--deep-blue);
+            margin-bottom: 20px;
+        }
+
+        .offer-header p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .offer-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            text-align: left;
+        }
+
+        .offer-features {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .offer-features h4 {
+            font-size: 1.8rem;
+            color: var(--deep-blue);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        .feature-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--success-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .bonus-section {
+            background: var(--accent-yellow);
+            color: var(--deep-blue);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .bonus-section h4 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .bonus-list {
+            list-style: none;
+        }
+
+        .bonus-list li {
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .bonus-list li:before {
+            content: '🎁';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.5rem;
+        }
+
+        .guarantee {
+            background: var(--success-green);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .guarantee h4 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* FAQ Section */
+        #faq {
+            background: linear-gradient(to bottom, #e6f0ff, #cfe2ff);
+            padding: 150px 0;
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+        }
+
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 15px 40px rgba(13, 110, 253, 0.2);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: 700;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 30px;
+            display: none;
+            font-size: 1.2rem;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-question i {
+            transition: transform 0.4s ease;
+        }
+
+        /* CTA Section */
+        #cta {
+            background: linear-gradient(135deg, var(--deep-blue), #06357a);
+            color: white;
+            text-align: center;
+            padding: 150px 0;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            background-color: var(--danger-red);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 40px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            font-size: 1.5rem;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #cta h2 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        #cta p {
+            font-size: 1.8rem;
+            max-width: 900px;
+            margin: 0 auto 50px;
+        }
+
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 25px;
+            margin-top: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .countdown-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .countdown-timer {
             display: flex;
             justify-content: center;
             gap: 20px;
-            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .countdown-unit {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 100px;
+        }
+
+        .countdown-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent-yellow);
+        }
+
+        .countdown-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .ps-container {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            border-radius: 25px;
+            margin-top: 70px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            border-left: 5px solid var(--accent-yellow);
+        }
+
+        .ps-container h3 {
+            color: var(--accent-yellow);
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        .ps-container p {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background-color: var(--dark-text);
             color: white;
-            padding: 70px 0 30px;
+            text-align: center;
+            padding: 60px 0;
+            font-size: 1.1rem;
         }
 
-        .footer-content {
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
-            margin-bottom: 50px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            text-align: left;
         }
 
-        .footer-column h3 {
+        .footer-column h4 {
             font-size: 1.5rem;
             margin-bottom: 25px;
-            position: relative;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
+            color: var(--accent-yellow);
         }
 
         .footer-links {
@@ -586,477 +924,729 @@
         }
 
         .footer-links a {
-            color: #cbd5e1;
+            color: #ddd;
             text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            transition: all 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
+            color: var(--accent-yellow);
+            padding-left: 5px;
         }
 
-        .footer-links i {
-            width: 20px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
+        .copyright {
+            padding-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94a3b8;
-            font-size: 0.9rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            z-index: 1000;
-            box-shadow: var(--shadow);
-        }
-
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--primary-dark);
-            transform: translateY(-5px);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .header-content {
-                flex-direction: column;
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
             }
-            
-            .solution-content {
-                flex-direction: column;
+
+            50% {
+                transform: scale(1.05);
             }
-            
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
             .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .header-text h1 {
                 font-size: 2.8rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            :root {
+                --section-spacing: 80px;
+            }
+
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.8rem;
+            }
+
+            .offer-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 768px) {
-            section {
-                padding: 70px 0;
+            :root {
+                --section-spacing: 60px;
             }
-            
-            .header-text h1 {
-                font-size: 2.3rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .cta-title {
-                font-size: 2.2rem;
-            }
-            
-            .bonus-title {
-                font-size: 2.2rem;
-            }
-            
-            .ticker-item {
-                font-size: 0.9rem;
+
+            .container {
                 padding: 0 20px;
             }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .section-title p {
+                font-size: 1.4rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.5rem;
+            }
+
+            .btn-lg {
+                padding: 18px 35px;
+                font-size: 1.4rem;
+            }
+
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            #cta h2 {
+                font-size: 2.5rem;
             }
         }
 
-        @media (max-width: 480px) {
-            .header-text h1 {
-                font-size: 2rem;
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
             }
-            
+
             .section-title h2 {
                 font-size: 1.8rem;
             }
-            
-            .btn {
-                width: 100%;
-                padding: 15px;
+
+            .countdown-timer {
+                flex-wrap: wrap;
             }
-            
-            .ticker-item {
-                font-size: 0.8rem;
-                padding: 0 15px;
+
+            .screenshot-placeholder {
+                height: 350px;
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- Anúncio Rolante -->
-    <div class="ticker-container">
-        <div class="ticker">
-            <div class="ticker-item"><i class="fas fa-check-circle"></i> Mais de 1.000 empreendedores organizados</div>
-            <div class="ticker-item"><i class="fas fa-tag"></i> Últimas unidades disponíveis</div>
-            <div class="ticker-item"><i class="fas fa-chart-line"></i> Aumente seu lucro com organização</div>
-            <div class="ticker-item"><i class="fas fa-lock"></i> Controle total em um só lugar</div>
-            <div class="ticker-item"><i class="fas fa-check-circle"></i> Mais de 1.000 empreendedores organizados</div>
-        </div>
-    </div>
-
-    <!-- Header/Hero Section -->
-    <header>
+    <!-- Hero Section -->
+    <section id="hero">
         <div class="container">
-            <div class="header-content">
-                <div class="header-text">
-                    <h1>Você ainda controla suas finanças em um caderno desorganizado?</h1>
-                    <p>Descubra como nosso dashboard pode transformar sua rotina financeira em poucos cliques.</p>
-                    <a href="https://pay.cakto.com.br/339jako_455599" class="btn btn-large">Começar agora mesmo</a>
-                </div>
-                <div class="header-image">
-                    <div class="image-placeholder">
-                       
-                        <h3>Tudo em um só lugar</h3>
-                        <img src="imagem/7.jpg" alt="">
-                        <p>Todos ja estão automatizando seus negocios , você vai ficar pra trás nesse mundo de tecnologia mesmo?</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+            <div class="hero-content">
+                <div class="hero-badge">Você já perdeu alguma venda porque esqueceu de anotar numa folhinha solta?</div>
 
-    <!-- Seção de Problemas -->
-    <section class="problem-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Você se identifica com algum desses problemas?</h2>
-                <p>Estes são os desafios mais comuns enfrentados por empreendedores sem um sistema de controle financeiro adequado</p>
+                <h1>ATENÇÃO,
+                    <br> SEU NEGÓCIO PERDE MUITO DINHEIRO ENQUANTO VOCÊ NÃO ORGANIZA SEUS DADOS DE ESTOQUE E VENDAS
+                </h1>
+                <p>Descubra o <em>Dashboard Financeiro</em> que já salvou Muitos negócios - controle financeiro tão
+                    simples que você domina EM 9 MINUTOS e elimina TODAS as "surpresas" no fim do mês!</p>
+                <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-primary btn-lg">🚨 ACESSAR KIT DE SOBREVIVÊNCIA FINANCEIRA (89%OFF SÓ ESSE SEMANA!)</a>
             </div>
-            
-            <div class="problems-grid">
-                <div class="problem-card">
-                    <i class="fas fa-file-invoice-dollar"></i>
-                    <h3>Falta de controle financeiro</h3>
-                    <p>Sem saber exatamente quanto entra e sai do seu negócio, fica impossível tomar decisões estratégicas.</p>
+
+            <!-- Dashboard Screenshot Slot 1 -->
+            <div class="screenshot-container">
+                <div class="screenshot-placeholder">
+                    <img width="100%" src="imagem/Captura de tela 2025-06-30 150346.png" alt="">
                 </div>
-                
-                <div class="problem-card">
-                    <i class="fas fa-boxes"></i>
-                    <h3>Estoque desorganizado</h3>
-                    <p>Produtos perdidos, excesso ou falta de itens essenciais e dificuldade em acompanhar inventário.</p>
-                </div>
-                
-                <div class="problem-card">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <h3>Recebimentos atrasados</h3>
-                    <p>Esquecimento de cobranças, controle manual de contas a receber e fluxo de caixa imprevisível.</p>
-                </div>
-                
-                <div class="problem-card">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Falta de visão analítica</h3>
-                    <p>Dificuldade em identificar produtos mais lucrativos, sazonalidade e oportunidades de crescimento.</p>
-                </div>
-                
-                <div class="problem-card">
-                    <i class="fas fa-clock"></i>
-                    <h3>Perda de tempo com burocracia</h3>
-                    <p>Horas preciosas gastas com planilhas complexas e processos manuais que poderiam ser automatizados.</p>
-                </div>
-                
-                <div class="problem-card">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h3>Risco de fraudes e erros</h3>
-                    <p>Sistemas manuais são mais suscetíveis a erros humanos e práticas desonestas de colaboradores.</p>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="#cta" class="btn">Quero resolver esses problemas</a>
+               
             </div>
         </div>
     </section>
 
-    <!-- Seção de Solução -->
-    <section class="solution-section">
+    <!-- Pain Points Section -->
+    <section id="pain-points">
         <div class="container">
             <div class="section-title">
-                <h2>Como o FinanDash resolve seus problemas</h2>
-                <p>Um sistema completo que simplifica a gestão financeira e oferece insights valiosos para o seu negócio</p>
+                <h2>O ROUBO SILENCIOSO QUE DESTRÓI SEU LUCRO</h2>
+                <p>Enquanto você apaga incêndios diários, seu dinheiro ESCORRE POR VAZAMENTOS INVISÍVEIS</p>
             </div>
-            
-            <div class="solution-content">
-                <div class="solution-text">
-                    <h3>Tudo o que você precisa em um só lugar</h3>
-                    <p>O FinanDash foi desenvolvido para pequenos e médios empreendedores que precisam de controle financeiro sem complicação. Com uma interface intuitiva, você tem acesso a todos os dados importantes do seu negócio em tempo real.</p>
-                    
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-check-circle"></i> Acesso 100% online de qualquer dispositivo</li>
-                        <li><i class="fas fa-check-circle"></i> Totalmente personalizável para o seu tipo de negócio</li>
-                        <li><i class="fas fa-check-circle"></i> Sem mensalidade - pague apenas uma vez</li>
-                        <li><i class="fas fa-check-circle"></i> Organize estoque e vendas em minutos</li>
-                        <li><i class="fas fa-check-circle"></i> Relatórios automáticos e exportáveis</li>
-                        <li><i class="fas fa-check-circle"></i> Suporte especializado 24/7</li>
-                        <li><i class="fas fa-check-circle"></i> Salve os arquivos em seu dispositivo para se organizar</li>
-                        <li><i class="fas fa-check-circle"></i> Controle total sobre suass vendas</li>
+
+            <div class="pain-container">
+                <div class="pain-intro">
+                    Você anota vendas no WhatsApp, valores no caderno, notas fiscais na gaveta... e no fim do mês não
+                    sabe para onde foi cada centavo. Enquanto isso, seu lucro está sendo drenado por problemas que você
+                    nem enxerga!
+                </div>
+
+                <div class="pain-grid">
+                    <div class="pain-item">
+                        <div class="pain-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                        <div class="pain-content">
+                            <h3>Anarquia de Dados</h3>
+                            <p>Informações espalhadas em 7 lugares diferentes, sem integração. Você nunca tem uma visão
+                                completa das finanças.</p>
+                            <div class="pain-stat">Resultado: +15h/mês perdidas</div>
+                        </div>
+                    </div>
+
+                    <div class="pain-item">
+                        <div class="pain-icon"><i class="fas fa-box-open"></i></div>
+                        <div class="pain-content">
+                            <h3>Estoque Fantasma</h3>
+                            <p>Produtos que somem como mágica, enquanto dívidas aparecem do nada. Seu dinheiro
+                                literalmente evaporando!</p>
+                            <div class="pain-stat">Perda média: R$3.200/trimestre</div>
+                        </div>
+                    </div>
+
+                    <div class="pain-item">
+                        <div class="pain-icon"><i class="fas fa-money-bill-wave"></i></div>
+                        <div class="pain-content">
+                            <h3>Custo Oculto</h3>
+                            <p>Aquela "pequena compra" que virou R$1.500/mês sem você notar. Pequenos vazamentos que
+                                viram enchentes.</p>
+                            <div class="pain-stat">+27% de custos desnecessários</div>
+                        </div>
+                    </div>
+
+                    <div class="pain-item">
+                        <div class="pain-icon"><i class="fas fa-dice"></i></div>
+                        <div class="pain-content">
+                            <h3>Decisão no Escuro</h3>
+                            <p>Reinvestir? Cortar gastos? Comprar estoque? Você joga dardo no escuro sem dados
+                                confiáveis!</p>
+                            <div class="pain-stat">73% das decisões erradas</div>
+                        </div>
+                    </div>
+
+                    <div class="pain-item">
+                        <div class="pain-icon"><i class="fas fa-clock"></i></div>
+                        <div class="pain-content">
+                            <h3>Tempo Perdido</h3>
+                            <p>Finais de semana reconciliando planilhas que nunca fecham. Tempo que poderia ser usado
+                                para vender mais!</p>
+                            <div class="pain-stat">22h/mês em trabalho improdutivo</div>
+                        </div>
+                    </div>
+
+                    <div class="pain-item">
+                        <div class="pain-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="pain-content">
+                            <h3>Crescimento Travado</h3>
+                            <p>Sem controle, sem previsibilidade, sem segurança para investir. Seu negócio não decola.
+                            </p>
+                            <div class="pain-stat">Oportunidades perdidas: R$14.700/ano</div>
+                        </div>
+                    </div>
+                </div>
+
+                <blockquote
+                    style="margin-top: 60px; padding: 30px; background: rgba(220, 53, 69, 0.1); border-left: 5px solid var(--danger-red); font-style: italic; font-size: 1.4rem;">
+                    "Perdi o equivalente a uma moto 0km em 1 ano com 'furos' que nem sabia existir. Descobri tarde
+                    demais que o problema não era falta de vendas, era falta de controle!" - Carlos, ex-vítima
+                </blockquote>
+            </div>
+
+            <!-- Financial Loss Calculator -->
+            <div class="calculator">
+                <h3>CALCULE QUANTO SEU NEGÓCIO ESTÁ PERDENDO AGORA</h3>
+                <div class="calculator-grid">
+                    <div>
+                        <div class="calculator-input">
+                            <label>Faturamento Mensal (R$)</label>
+                            <input type="number" id="revenue" value="10000">
+                        </div>
+                        <div class="calculator-input">
+                            <label>Horas Gastas com Controle</label>
+                            <input type="number" id="hours" value="20">
+                        </div>
+                        <div class="calculator-input">
+                            <label>Produtos "Perdidos" no Mês</label>
+                            <input type="number" id="lost-products" value="15">
+                        </div>
+                    </div>
+                    <div class="calculator-result">
+                        <h4>SEU PREJUÍZO ESTIMADO</h4>
+                        <div class="loss-amount" id="loss-result">R$ 2.380/mês</div>
+                        <p>É quanto você está perdendo com falta de controle!</p>
+                        <button class="btn btn-primary" style="margin-top: 20px;" onclick="calculateLoss()">Atualizar
+                            Cálculo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution">
+        <div class="container">
+            <div class="section-title">
+                <h2>SEU PAINEL DE CONTROLE ANTI-APAGÕES</h2>
+                <p>Imagine um sistema que transforma o caos em controle total, mostrando EXATAMENTE onde cada centavo
+                    está indo</p>
+            </div>
+
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-icon"><i class="fas fa-heart-pulse"></i></div>
+                    <h3>DIAGNOSTICA SANGRIAS</h3>
+                    <p>Aponta EXATAMENTE onde você perde R$ com precisão cirúrgica. Identifica vazamentos que ninguém
+                        mais vê!</p>
+                    <ul class="solution-features">
+                        <li>Identificação automática de custos ocultos</li>
+                        <li>Relatórios de margem de lucro por produto</li>
+                        <li>Visão clara de entradas e saídas financeiras</li>
+                        <li>Alertas de estoque crítico para evitar perdas</li>
+                        <li>Comparativo de vendas por período</li>
+                        <li>Classificação de produtos mais e menos lucrativos</li>
+                        <li>Relatórios automáticos com gráficos simplificados</li>
                     </ul>
-                    
-                    <a href="#cta" class="btn" style="margin-top: 30px;">Acessar o Dashboard</a>
                 </div>
-                
-                <div class="solution-image">
-                    <div class="image-placeholder">
-                        
-                        <h3>INSIRA SUA IMAGEM AQUI</h3>
-<img src="imagem/23.jpg" alt="">
+            </div>
 
-                        <p>Mostre um recurso específico do seu sistema (ex: gráfico de vendas)</p>
-                    </div>
+
+
+        </div>
+
+        <!-- Dashboard Screenshot Slot 2 -->
+        <div class="screenshot-container" style="margin-top: 80px;">
+            <div class="screenshot-placeholder">
+                <img width="100%" src="imagem/22.jpg" alt="">
+            </div>
+            <div class="screenshot-caption">Controle seu negócio de qualquer lugar, até pelo celular!</div>
+        </div>
+
+        <!-- Dashboard Screenshot Slot 3 -->
+        <div class="screenshot-container" style="margin-top: 80px;">
+            <div class="screenshot-placeholder">
+               <img width="100%" src="imagem/27.jpg" alt="">
+            </div>
+            <div class="screenshot-caption">Relatórios completos gerados automaticamente enquanto você vende</div>
+        </div>
+
+        <div
+            style="text-align: center; background: rgba(255, 255, 255, 0.7); border-radius: 25px; max-width: 1000px; margin: 80px auto; padding: 50px;">
+            <h3 style="color: var(--deep-blue); margin-bottom: 30px; font-size: 2.2rem;">O QUE ACONTECE QUANDO VOCÊ
+                REGISTRA UMA VENDA</h3>
+            <div
+                style="font-size: 1.4rem; font-weight: 600; background: var(--primary-blue); color: white; padding: 30px; border-radius: 20px; text-align: left;">
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <div style="font-size: 2.5rem; margin-right: 20px;">>></div>
+                    <div>Você registra 1 venda em 15 segundos</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 20px; margin-left: 50px;">
+                    <div style="font-size: 2rem; margin-right: 20px;">→</div>
+                    <div>Estoque diminui AUTOMATICAMENTE</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 20px; margin-left: 50px;">
+                    <div style="font-size: 2rem; margin-right: 20px;">→</div>
+                    <div>Fluxo de caixa é ATUALIZADO</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 20px; margin-left: 50px;">
+                    <div style="font-size: 2rem; margin-right: 20px;">→</div>
+                    <div>Lucro projetado é REAJUSTADO</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-left: 50px;">
+                    <div style="font-size: 2rem; margin-right: 20px;">→</div>
+                    <div>Alertas de risco são ACIONADOS</div>
+                </div>
+                <div
+                    style="margin-top: 30px; font-size: 1.3rem; text-align: center; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 15px;">
+                    Resultado: Controle total com mínimo esforço
                 </div>
             </div>
         </div>
+        </div>
     </section>
 
-    <!-- Galeria de Imagens -->
-    <section class="gallery-section">
+    <!-- Steps Section -->
+    <section id="steps">
         <div class="container">
             <div class="section-title">
-                <h2>Veja o FinanDash em Ação</h2>
-                <p>Confira como nossos clientes estão utilizando o sistema para transformar seus negócios</p>
+                <h2>DO CAOS AO CONTROLE ABSOLUTO EM 3 PASSOS</h2>
+                <p>Um processo tão simples sem planilhas de exel complicadas que qualquer um pode dominar em minutos</p>
             </div>
-            
-            <div class="gallery-container">
-                <div class="gallery-slider" id="gallerySlider">
-                    <div class="gallery-slide">
-                        <div class="gallery-image">
-                            
-                            <h3 style="margin: 30px 0 15px;">Pare de perder vendas por falta de organização!</h3>
-                            <img src="imagem/6.jpg" alt="">
-                            <br>
-                            <p>Seus produtos estão em estoque, mas você não sabe onde? Com nosso dashboard, você vê o que mais vende, quanto ainda tem e para onde seu dinheiro está indo — tudo em tempo real.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-slide">
-                        <div class="gallery-image">
-                           
-                            <h3 style="margin: 30px 0 15px;">Tenha o controle do seu negócio na palma da mão!</h3>
-<img src="imagem/15.jpg" alt="">
-<br>
-                            <p>Chega de anotar no caderno e fazer contas no fim do mês. Automatize sua rotina, ganhe tempo e aumente seus lucros com uma ferramenta feita para quem vende de verdade.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-slide">
-                        <div class="gallery-image">
-                          
-                            <h3 style="margin: 30px 0 15px;">Transforme papelada em lucro com um clique!</h3>
-<img src="imagem/20.jpg" alt="">
-<br>
-                            <p>Enquanto você tenta se organizar manualmente, outros estão lucrando com tecnologia simples. Comece hoje a controlar estoque, vendas e despesas sem dor de cabeça — com um dashboard intuitivo e 100% online.</p>
-                        </div>
-                    </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-download"></i></div>
+                    <h3>CLIQUE SALVADOR</h3>
+                    <p>"Quero Meu Kit Sobrevivência" > Download IMEDIATO do arquivo. Sem cadastros complexos, sem
+                        pagamentos, sem enrolação.</p>
+                    <div class="step-time">Tempo: 30 segundos</div>
                 </div>
-                
-                <div class="gallery-nav" id="galleryNav">
-                    <div class="gallery-dot active" data-slide="0"></div>
-                    <div class="gallery-dot" data-slide="1"></div>
-                    <div class="gallery-dot" data-slide="2"></div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <h3>ABERTURA ANTICRISE</h3>
+                    <p>sim (sem instalar NADA). Compatível com qualquer dispositivo - até celular antigo!</p>
+                    <div class="step-time">Tempo: 1 minuto</div>
                 </div>
+
+
+            </div>
+
+            <!-- Dashboard Screenshot Slot 4 -->
+            <div class="screenshot-container" style="margin-top: 80px;">
+                <div class="screenshot-placeholder">
+                    <img width="100%" src="imagem/21.jpg" alt="">
+                </div>
+                <div class="screenshot-caption">Interface tão simples que qualquer pessoa domina em minutos</div>
             </div>
         </div>
     </section>
 
-    <!-- Depoimentos -->
-    <section class="testimonials-section">
+    <!-- Testimonials Section -->
+    <section id="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>O que dizem nossos clientes</h2>
-                <p>Veja depoimentos reais de empreendedores que transformaram seus negócios com o FinanDash</p>
+                <h2 style="color: white;">2.817 MICROEMPREENDEDORES QUE VIRARAM O JOGO</h2>
+                <p style="color: white;">Histórias reais de quem transformou caos financeiro em lucro consistente</p>
             </div>
-            
-            <div class="testimonials-grid">
+
+            <div class="testimonial-grid">
                 <div class="testimonial-card">
-                    <p class="testimonial-content">"O FinanDash mudou completamente a forma como gerencio meu negócio. Em 3 meses, consegui reduzir custos em 25% e aumentar meu lucro líquido em 40%. A parte de controle de estoque salvou meu negócio!"</p>
+                    <i class="fas fa-quote-left"></i>
+                    <div class="testimonial-text">
+                        "Depois de 3 anos lutando contra o descontrole, recuperei R$2.800 no PRIMEIRO MÊS com o
+                        dashboard! Descobri vazamentos que meu contador nunca viu. Hoje sobra dinheiro pra investir e
+                        até tirei férias em Noronha!"
+                    </div>
                     <div class="testimonial-author">
-                        <div class="testimonial-image">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>Carlos Mendes</h4>
-                            <p>Dono de loja de materiais de construção</p>
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <strong>Ana Silva</strong>
+                            <small>Confeiteira | São Paulo</small>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimonial-card">
-                    <p class="testimonial-content">"Depois de anos sofrendo com planilhas confusas e informações desencontradas, finalmente encontrei uma solução que realmente funciona. O dashboard é intuitivo e os relatórios me dão insights que eu nunca teria sozinha."</p>
+                    <i class="fas fa-quote-left"></i>
+                    <div class="testimonial-text">
+                        "Meu mercadinho de bairro teve lucro 37% maior no 1° mês usando o sistema. Parece mágica, mas é
+                        só tecnologia inteligente! O melhor? Economizei 20 horas por mês que eu gastava com planilhas."
+                    </div>
                     <div class="testimonial-author">
-                        <div class="testimonial-image">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>Juliana Santos</h4>
-                            <p>Proprietária de loja de roupas</p>
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <strong>Roberto Mendes</strong>
+                            <small>Dono de empório | Minas Gerais</small>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimonial-card">
-                    <p class="testimonial-content">"O suporte é incrível e o sistema superou todas as minhas expectativas. O melhor investimento que fiz no meu negócio nos últimos anos. Agora consigo focar no crescimento, sabendo que minhas finanças estão sob controle."</p>
+                    <i class="fas fa-quote-left"></i>
+                    <div class="testimonial-text">
+                        "Como artesã, eu vivia no vermelho mesmo com muitas vendas. Em 15 dias com o dashboard,
+                        identifiquei R$1.200 em custos desnecessários! Hoje meu negócio é sustentável e estou expandindo
+                        para loja física."
+                    </div>
                     <div class="testimonial-author">
-                        <div class="testimonial-image">
-                            <i class="fas fa-user"></i>
+                        <div class="author-avatar">C</div>
+                        <div class="author-info">
+                            <strong>Carla Santos</strong>
+                            <small>Artesã | Bahia</small>
                         </div>
-                        <div class="testimonial-info">
-                            <h4>Roberto Almeida</h4>
-                            <p>Restaurante e Delivery</p>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <div class="testimonial-text">
+                        "Perdi uma moto 0km em 1 ano com 'furos' que nem sabia existir. Com o dashboard, recuperei
+                        R$3.500 em 45 dias! Até meu contador ficou impressionado e pediu o template para outros
+                        clientes."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">C</div>
+                        <div class="author-info">
+                            <strong>Carlos Oliveira</strong>
+                            <small>Comércio de materiais | Paraná</small>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="#cta" class="btn btn-secondary">Quero resultados como esses</a>
+
+            <div class="results-stats">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h4>94,3%</h4>
+                        <p>reduziram perdas em mais de 40% nos primeiros 15 dias</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>R$2,1M</h4>
+                        <p>recuperados por nossos usuários nos últimos 90 dias</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>18h</h4>
+                        <p>economia média mensal em trabalho administrativo</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>37%</h4>
+                        <p>aumento médio na lucratividade após 60 dias</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Screenshot Slot 5 -->
+            <div class="screenshot-container" style="margin-top: 80px;">
+                <div class="screenshot-placeholder">
+                  <img width="100%" src="imagem/17.jpg" alt="">
+                </div>
+                <div class="screenshot-caption">Comparativo real de um usuário antes e depois de 30 dias usando o
+                    sistema</div>
             </div>
         </div>
     </section>
 
-    
-
-    <!-- CTA Final -->
-    <section class="cta-section" id="cta">
+    <!-- Offer Section -->
+    <section id="offer">
         <div class="container">
-            <h2 class="cta-title">Pronto para transformar sua gestão financeira?</h2>
-            <p class="cta-subtitle">Junte-se a mais de 1.000 empreendedores que já dominaram suas finanças com o FinanDash</p>
-            
-            <div class="cta-buttons">
-                <a href="https://pay.cakto.com.br/339jako_455599" class="btn btn-large">Começar agora mesmo</a>
-                <a href="https://pay.cakto.com.br/339jako_455599" class="btn btn-secondary btn-large">Ver oferta com bônus</a>
+            <div class="section-title">
+                <h2>SUA TRANQUILIDADE FINANCEIRA GARANTIDA</h2>
+                <p>Um investimento ZERO RISCO com retorno garantido</p>
+            </div>
+
+
+        </div>
+
+        <div class="guarantee">
+            <h4>NOSSO COMPROMISSO COM VOCÊ</h4>
+            <p>Em 7 dias você vai economizar tempo, descobrir onde o dinheiro tá escorrendo e, principalmente, sentir o
+                alívio real de ter tudo sob controle.
+                Seu negócio vai parar de te consumir e começar a te responder.
+
+            </p>
+
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>PERGUNTAS FREQUENTES</h2>
+                <p>Tudo o que você precisa saber antes de começar</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Funciona em computadores antigos?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>SIM! Nosso sistema é 100% baseado em nuvem e roda até em computadores com Windows XP ou
+                            celulares antigos. Tudo que você precisa é de uma conexão com internet para acessar o Google</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Preciso pagar mensalidade depois?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>NUNCA! O dashboard básico é gratuito para sempre, sem taxas escondidas ou mensalidades.
+                            Oferecemos cursos e consultorias adicionais opcionais, mas o sistema essencial é seu para
+                            sempre sem custos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Consigo usar pelo celular?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>TOTALMENTE! Nosso sistema é otimizado para dispositivos móveis. Você pode registrar vendas na
+                            feira, conferir estoque no depósito e analisar relatórios no sofá - tudo pelo 
+                        seu celular.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Preciso ser expert em Excel?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Se você sabe enviar mensagem no WhatsApp, vai dominar nosso sistema em 1 hora! </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quanto tempo leva para ver resultados?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>94,3% dos nossos usuários identificaram pelo menos um vazamento financeiro nos primeiros 15
+                            dias de uso. Resultados significativos (redução de perdas acima de 30%) são observados em
+                            média em 30 dias.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Funciona para qualquer tipo de negócio?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Nosso dashboard já foi implementado com sucesso em mais de 15 segmentos: comércio
+                            varejista, serviços, alimentação, artesanato, consultorias, e-commerce e muito mais. Temos
+                            modelos específicos para diferentes necessidades.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Rodapé -->
+    <!-- Final CTA -->
+    <section id="cta">
+        <div class="container">
+            <div class="urgency-badge">⚠️ ATENÇÃO: OFERTA COM TEMPO LIMITADO!</div>
+            <h2>CADA 53 SEGUNDOS SEM CONTROLE = R$1,90 DESAPARECENDO DO SEU NEGÓCIO!</h2>
+            <p>Não deixe seu suor e trabalho duro continuarem evaporando. Tome o controle HOJE e comece a recuperar seu
+                lucro!</p>
+
+            <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-primary btn-lg">🔥 SIM! QUERO ACESSO IMEDIATO AO DASHBOARD (GRÁTIS AGORA!)</a>
+
+            <div class="countdown-box">
+                <h3>SEU ACESSO PRIORITÁRIO EXPIRA EM:</h3>
+                <div class="countdown-timer">
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="countdown-hours">00</div>
+                        <div class="countdown-label">Horas</div>
+                    </div>
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="countdown-minutes">28</div>
+                        <div class="countdown-label">Minutos</div>
+                    </div>
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="countdown-seconds">00</div>
+                        <div class="countdown-label">Segundos</div>
+                    </div>
+                </div>
+                <p>Não perca tempo e dinheiro no seu negocio!!</p>
+            </div>
+
+            <div class="ps-container">
+                <h3> SEU FUTURO FINANCEIRO COMEÇA HOJE</h3>
+                <p>Olhe para o histórico do seu último mês: quantas vendas se perderam? Quanto sumiu do estoque? Quanto
+                    tempo você desperdiçou com controles ineficientes?</p>
+                <p><strong>AMANHÃ PODE SER COMPLETAMENTE DIFERENTE.</strong></p>
+                <p>Mas só se você AGIR AGORA e dar o primeiro passo rumo ao controle financeiro definitivo.</p>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>FinanDash</h3>
-                    <p style="color: #cbd5e1; margin-top: 20px;">Solução completa para gestão financeira de pequenos e médios negócios.</p>
+                    <h4>Dashboard Financeiro Pro</h4>
+                    <p>Soluções inteligentes para microempreendedores que querem crescer com controle e segurança
+                        financeira.</p>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Links Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Início</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Recursos</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Depoimentos</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Oferta</a></li>
-                    </ul>
-                </div>
-                
-              
-                
-             
-      
+               
         </div>
     </footer>
 
-    <!-- Botão Voltar ao Topo -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
     <script>
-        // Galeria de Imagens
-        document.addEventListener('DOMContentLoaded', function() {
-            const slider = document.getElementById('gallerySlider');
-            const dots = document.querySelectorAll('.gallery-dot');
-            let currentSlide = 0;
-            
-            // Navegação por pontos
-            dots.forEach(dot => {
-                dot.addEventListener('click', function() {
-                    const slideIndex = parseInt(this.getAttribute('data-slide'));
-                    goToSlide(slideIndex);
-                });
-            });
-            
-            // Função para mudar slide
-            function goToSlide(index) {
-                currentSlide = index;
-                slider.scrollTo({
-                    left: slider.clientWidth * index,
-                    behavior: 'smooth'
-                });
-                
-                // Atualizar pontos de navegação
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === index);
-                });
-            }
-            
-            // Mudança automática de slides
-            setInterval(() => {
-                currentSlide = (currentSlide + 1) % dots.length;
-                goToSlide(currentSlide);
-            }, 5000);
-            
-            // Botão Voltar ao Topo
-            const backToTopBtn = document.getElementById('backToTop');
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.add('show');
-                } else {
-                    backToTopBtn.classList.remove('show');
-                }
-            });
-            
-            backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            // Suavizar âncoras
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
             });
         });
+
+        // Financial Loss Calculator
+        function calculateLoss() {
+            const revenue = parseFloat(document.getElementById('revenue').value) || 10000;
+            const hours = parseFloat(document.getElementById('hours').value) || 20;
+            const lostProducts = parseFloat(document.getElementById('lost-products').value) || 15;
+
+            // Cálculos estimados
+            const timeLoss = hours * 50; // R$50/hora estimado
+            const productLoss = lostProducts * 30; // R$30/produto estimado
+            const inefficiencyLoss = revenue * 0.08; // 8% de perda por ineficiência
+
+            const totalLoss = timeLoss + productLoss + inefficiencyLoss;
+
+            document.getElementById('loss-result').textContent = 'R$ ' + totalLoss.toFixed(2) + '/mês';
+        }
+
+        // Initialize calculator
+        calculateLoss();
+
+        // Countdown Timer
+        let hours = 0;
+        let minutes = 28;
+        let seconds = 0;
+
+        const hoursElement = document.getElementById('countdown-hours');
+        const minutesElement = document.getElementById('countdown-minutes');
+        const secondsElement = document.getElementById('countdown-seconds');
+
+        function updateCountdown() {
+            seconds--;
+            if (seconds < 0) {
+                minutes--;
+                seconds = 59;
+            }
+
+            if (minutes < 0) {
+                hours--;
+                minutes = 59;
+            }
+
+            if (hours < 0) {
+                clearInterval(timer);
+                hours = 0;
+                minutes = 0;
+                seconds = 0;
+                document.querySelector('.urgency-badge').textContent = "⚠️ OFERTA EXPIRADA!";
+            }
+
+            hoursElement.textContent = hours < 10 ? '0' + hours : hours;
+            minutesElement.textContent = minutes < 10 ? '0' + minutes : minutes;
+            secondsElement.textContent = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        const timer = setInterval(updateCountdown, 1000);
     </script>
 </body>
+
 </html>
