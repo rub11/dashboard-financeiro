@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Financeiro para Microempreendedores | Controle Total do Seu Negócio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #0d6efd;
@@ -218,6 +216,14 @@
             font-weight: 800;
             text-align: center;
             padding: 30px;
+            overflow: hidden;
+        }
+
+        .screenshot-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
         .screenshot-caption {
@@ -991,6 +997,14 @@
             .calculator-grid {
                 grid-template-columns: 1fr;
             }
+
+            .pain-container {
+                padding: 40px;
+            }
+
+            .offer-card {
+                padding: 40px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1038,6 +1052,33 @@
             #cta h2 {
                 font-size: 2.5rem;
             }
+
+            .screenshot-placeholder {
+                height: 350px;
+            }
+
+            .countdown-timer {
+                flex-wrap: wrap;
+            }
+
+            .countdown-unit {
+                min-width: 80px;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .offer-card::before {
+                top: 15px;
+                right: -55px;
+                padding: 8px 45px;
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1049,12 +1090,83 @@
                 font-size: 1.8rem;
             }
 
-            .countdown-timer {
-                flex-wrap: wrap;
+            .screenshot-placeholder {
+                height: 250px;
+                padding: 15px;
             }
 
-            .screenshot-placeholder {
-                height: 350px;
+            .pain-container {
+                padding: 20px;
+            }
+
+            .pain-item {
+                padding: 25px;
+            }
+
+            .calculator {
+                padding: 30px;
+            }
+
+            .solution-card, .step-card {
+                padding: 30px;
+            }
+
+            .step-icon, .solution-icon {
+                font-size: 3rem;
+            }
+
+            .step-card h3, .solution-card h3 {
+                font-size: 1.7rem;
+            }
+
+            .countdown-value {
+                font-size: 2.5rem;
+            }
+
+            .countdown-unit {
+                padding: 15px;
+                min-width: 70px;
+            }
+
+            .offer-card {
+                padding: 20px;
+            }
+
+            .feature-list li, .bonus-list li {
+                font-size: 1rem;
+            }
+
+            .faq-question {
+                font-size: 1.2rem;
+                padding: 20px;
+            }
+
+            .ps-container {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-badge {
+                font-size: 1.1rem;
+                padding: 10px 25px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .countdown-unit {
+                min-width: 60px;
+                padding: 10px;
+            }
+            
+            .countdown-value {
+                font-size: 2rem;
+            }
+            
+            .countdown-label {
+                font-size: 1rem;
             }
         }
     </style>
@@ -1078,9 +1190,9 @@
             <!-- Dashboard Screenshot Slot 1 -->
             <div class="screenshot-container">
                 <div class="screenshot-placeholder">
-                    <img width="100%" src="imagem/Captura de tela 2025-06-30 150346.png" alt="">
+                    <img width="100%" src="imagem/29.jpg" alt="Dashboard Financeiro">
                 </div>
-               
+                <div class="screenshot-caption">Painel de controle financeiro integrado com estoque e vendas</div>
             </div>
         </div>
     </section>
@@ -1224,16 +1336,31 @@
                         <li>Relatórios automáticos com gráficos simplificados</li>
                     </ul>
                 </div>
+                
+                
+                
+                <div class="solution-card">
+                    <div class="solution-icon"><i class="fas fa-crystal-ball"></i></div>
+                    <h3>PREVISÕES QUE PROTEGEM</h3>
+                    <p>Antecipe crises e oportunidades com projeções baseadas em IA simples. Tome decisões com 3 meses de vantagem!</p>
+                    <ul class="solution-features">
+                        <li>Projeção de fluxo de caixa futuro</li>
+                        <li>Previsão de sazonalidade de vendas</li>
+                        <li>Simulação de cenários (e se...)</li>
+                        <li>Recomendações de compra de estoque</li>
+                        <li>Alertas de períodos de vacas magras</li>
+                        <li>Previsão de necessidade de capital</li>
+                        <li>Identificação de tendências de consumo</li>
+                    </ul>
+                </div>
             </div>
-
-
 
         </div>
 
         <!-- Dashboard Screenshot Slot 2 -->
         <div class="screenshot-container" style="margin-top: 80px;">
             <div class="screenshot-placeholder">
-                <img width="100%" src="imagem/22.jpg" alt="">
+                <img width="100%" src="imagem/17.jpg" alt="Dashboard Mobile">
             </div>
             <div class="screenshot-caption">Controle seu negócio de qualquer lugar, até pelo celular!</div>
         </div>
@@ -1241,7 +1368,7 @@
         <!-- Dashboard Screenshot Slot 3 -->
         <div class="screenshot-container" style="margin-top: 80px;">
             <div class="screenshot-placeholder">
-               <img width="100%" src="imagem/27.jpg" alt="">
+                <img src="imagem/15.jpg" alt="Relatórios Automáticos">
             </div>
             <div class="screenshot-caption">Relatórios completos gerados automaticamente enquanto você vende</div>
         </div>
@@ -1278,7 +1405,6 @@
                 </div>
             </div>
         </div>
-        </div>
     </section>
 
     <!-- Steps Section -->
@@ -1306,14 +1432,20 @@
                     <p>sim (sem instalar NADA). Compatível com qualquer dispositivo - até celular antigo!</p>
                     <div class="step-time">Tempo: 1 minuto</div>
                 </div>
-
-
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>CONTROLE ANTICRISE</h3>
+                    <p>Comece a registrar vendas e já veja em tempo real onde está seu dinheiro. Pare de apagar incêndio e comece a prevenir!</p>
+                    <div class="step-time">Tempo: 7 minutos</div>
+                </div>
             </div>
 
             <!-- Dashboard Screenshot Slot 4 -->
             <div class="screenshot-container" style="margin-top: 80px;">
                 <div class="screenshot-placeholder">
-                    <img width="100%" src="imagem/21.jpg" alt="">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Interface Simples">
                 </div>
                 <div class="screenshot-caption">Interface tão simples que qualquer pessoa domina em minutos</div>
             </div>
@@ -1417,7 +1549,7 @@
             <!-- Dashboard Screenshot Slot 5 -->
             <div class="screenshot-container" style="margin-top: 80px;">
                 <div class="screenshot-placeholder">
-                  <img width="100%" src="imagem/17.jpg" alt="">
+                    <img  src="imagem/27.jpg" alt="Comparativo de Resultados">
                 </div>
                 <div class="screenshot-caption">Comparativo real de um usuário antes e depois de 30 dias usando o
                     sistema</div>
@@ -1433,21 +1565,36 @@
                 <p>Um investimento ZERO RISCO com retorno garantido</p>
             </div>
 
-
-        </div>
-
-        <div class="guarantee">
-            <h4>NOSSO COMPROMISSO COM VOCÊ</h4>
-            <p>Em 7 dias você vai economizar tempo, descobrir onde o dinheiro tá escorrendo e, principalmente, sentir o
-                alívio real de ter tudo sob controle.
-                Seu negócio vai parar de te consumir e começar a te responder.
-
-            </p>
-
-        </div>
-        </div>
-        </div>
-        </div>
+            <div class="offer-card">
+                <div class="offer-header">
+                    <h3>HOJE VOCÊ LEVA O KIT COMPLETO DE SOBREVIVÊNCIA FINANCEIRA</h3>
+                    <p>Tudo que você precisa para transformar o caos em controle - por menos que um jantar fora!</p>
+                </div>
+                <div class="offer-columns">
+                    <div class="offer-features">
+                        <h4>O QUE VOCÊ VAI RECEBER</h4>
+                        <ul class="feature-list">
+                            <li>Dashboard Financeiro Pro (modelo pronto)</li>
+                            <li>Painel de Controle de Estoque Inteligente</li>
+                            <li>Sistema de Gestão de Vendas Integrado</li>
+                            <li>Módulo de Fluxo de Caixa Automático</li>
+                            <li>Relatórios de Lucratividade por Produto</li>
+                            <li>Alertas de Risco Financeiro Configurados</li>
+                            <li>Acesso Imediato e Vitalício</li>
+                            <li>Atualizações Gratuitas para Sempre</li>
+                        </ul>
+                    </div>
+                   
+                </div>
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-primary btn-lg">🚨 QUERO MEU KIT DE SOBREVIVÊNCIA AGORA (89% OFF!)</a>
+                </div>
+                <div class="guarantee">
+                    <h4>GARANTIA INCONDICIONAL DE 7 DIAS</h4>
+                    <p>Seu estoque atualizado, suas vendas registradas e seu lucro visível.
+Tudo em um sistema simples, direto e feito pra você não perder mais tempo nem dinheiro.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1579,7 +1726,12 @@
                     <p>Soluções inteligentes para microempreendedores que querem crescer com controle e segurança
                         financeira.</p>
                 </div>
-               
+              
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Dashboard Financeiro Pro. Todos os direitos reservados.
+            </div>
         </div>
     </footer>
 
@@ -1648,5 +1800,4 @@
         const timer = setInterval(updateCountdown, 1000);
     </script>
 </body>
-
 </html>
