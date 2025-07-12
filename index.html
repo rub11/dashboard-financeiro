@@ -1,955 +1,233 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Financeiro para Microempreendedores | Controle Total + 10 Bônus</title>
+    <title>Dashboard Financeiro | Controle Financeiro Simplificado</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #0d6efd;
-            --dark-blue: #0b5ed7;
-            --deep-blue: #084298;
-            --light-blue: #cfe2ff;
-            --accent-yellow: #ffc107;
-            --danger-red: #dc3545;
-            --success-green: #198754;
-            --light-green: #d1e7dd;
-            --light-gray: #f8f9fa;
-            --dark-text: #212529;
-            --section-spacing: 100px;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --primary: #2563eb;       /* Azul principal */
+            --primary-dark: #1d4ed8;  /* Azul escuro */
+            --secondary: #059669;     /* Verde sucesso */
+            --accent: #d97706;        /* Dourado */
+            --light: #f9fafb;         /* Fundo claro */
+            --dark: #1f2937;          /* Texto escuro */
+            --danger: #dc2626;        /* Vermelho perigo */
+            --gray: #6b7280;          /* Cinza */
+            --light-gray: #e5e7eb;    /* Cinza claro */
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #f8fbff, #e6f0ff);
-            color: var(--dark-text);
-            line-height: 1.7;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
             overflow-x: hidden;
-            font-size: 18px;
         }
 
         .container {
             width: 100%;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 20px;
         }
 
         section {
-            padding: var(--section-spacing) 0;
-            position: relative;
+            padding: 80px 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 70px;
-            position: relative;
+            margin-bottom: 50px;
         }
 
         .section-title h2 {
-            font-size: 3.2rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 25px;
-            color: var(--deep-blue);
-            text-transform: uppercase;
-            line-height: 1.2;
-            background: linear-gradient(135deg, var(--deep-blue), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 10px rgba(13, 110, 253, 0.15);
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
         }
 
         .section-title p {
-            font-size: 1.6rem;
-            max-width: 900px;
-            margin: 0 auto;
-            color: #444;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-yellow));
-            border-radius: 3px;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: var(--gray);
         }
 
         .btn {
             display: inline-block;
-            padding: 18px 45px;
-            border-radius: 60px;
+            padding: 14px 32px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.3rem;
+            font-weight: 600;
+            font-size: 1.1rem;
             text-align: center;
             transition: var(--transition);
-            border: none;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            border: none;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-blue), var(--deep-blue));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -60%;
-            width: 20px;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(25deg);
-            transition: all 0.6s;
         }
 
         .btn-primary:hover {
-            background: linear-gradient(135deg, var(--deep-blue), var(--primary-blue));
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 12px 30px rgba(13, 110, 253, 0.4);
-        }
-
-        .btn-primary:hover::after {
-            left: 120%;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
         }
 
         .btn-lg {
-            padding: 22px 55px;
-            font-size: 1.6rem;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            font-weight: 700;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.2);
         }
 
         /* Hero Section */
         #hero {
-            background: linear-gradient(135deg, var(--deep-blue), var(--primary-blue));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            padding: 180px 0 120px;
+            padding: 100px 0;
             position: relative;
             overflow: hidden;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
         }
 
-        #hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,128L48,117.3C96,107,192,85,288,106.7C384,128,480,192,576,192C672,192,768,128,864,106.7C960,85,1056,107,1152,128C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            background-position: bottom;
-            z-index: 1;
-        }
-
         .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
             position: relative;
             z-index: 2;
-            text-align: center;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .hero-content h1 {
-            font-size: 4.2rem;
-            font-weight: 900;
-            margin-bottom: 30px;
-            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
-            line-height: 1.2;
-        }
-
-        .hero-content p {
-            font-size: 2rem;
-            margin-bottom: 50px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .hero-badge {
             display: inline-block;
-            background-color: var(--accent-yellow);
-            color: var(--deep-blue);
-            padding: 12px 35px;
-            border-radius: 40px;
-            font-weight: 800;
+            background: var(--accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 700;
             margin-bottom: 30px;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             animation: pulse 2s infinite;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Dashboard Screenshot Slot */
-        .screenshot-container {
-            background-color: white;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-            margin: 70px auto;
-            max-width: 1100px;
-            position: relative;
-            overflow: hidden;
-            border: 3px solid var(--accent-yellow);
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.2;
         }
 
-        .screenshot-placeholder {
-            background: linear-gradient(135deg, #e0e7ff, #d1e0fd);
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 15px;
-            border: 2px dashed var(--primary-blue);
-            color: var(--primary-blue);
+        .hero-content p {
             font-size: 1.4rem;
-            font-weight: 800;
-            text-align: center;
-            padding: 30px;
-            overflow: hidden;
-        }
-
-        .screenshot-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .screenshot-caption {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1.3rem;
-            color: var(--deep-blue);
-            font-weight: 700;
-        }
-
-        /* Pain Section */
-        #pain-points {
-            background-color: white;
-            padding-bottom: 150px;
-        }
-
-        .pain-container {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 25px;
-            padding: 60px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .pain-intro {
-            text-align: center;
-            font-size: 1.6rem;
-            margin-bottom: 60px;
-            font-weight: 500;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .pain-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-        }
-
-        .pain-item {
-            background: white;
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: var(--transition);
-            border-left: 5px solid var(--danger-red);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pain-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(220, 53, 69, 0.15);
-        }
-
-        .pain-icon {
-            font-size: 3.5rem;
-            color: var(--danger-red);
-            margin-bottom: 25px;
-        }
-
-        .pain-content h3 {
-            color: var(--danger-red);
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-        }
-
-        .pain-content p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .pain-stat {
-            font-weight: 800;
-            color: var(--danger-red);
-            font-size: 1.3rem;
-        }
-
-        /* Solution Section */
-        #solution {
-            background: linear-gradient(to bottom, #e6f0ff, #cfe2ff);
-            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
-            padding: 150px 0;
-        }
-
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .solution-card {
-            background-color: white;
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-            border-top: 8px solid var(--primary-blue);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .solution-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(13, 110, 253, 0.2);
-        }
-
-        .solution-icon {
-            font-size: 4rem;
-            color: var(--primary-blue);
-            margin-bottom: 30px;
-        }
-
-        .solution-card h3 {
-            color: var(--deep-blue);
-            margin-bottom: 20px;
-            font-size: 2rem;
-        }
-
-        .solution-card p {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-        }
-
-        .solution-features {
-            list-style: none;
-        }
-
-        .solution-features li {
-            margin-bottom: 15px;
-            padding-left: 30px;
-            position: relative;
-            font-size: 1.1rem;
-        }
-
-        .solution-features li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--success-green);
-            font-weight: 800;
-        }
-
-        /* Steps Section */
-        #steps {
-            background-color: white;
-            padding: 150px 0;
-        }
-
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .step-card {
-            background: linear-gradient(135deg, var(--light-blue), #e6f0ff);
-            border-radius: 25px;
-            padding: 50px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        .step-card:hover {
-            transform: scale(1.03);
-        }
-
-        .step-number {
-            font-size: 6rem;
-            font-weight: 900;
-            color: rgba(13, 110, 253, 0.1);
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            line-height: 1;
-        }
-
-        .step-icon {
-            font-size: 4rem;
-            color: var(--primary-blue);
-            margin-bottom: 30px;
-        }
-
-        .step-card h3 {
-            font-size: 2rem;
-            color: var(--deep-blue);
-            margin-bottom: 25px;
-        }
-
-        .step-card p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-
-        .step-time {
-            display: inline-block;
-            background: var(--accent-yellow);
-            color: var(--deep-blue);
-            padding: 8px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        /* Benefits Section */
-        #benefits-results {
-            background-color: white;
-            padding-bottom: 150px;
-        }
-
-        .benefits-container {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 25px;
-            padding: 60px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .benefits-intro {
-            text-align: center;
-            font-size: 1.6rem;
-            margin-bottom: 60px;
-            font-weight: 500;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-        }
-
-        .benefit-item {
-            background: white;
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: var(--transition);
-            border-left: 5px solid var(--success-green);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(25, 135, 84, 0.15);
-        }
-
-        .benefit-icon {
-            font-size: 3.5rem;
-            color: var(--success-green);
-            margin-bottom: 25px;
-        }
-
-        .benefit-content h3 {
-            color: var(--success-green);
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-        }
-
-        .benefit-content p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .benefit-stat {
-            font-weight: 800;
-            color: var(--success-green);
-            font-size: 1.3rem;
-        }
-
-        /* Benefits Comparison Section */
-        #benefits {
-            background: linear-gradient(135deg, var(--deep-blue), var(--primary-blue));
-            color: white;
-            padding: 150px 0;
-            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
-        }
-
-        .comparison-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .comparison-column {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 50px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .comparison-column h3 {
-            font-size: 2.2rem;
-            text-align: center;
             margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid var(--accent-yellow);
-        }
-
-        .comparison-list {
-            list-style: none;
-        }
-
-        .comparison-list li {
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 1.3rem;
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .comparison-list li:before {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.8rem;
-        }
-
-        .without .comparison-list li:before {
-            content: '❌';
-            color: var(--danger-red);
-        }
-
-        .with .comparison-list li:before {
-            content: '✓';
-            color: var(--success-green);
-        }
-
-        .discount-badge {
-            background: var(--accent-yellow);
-            color: var(--deep-blue);
-            border-radius: 15px;
-            padding: 15px 30px;
-            font-weight: 800;
-            font-size: 1.5rem;
-            display: inline-block;
-            margin: 40px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Premium Bonus Section */
-        #premium-bonus {
-            background: linear-gradient(to bottom, #e6f0ff, #cfe2ff);
-            padding: 150px 0;
-        }
-
-        .bonus-title {
-            text-align: center;
-            margin-bottom: 70px;
-        }
-
-        .bonus-title h2 {
-            font-size: 3.2rem;
-            color: var(--deep-blue);
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--deep-blue), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .bonus-title p {
-            font-size: 1.6rem;
-            max-width: 800px;
-            margin: 0 auto;
-            color: #555;
-        }
-
-        .premium-bonus {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            border-radius: 25px;
-            padding: 60px 40px;
-            margin: 60px 0;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-        }
-
-        .premium-bonus::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: 1;
-        }
-
-        .premium-bonus h3 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .premium-bonus p {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 50px;
-            font-size: 1.4rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .bonus-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .bonus-item {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-        }
-
-        .bonus-item:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .bonus-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .bonus-header h4 {
-            font-size: 1.6rem;
-            color: var(--accent-yellow);
-        }
-
-        .bonus-price {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .original-price {
-            font-size: 1.2rem;
-            text-decoration: line-through;
-            opacity: 0.8;
-        }
-
-        .discount-price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--accent-yellow);
-        }
-
-        .bonus-content p {
-            text-align: left;
-            font-size: 1.2rem;
-            margin: 0;
-        }
-
-        .bonus-tag {
-            display: inline-block;
-            background: var(--accent-yellow);
-            color: var(--deep-blue);
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-weight: 700;
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
-
-        .total-savings {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 40px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .total-savings span {
-            color: var(--accent-yellow);
-            font-size: 2.2rem;
-            display: block;
-            margin-top: 10px;
-        }
-
-        /* Offer Section */
-        #offer {
-            background-color: white;
-            padding: 150px 0;
-        }
-
-        .offer-card {
-            background: linear-gradient(135deg, var(--light-blue), #e6f0ff);
-            border-radius: 30px;
-            padding: 70px;
-            text-align: center;
-            box-shadow: 0 30px 60px rgba(13, 110, 253, 0.25);
-            max-width: 1100px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            border: 4px solid var(--primary-blue);
-        }
-
-        .offer-card::before {
-            content: 'OFERTA LIMITADA';
-            position: absolute;
-            top: 25px;
-            right: -45px;
-            background-color: var(--danger-red);
-            color: white;
-            padding: 10px 50px;
-            transform: rotate(45deg);
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .offer-header {
-            margin-bottom: 50px;
-        }
-
-        .offer-header h3 {
-            font-size: 2.8rem;
-            color: var(--deep-blue);
-            margin-bottom: 20px;
-        }
-
-        .offer-header p {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .offer-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            text-align: left;
-        }
-
-        .offer-features {
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 20px;
-            padding: 40px;
-        }
-
-        .offer-features h4 {
-            font-size: 1.8rem;
-            color: var(--deep-blue);
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .feature-list {
-            list-style: none;
-        }
-
-        .feature-list li {
-            margin-bottom: 20px;
-            padding-left: 40px;
-            position: relative;
-            font-size: 1.2rem;
-        }
-
-        .feature-list li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            background: var(--success-green);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-        }
-
-        .bonus-section {
-            background: var(--accent-yellow);
-            color: var(--deep-blue);
-            padding: 40px;
-            border-radius: 20px;
-        }
-
-        .bonus-section h4 {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .bonus-list {
-            list-style: none;
-        }
-
-        .bonus-list li {
-            margin-bottom: 20px;
-            padding-left: 40px;
-            position: relative;
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-
-        .bonus-list li:before {
-            content: '🎁';
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-size: 1.5rem;
-        }
-
-        .guarantee {
-            background: var(--success-green);
-            color: white;
-            padding: 30px;
-            border-radius: 20px;
-            margin-top: 50px;
-            max-width: 800px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .guarantee h4 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            text-align: center;
+        /* Pain Points Section */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        /* FAQ Section */
-        #faq {
-            background: linear-gradient(to bottom, #e6f0ff, #cfe2ff);
-            padding: 150px 0;
-            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
-        }
-
-        .faq-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            margin-bottom: 30px;
-            background-color: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
             transition: var(--transition);
         }
 
-        .faq-item:hover {
-            box-shadow: 0 15px 40px rgba(13, 110, 253, 0.2);
+        .card:hover {
+            transform: translateY(-10px);
         }
 
-        .faq-question {
-            padding: 25px 30px;
-            background-color: var(--primary-blue);
-            color: white;
+        .card-danger {
+            border-left: 4px solid var(--danger);
+        }
+
+        .card-success {
+            border-left: 4px solid var(--secondary);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--danger);
+        }
+
+        .card-success .card-icon {
+            color: var(--secondary);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+
+        .stat {
             font-weight: 700;
-            font-size: 1.4rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            color: var(--danger);
         }
 
-        .faq-answer {
-            padding: 30px;
-            display: none;
-            font-size: 1.2rem;
+        .card-success .stat {
+            color: var(--secondary);
         }
 
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-
-        .faq-question i {
-            transition: transform 0.4s ease;
-        }
-
-        /* Image Slider */
+        /* Slider Section */
         .slider-container {
-            max-width: 1000px;
-            margin: 100px auto;
-            position: relative;
+            max-width: 900px;
+            margin: 70px auto;
+            border-radius: var(--border-radius);
             overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            border: 5px solid white;
+            box-shadow: var(--shadow);
+            position: relative;
         }
 
         .slider {
@@ -962,23 +240,15 @@
             position: relative;
         }
 
-        .slide img {
-            width: 100%;
-            height: 550px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .slide-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 1.3rem;
+        .slide-placeholder {
+            height: 400px;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
         }
 
         .slider-controls {
@@ -988,22 +258,22 @@
             display: flex;
             justify-content: space-between;
             transform: translateY(-50%);
-            padding: 0 20px;
+            padding: 0 15px;
             z-index: 10;
         }
 
         .slider-btn {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: var(--deep-blue);
+            font-size: 1.3rem;
+            color: var(--primary);
             transition: var(--transition);
         }
 
@@ -1036,630 +306,653 @@
             transform: scale(1.2);
         }
 
+        /* Comparison Section */
+        .comparison {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0;
+            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .comparison-col {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .comparison-col h3 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            padding: 12px 0;
+            position: relative;
+            padding-left: 35px;
+            font-size: 1.1rem;
+        }
+
+        .without .comparison-list li:before {
+            content: '✖';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.3rem;
+            color: #fca5a5;
+        }
+
+        .with .comparison-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.3rem;
+            color: #86efac;
+        }
+
+        .discount-badge {
+            background: var(--accent);
+            color: white;
+            border-radius: 30px;
+            padding: 12px 25px;
+            font-weight: 700;
+            display: inline-block;
+            margin: 30px 0 20px;
+        }
+
+        /* Plans Section */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 35px 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 2px solid var(--light-gray);
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-card.premium {
+            border-color: var(--accent);
+            position: relative;
+        }
+
+        .plan-card.premium::before {
+            content: 'RECOMENDADO';
+            position: absolute;
+            top: 20px;
+            right: -45px;
+            background: var(--accent);
+            color: white;
+            padding: 8px 45px;
+            transform: rotate(45deg);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .plan-header h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .plan-card.premium .plan-price {
+            color: var(--accent);
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            position: relative;
+            padding-left: 35px;
+            font-size: 1.05rem;
+        }
+
+        .plan-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            background: #dcfce7;
+            color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .plan-card.premium .plan-features li:before {
+            background: #fef3c7;
+            color: var(--accent);
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 20px;
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-content {
+            padding: 20px 0;
+            font-size: 1.05rem;
+            color: var(--gray);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Guarantee Section */
+        .guarantee {
+            background: var(--secondary);
+            color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin-top: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .guarantee h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
         /* Animations */
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .section-title h2 {
-                font-size: 2.8rem;
-            }
-
-            .hero-content h1 {
-                font-size: 3.5rem;
-            }
-        }
-
+        /* Responsive Design */
         @media (max-width: 992px) {
-            :root {
-                --section-spacing: 80px;
-            }
-
-            .section-title h2 {
+            .hero-content h1 {
                 font-size: 2.5rem;
             }
-
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-
+            
             .hero-content p {
-                font-size: 1.8rem;
+                font-size: 1.2rem;
             }
-
-            .offer-columns {
-                grid-template-columns: 1fr;
-            }
-
-            .pain-container {
-                padding: 40px;
-            }
-
-            .offer-card {
-                padding: 40px;
-            }
-
-            .comparison-container {
-                grid-template-columns: 1fr;
-            }
-
-            .bonus-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .benefits-container {
-                padding: 40px;
+            
+            section {
+                padding: 60px 0;
             }
         }
 
         @media (max-width: 768px) {
-            :root {
-                --section-spacing: 60px;
-            }
-
-            .container {
-                padding: 0 20px;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-
             .section-title h2 {
-                font-size: 2.2rem;
-            }
-
-            .section-title p {
-                font-size: 1.4rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1.5rem;
-            }
-
-            .btn-lg {
-                padding: 18px 35px;
-                font-size: 1.4rem;
-            }
-
-            .pain-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .steps-container {
-                grid-template-columns: 1fr;
-            }
-
-            .slider-container {
-                margin: 60px auto;
-            }
-
-            .slide img {
-                height: 350px;
-            }
-
-            .comparison-column {
-                padding: 30px;
-            }
-
-            .offer-card::before {
-                top: 15px;
-                right: -55px;
-                padding: 8px 45px;
-                font-size: 1rem;
-            }
-
-            .premium-bonus {
-                padding: 30px 20px;
-            }
-
-            .premium-bonus h3 {
                 font-size: 2rem;
             }
-
-            .bonus-header {
-                flex-direction: column;
-                align-items: flex-start;
+            
+            .hero-content h1 {
+                font-size: 2rem;
             }
-
-            .bonus-price {
-                align-items: flex-start;
-                margin-top: 15px;
+            
+            .section-title p {
+                font-size: 1.1rem;
             }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
+            
+            .plan-card.premium::before {
+                top: 15px;
+                right: -50px;
+                padding: 6px 40px;
+                font-size: 0.8rem;
+            }
+            
+            .slide-placeholder {
+                height: 300px;
             }
         }
 
-        @media (max-width: 576px) {
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-
+        @media (max-width: 480px) {
             .section-title h2 {
                 font-size: 1.8rem;
             }
-
-            .screenshot-placeholder {
-                height: 300px;
-            }
-
-            .pain-container {
-                padding: 20px;
-            }
-
-            .pain-item {
-                padding: 25px;
-            }
-
-            .solution-card,
-            .step-card {
-                padding: 30px;
-            }
-
-            .step-icon,
-            .solution-icon {
-                font-size: 3rem;
-            }
-
-            .step-card h3,
-            .solution-card h3 {
-                font-size: 1.7rem;
-            }
-
-            .slide img {
-                height: 250px;
-            }
-
-            .slider-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
-            .feature-list li,
-            .bonus-list li {
+            
+            .hero-badge {
                 font-size: 1rem;
+                padding: 8px 20px;
             }
-
-            .faq-question {
-                font-size: 1.2rem;
-                padding: 20px;
-            }
-
-            .bonus-item {
-                padding: 20px;
-            }
-
-            .bonus-header h4 {
-                font-size: 1.4rem;
-            }
-
-            .original-price {
-                font-size: 1rem;
-            }
-
-            .discount-price {
-                font-size: 1.5rem;
-            }
-
-            .bonus-content p {
-                font-size: 1.1rem;
-            }
-
-            .total-savings {
-                font-size: 1.3rem;
-            }
-
-            .total-savings span {
+            
+            .hero-content h1 {
                 font-size: 1.8rem;
             }
-
-            .benefit-item {
-                padding: 25px;
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .btn-lg {
+                padding: 14px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .plan-card.premium::before {
+                top: 12px;
+                right: -55px;
+                padding: 5px 35px;
+                font-size: 0.7rem;
             }
         }
     </style>
 </head>
-
 <body>
     <!-- Hero Section -->
     <section id="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">Você já perdeu alguma venda porque esqueceu de anotar numa folhinha solta?</div>
-
                 <h1>ATENÇÃO</h1>
-                <p>Descubra o Dashboard Financeiro que já salvou Muitos negócios - controle financeiro tão simples que
-                    você domina EM 9 MINUTOS e elimina TODAS as "surpresas" no fim do mês!</p>
+                <p>Descubra o Dashboard Financeiro que já salvou Muitos negócios - controle financeiro tão simples que você domina EM 9 MINUTOS e elimina TODAS as "surpresas" no fim do mês!</p>
+                <a href="#offer" class="btn btn-primary btn-lg">QUERO CONTROLAR MINHAS FINANÇAS</a>
             </div>
         </div>
     </section>
 
     <!-- Pain Points Section -->
-    <section id="pain-points">
+    <section>
         <div class="container">
             <div class="section-title">
                 <h2>O ROUBO SILENCIOSO QUE DESTRÓI SEU LUCRO</h2>
                 <p>Enquanto você apaga incêndios diários, seu dinheiro ESCORRE POR VAZAMENTOS INVISÍVEIS</p>
             </div>
 
-            <div class="pain-container">
-                <div class="pain-intro">
-                    Você anota vendas no WhatsApp, valores no caderno, notas fiscais na gaveta... e no fim do mês não
-                    sabe para onde foi cada centavo. Enquanto isso, seu lucro está sendo drenado por problemas que você
-                    nem enxerga! <br><br>
+            <div class="pain-intro">
+                <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    Você anota vendas no WhatsApp, valores no caderno, notas fiscais na gaveta... e no fim do mês não sabe para onde foi cada centavo. Enquanto isso, seu lucro está sendo drenado por problemas que você nem enxerga!
+                </p>
+            </div>
 
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>VEJA O QUE ACONTECE ENQUANTO VOCÊ DECIDE FAZER TUDO SOZINHO NO MANUAL</h2>
-                        </div>
+            <div class="section-title">
+                <h2>VEJA O QUE ACONTECE ENQUANTO VOCÊ DECIDE FAZER TUDO SOZINHO NO MANUAL</h2>
+            </div>
 
-                    </div>
-
-
-                    <div class="pain-grid">
-                        <div class="pain-item fade-in">
-                            <div class="pain-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                            <div class="pain-content">
-                                <h3>Anarquia de Dados</h3>
-                                <p>Informações espalhadas em 7 lugares diferentes, sem integração. Você nunca tem uma
-                                    visão
-                                    completa das finanças.</p>
-                                <div class="pain-stat">Resultado: +15h/mês perdidas</div>
-                            </div>
-                        </div>
-
-                        <div class="pain-item fade-in">
-                            <div class="pain-icon"><i class="fas fa-box-open"></i></div>
-                            <div class="pain-content">
-                                <h3>Estoque Fantasma</h3>
-                                <p>Produtos que somem como mágica, enquanto dívidas aparecem do nada. Seu dinheiro
-                                    literalmente evaporando!</p>
-                                <div class="pain-stat">Perda média: R$3.200/trimestre</div>
-                            </div>
-                        </div>
-
-                        <div class="pain-item fade-in">
-                            <div class="pain-icon"><i class="fas fa-money-bill-wave"></i></div>
-                            <div class="pain-content">
-                                <h3>Custo Oculto</h3>
-                                <p>Aquela "pequena compra" que virou R$1.500/mês sem você notar. Pequenos vazamentos que
-                                    viram enchentes.</p>
-                                <div class="pain-stat">+27% de custos desnecessários</div>
-                            </div>
-                        </div>
-
-                        <div class="pain-item fade-in">
-                            <div class="pain-icon"><i class="fas fa-dice"></i></div>
-                            <div class="pain-content">
-                                <h3>Decisão no Escuro</h3>
-                                <p>Reinvestir? Cortar gastos? Comprar estoque? Você joga dardo no escuro sem dados
-                                    confiáveis!</p>
-                                <div class="pain-stat">73% das decisões erradas</div>
-                            </div>
-                        </div>
-
-                        <div class="pain-item fade-in">
-                            <div class="pain-icon"><i class="fas fa-clock"></i></div>
-                            <div class="pain-content">
-                                <h3>Tempo Perdido</h3>
-                                <p>Finais de semana reconciliando planilhas que nunca fecham. Tempo que poderia ser
-                                    usado
-                                    para vender mais!</p>
-                                <div class="pain-stat">22h/mês em trabalho improdutivo</div>
-                            </div>
-                        </div>
-
-                        <div class="pain-item fade-in">
-                            <div class="pain-icon"><i class="fas fa-chart-line"></i></div>
-                            <div class="pain-content">
-                                <h3>Crescimento Travado</h3>
-                                <p>Sem controle, sem previsibilidade, sem segurança para investir. Seu negócio não
-                                    decola.
-                                </p>
-                                <div class="pain-stat">Oportunidades perdidas: R$14.700/ano</div>
-                            </div>
-                        </div>
-
-                    </div><br><br>
-
-
+            <div class="grid-2">
+                <!-- Pain Point 1 -->
+                <div class="card card-danger">
+                    <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3>Anarquia de Dados</h3>
+                    <p>Informações espalhadas em 7 lugares diferentes, sem integração. Você nunca tem uma visão completa das finanças.</p>
+                    <div class="stat">Resultado: +15h/mês perdidas</div>
                 </div>
 
+                <!-- Pain Point 2 -->
+                <div class="card card-danger">
+                    <div class="card-icon"><i class="fas fa-box-open"></i></div>
+                    <h3>Estoque Fantasma</h3>
+                    <p>Produtos que somem como mágica, enquanto dívidas aparecem do nada. Seu dinheiro literalmente evaporando!</p>
+                    <div class="stat">Perda média: R$3.200/trimestre</div>
+                </div>
+
+                <!-- Pain Point 3 -->
+                <div class="card card-danger">
+                    <div class="card-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Custo Oculto</h3>
+                    <p>Aquela "pequena compra" que virou R$1.500/mês sem você notar. Pequenos vazamentos que viram enchentes.</p>
+                    <div class="stat">+27% de custos desnecessários</div>
+                </div>
+
+                <!-- Pain Point 4 -->
+                <div class="card card-danger">
+                    <div class="card-icon"><i class="fas fa-dice"></i></div>
+                    <h3>Decisão no Escuro</h3>
+                    <p>Reinvestir? Cortar gastos? Comprar estoque? Você joga dardo no escuro sem dados confiáveis!</p>
+                    <div class="stat">73% das decisões erradas</div>
+                </div>
+
+                <!-- Pain Point 5 -->
+                <div class="card card-danger">
+                    <div class="card-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Tempo Perdido</h3>
+                    <p>Finais de semana reconciliando planilhas que nunca fecham. Tempo que poderia ser usado para vender mais!</p>
+                    <div class="stat">22h/mês em trabalho improdutivo</div>
+                </div>
+
+                <!-- Pain Point 6 -->
+                <div class="card card-danger">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Crescimento Travado</h3>
+                    <p>Sem controle, sem previsibilidade, sem segurança para investir. Seu negócio não decola.</p>
+                    <div class="stat">Oportunidades perdidas: R$14.700/ano</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Results Setion -->
-    <section id="benefits-results">
+    <!-- Benefits Section -->
+    <section style="background-color: #f0f7ff;">
         <div class="container">
             <div class="section-title">
-                <h2> AGORA VEJA O QUE ACONTECE QUANDO VOCÊ USA O NOSSO SISTEMA PRA AUTOMATIZAR SEUS ESTOQUES E VENDAS </h2>
+                <h2>AGORA VEJA O QUE ACONTECE QUANDO VOCÊ USA O NOSSO SISTEMA</h2>
                 <p>Descubra os benefícios que transformarão sua gestão e impulsionarão seu negócio</p>
             </div>
 
-            <div class="benefits-container">
-                <div class="benefits-intro">
-                    Com nosso Dashboard Financeiro, você transforma dados em decisões poderosas. Cada aspecto da sua
-                    gestão se torna mais eficiente, lucrativa e estratégica. Veja como:
+            <div class="pain-intro">
+                <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    Com nosso Dashboard Financeiro, você transforma dados em decisões poderosas. Cada aspecto da sua gestão se torna mais eficiente, lucrativa e estratégica. Veja como:
+                </p>
+            </div>
+
+            <div class="grid-2">
+                <!-- Benefit 1 -->
+                <div class="card card-success">
+                    <div class="card-icon"><i class="fas fa-chart-network"></i></div>
+                    <h3>Integração Perfeita</h3>
+                    <p>Todas as informações financeiras centralizadas em um único lugar. Tenha uma visão holística do seu negócio com dados integrados e harmonizados.</p>
+                    <div class="stat">Economia: +15h/mês ganhas</div>
                 </div>
 
-                <div class="benefits-grid">
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon"><i class="fas fa-chart-network"></i></div>
-                        <div class="benefit-content">
-                            <h3>Integração Perfeita</h3>
-                            <p>Todas as informações financeiras centralizadas em um único lugar. Tenha uma visão
-                                holística do seu negócio com dados integrados e harmonizados.</p>
-                            <div class="benefit-stat">Economia: +15h/mês ganhas</div>
-                        </div>
-                    </div>
-
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon"><i class="fas fa-boxes"></i></div>
-                        <div class="benefit-content">
-                            <h3>Estoque Otimizado</h3>
-                            <p>Controle preciso de entrada e saída de produtos. Nunca mais perca vendas por falta de
-                                estoque nem tenha capital parado em excesso.</p>
-                            <div class="benefit-stat">Ganho médio: R$3.200/trimestre</div>
-                        </div>
-                    </div>
-
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon"><i class="fas fa-money-check-alt"></i></div>
-                        <div class="benefit-content">
-                            <h3>Custos Sob Controle</h3>
-                            <p>Identifique oportunidades de redução de custos e maximize sua margem de lucro. Cada
-                                centavo é contabilizado e otimizado.</p>
-                            <div class="benefit-stat">Redução de até 27% em custos desnecessários</div>
-                        </div>
-                    </div>
-
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon"><i class="fas fa-lightbulb"></i></div>
-                        <div class="benefit-content">
-                            <h3>Decisões Estratégicas</h3>
-                            <p>Baseie suas escolhas em dados concretos e análises precisas. Saiba quando reinvestir,
-                                expandir ou otimizar operações.</p>
-                            <div class="benefit-stat">+73% de decisões acertadas</div>
-                        </div>
-                    </div>
-
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon"><i class="fas fa-hourglass-half"></i></div>
-                        <div class="benefit-content">
-                            <h3>Tempo Valorizado</h3>
-                            <p>Automatize processos manuais e recupere horas preciosas. Foque no que realmente importa:
-                                crescer seu negócio.</p>
-                            <div class="benefit-stat">Economia de 22h/mês em trabalho administrativo</div>
-                        </div>
-                    </div>
-
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon"><i class="fas fa-rocket"></i></div>
-                        <div class="benefit-content">
-                            <h3>Crescimento Acelerado</h3>
-                            <p>Com controle financeiro sólido, seu negócio ganha a base necessária para escalar com
-                                segurança e previsibilidade.</p>
-                            <div class="benefit-stat">Oportunidades capturadas: R$14.700/ano</div>
-                        </div>
-                    </div>
+                <!-- Benefit 2 -->
+                <div class="card card-success">
+                    <div class="card-icon"><i class="fas fa-boxes"></i></div>
+                    <h3>Estoque Otimizado</h3>
+                    <p>Controle preciso de entrada e saída de produtos. Nunca mais perca vendas por falta de estoque nem tenha capital parado em excesso.</p>
+                    <div class="stat">Ganho médio: R$3.200/trimestre</div>
                 </div>
 
-                <div
-                    style="text-align: center; margin-top: 60px; padding: 30px; background: rgba(25, 135, 84, 0.1); border-radius: 20px;">
-                    <h3 style="color: var(--success-green); font-size: 2rem; margin-bottom: 20px;">Transforme sua gestão
-                        financeira hoje mesmo!</h3>
-                    <p style="font-size: 1.4rem;">Junte-se aos milhares de empreendedores que já transformaram seus
-                        negócios com nosso Dashboard Financeiro</p>
+                <!-- Benefit 3 -->
+                <div class="card card-success">
+                    <div class="card-icon"><i class="fas fa-money-check-alt"></i></div>
+                    <h3>Custos Sob Controle</h3>
+                    <p>Identifique oportunidades de redução de custos e maximize sua margem de lucro. Cada centavo é contabilizado e otimizado.</p>
+                    <div class="stat">Redução de até 27% em custos</div>
                 </div>
+
+                <!-- Benefit 4 -->
+                <div class="card card-success">
+                    <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Decisões Estratégicas</h3>
+                    <p>Baseie suas escolhas em dados concretos e análises precisas. Saiba quando reinvestir, expandir ou otimizar operações.</p>
+                    <div class="stat">+73% de decisões acertadas</div>
+                </div>
+
+                <!-- Benefit 5 -->
+                <div class="card card-success">
+                    <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
+                    <h3>Tempo Valorizado</h3>
+                    <p>Automatize processos manuais e recupere horas preciosas. Foque no que realmente importa: crescer seu negócio.</p>
+                    <div class="stat">Economia de 22h/mês</div>
+                </div>
+
+                <!-- Benefit 6 -->
+                <div class="card card-success">
+                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Crescimento Acelerado</h3>
+                    <p>Com controle financeiro sólido, seu negócio ganha a base necessária para escalar com segurança e previsibilidade.</p>
+                    <div class="stat">Oportunidades capturadas: R$14.700/ano</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#offer" class="btn btn-primary btn-lg">QUERO MEU DASHBOARD AGORA</a>
             </div>
         </div>
     </section>
 
-
-
-
-
     <!-- Solution Section -->
-    <section id="solution">
+    <section>
         <div class="container">
             <div class="section-title">
                 <h2>SEU PAINEL DE CONTROLE ANTI-APAGÕES</h2>
-                <p>Imagine um sistema que transforma o caos em controle total, mostrando EXATAMENTE onde cada centavo
-                    está indo</p>
+                <p>Imagine um sistema que transforma o caos em controle total, mostrando EXATAMENTE onde cada centavo está indo</p>
             </div>
 
-            <div class="solution-grid">
-                <div class="solution-card fade-in">
-                    <div class="solution-icon"><i class="fas fa-heart-pulse"></i></div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-icon" style="color: var(--primary);"><i class="fas fa-heart-pulse"></i></div>
                     <h3>DIAGNOSTICA SANGRIA</h3>
-                    <p>Aponta EXATAMENTE onde você perde R$ com precisão cirúrgica. Identifica vazamentos que ninguém
-                        mais vê!</p>
-                    <ul class="solution-features">
-                        <li>Identificação automática de custos ocultos</li>
-                        <li>Relatórios de margem de lucro por produto</li>
-                        <li>Visão clara de entradas e saídas financeiras</li>
-                        <li>Alertas de estoque crítico para evitar perdas</li>
+                    <p>Aponta EXATAMENTE onde você perde R$ com precisão cirúrgica. Identifica vazamentos que ninguém mais vê!</p>
+                    <ul style="list-style: none; margin-top: 20px;">
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--secondary);"></i>
+                            Identificação automática de custos ocultos
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--secondary);"></i>
+                            Relatórios de margem de lucro por produto
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--secondary);"></i>
+                            Visão clara de entradas e saídas financeiras
+                        </li>
+                        <li style="padding-left: 25px; position: relative;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--secondary);"></i>
+                            Alertas de estoque crítico para evitar perdas
+                        </li>
                     </ul>
                 </div>
 
-                <div class="solution-card fade-in">
-                    <div class="solution-icon"><i class="fas fa-crystal-ball"></i></div>
+                <div class="card">
+                    <div class="card-icon" style="color: var(--primary);"><i class="fas fa-crystal-ball"></i></div>
                     <h3>PREVISÕES QUE PROTEGEM</h3>
-                    <p>Antecipe crises e oportunidades com projeções baseadas em IA simples. Tome decisões com 3 meses
-                        de vantagem!</p>
-                    <ul class="solution-features">
-                        <li>Projeção de fluxo de caixa futuro</li>
-                        <li>Previsão de sazonalidade de vendas</li>
-                        <li>Simulação de cenários (e se...)</li>
-                        <li>Recomendações de compra de estoque</li>
+                    <p>Antecipe crises e oportunidades com projeções baseadas em IA simples. Tome decisões com 3 meses de vantagem!</p>
+                    <ul style="list-style: none; margin-top: 20px;">
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--secondary);"></i>
+                            Projeção de fluxo de caixa futuro
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--secondary);"></i>
+                            Previsão de sazonalidade de vendas
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--secondary);"></i>
+                            Simulação de cenários (e se...)
+                        </li>
+                        <li style="padding-left: 25px; position: relative;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--secondary);"></i>
+                            Recomendações de compra de estoque
+                        </li>
                     </ul>
                 </div>
             </div>
 
-        </div>
+            <div class="section-title" style="margin-top: 70px;">
+                <h2>VEJA O DASHBOARD EM AÇÃO</h2>
+                <p>Leve cada métrica do seu negócio na palma da mão com controle e relatórios em um clique</p>
+            </div>
 
-        <!-- Image Slider -->
-        <div class="slider-container fade-in">
-            
-            <div class="cotainer">
-                <h2 style="height: 120px; padding: 20px; text-align: center; color: #084298;">
-                    Veja o dashboard que leva cada métrica do seu negócio à palma da mão, com controle e relatórios em um clique
-                </h2> 
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide">
+                        <div class="slide-placeholder">Dashboard Financeiro</div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-placeholder">Relatórios Automáticos</div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-placeholder">Controle de Estoque</div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-placeholder">Análise de Vendas</div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-placeholder">Dashboard Mobile</div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="slider-dots"></div>
             </div>
-            <div class="slider">
-                <div class="slide">
-                    <img  src="img/Captura de tela 2025-07-11 091149.png"
-                         alt="Dashboard Financeiro">
-                    
-                </div>
-                <div class="slide">
-                    <img src="img/Captura de tela 2025-07-11 091228.png"
-                        alt="Relatórios Automáticos">
-                    
-                </div>
-                <div class="slide">
-                    <img src="img/Captura de tela 2025-07-11 091358.png"
-                        alt="Controle de Estoque">
-                 
-                </div>
-                <div class="slide">
-                    <img src="img/Captura de tela 2025-07-11 091427.png"
-                        alt="Análise de Vendas">
-                   
-                </div>
-                <div class="slide">
-                    <img src="img/Captura de tela 2025-07-11 091512.png"
-                        alt="Dashboard Mobile">
-                   
-                </div>
-            </div>
-            <div class="slider-controls">
-                <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            <div class="slider-dots"></div>
-        </div>
 
-        <div
-            style="text-align: center; background: rgba(255, 255, 255, 0.7); border-radius: 25px; max-width: 1000px; margin: 80px auto; padding: 50px;">
-            <h3 style="color: var(--deep-blue); margin-bottom: 30px; font-size: 2.2rem;"> VEJA O QUE ACONTECE QUANDO VOCÊ
-                REGISTRA UMA VENDA!</h3>
-            <div
-                style="font-size: 1.4rem; font-weight: 600; background: var(--primary-blue); color: white; padding: 30px; border-radius: 20px; text-align: left;">
-                <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                    <div style="font-size: 2.5rem; margin-right: 20px;">>></div>
-                    <div>Você registra 1 venda em 15 segundos</div>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 20px; margin-left: 50px;">
-                    <div style="font-size: 2rem; margin-right: 20px;">→</div>
-                    <div>Estoque diminui AUTOMATICAMENTE</div>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 20px; margin-left: 50px;">
-                    <div style="font-size: 2rem; margin-right: 20px;">→</div>
-                    <div>Fluxo de caixa é ATUALIZADO</div>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 20px; margin-left: 50px;">
-                    <div style="font-size: 2rem; margin-right: 20px;">→</div>
-                    <div>Lucro projetado é REAJUSTADO</div>
-                </div>
-                <div style="display: flex; align-items: center; margin-left: 50px;">
-                    <div style="font-size: 2rem; margin-right: 20px;">→</div>
-                    <div>Alertas de risco são ACIONADOS</div>
-                </div>
-                <div
-                    style="margin-top: 30px; font-size: 1.3rem; text-align: center; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 15px;">
-                    Resultado: Controle total com mínimo esforço
+            <div class="card" style="max-width: 800px; margin: 0 auto;">
+                <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-dark);">VEJA O QUE ACONTECE QUANDO VOCÊ REGISTRA UMA VENDA</h3>
+                <div style="background: #f0f7ff; padding: 20px; border-radius: 10px;">
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">1</div>
+                            Você registra 1 venda em 15 segundos
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">2</div>
+                            Estoque diminui AUTOMATICAMENTE
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">3</div>
+                            Fluxo de caixa é ATUALIZADO
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">4</div>
+                            Lucro projetado é REAJUSTADO
+                        </li>
+                        <li style="padding-left: 30px; position: relative;">
+                            <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">5</div>
+                            Alertas de risco são ACIONADOS
+                        </li>
+                    </ul>
+                    <div style="text-align: center; margin-top: 20px; font-weight: 700; color: var(--primary);">
+                        Resultado: Controle total com mínimo esforço
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Steps Section -->
-    <section id="steps">
+    <section style="background-color: #f0f7ff;">
         <div class="container">
             <div class="section-title">
                 <h2>DO CAOS AO CONTROLE ABSOLUTO EM 3 PASSOS</h2>
                 <p>Um processo tão simples que qualquer um pode dominar em minutos</p>
             </div>
 
-            <div class="steps-container">
-                <div class="step-card fade-in">
-                    <div class="step-number">1</div>
-                    <div class="step-icon"><i class="fas fa-download"></i></div>
+            <div class="grid-2">
+                <div class="card">
+                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">1</div>
+                    <div class="card-icon" style="color: var(--primary);"><i class="fas fa-download"></i></div>
                     <h3>CLIQUE SALVADOR</h3>
-                    <p>"Quero Meu Kit Sobrevivência" > Download IMEDIATO do arquivo. Sem cadastros complexos, sem
-                        pagamentos, sem enrolação.</p>
-                    <div class="step-time">Tempo: 30 segundos</div>
+                    <p>"Quero Meu Kit Sobrevivência" > Download IMEDIATO do arquivo. Sem cadastros complexos, sem pagamentos, sem enrolação.</p>
+                    <div style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">Tempo: 30 segundos</div>
                 </div>
 
-                <div class="step-card fade-in">
-                    <div class="step-number">2</div>
-                    <div class="step-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <div class="card">
+                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">2</div>
+                    <div class="card-icon" style="color: var(--primary);"><i class="fas fa-cloud-upload-alt"></i></div>
                     <h3>ABERTURA ANTICRISE</h3>
                     <p>sim (sem instalar NADA). Compatível com qualquer dispositivo - até celular antigo!</p>
-                    <div class="step-time">Tempo: 1 minuto</div>
+                    <div style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">Tempo: 1 minuto</div>
                 </div>
 
-                <div class="step-card fade-in">
-                    <div class="step-number">3</div>
-                    <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="card">
+                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">3</div>
+                    <div class="card-icon" style="color: var(--primary);"><i class="fas fa-chart-line"></i></div>
                     <h3>CONTROLE ANTICRISE</h3>
-                    <p>Comece a registrar vendas e já veja em tempo real onde está seu dinheiro. Pare de apagar incêndio
-                        e comece a prevenir!</p>
-                    <div class="step-time">Tempo: 7 minutos</div>
+                    <p>Comece a registrar vendas e já veja em tempo real onde está seu dinheiro. Pare de apagar incêndio e comece a prevenir!</p>
+                    <div style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">Tempo: 7 minutos</div>
                 </div>
             </div>
         </div>
     </section>
 
-
-
-    <!-- Benefits Comparison Section -->
-    <section id="benefits">
+    <!-- Comparison Section -->
+    <section class="comparison">
         <div class="container">
             <div class="section-title">
-                <h2 style="color: white; background-color: black;">ANTES vs DEPOIS</h2>
-                <p style="color: #ccc;">Veja a transformação que o Dashboard Financeiro traz para seu negócio</p>
+                <h2 style="color: white;">ANTES vs DEPOIS</h2>
+                <p style="color: #e5e7eb;">Veja a transformação que o Dashboard Financeiro traz para seu negócio</p>
             </div>
 
-            <div class="comparison-container">
-                <div class="comparison-column without">
+            <div class="comparison-grid">
+                <div class="comparison-col without">
                     <h3>SEM O DASHBOARD</h3>
                     <ul class="comparison-list">
                         <li>Descontrole financeiro constante</li>
@@ -1673,7 +966,7 @@
                     </ul>
                 </div>
 
-                <div class="comparison-column with">
+                <div class="comparison-col with">
                     <h3>COM O DASHBOARD</h3>
                     <ul class="comparison-list">
                         <li>Controle financeiro total em tempo real</li>
@@ -1688,184 +981,11 @@
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 60px;">
+            <div style="text-align: center; margin-top: 40px;">
                 <div class="discount-badge">89% DE DESCONTO EXCLUSIVO!</div>
-                <h3 style="font-size: 2.2rem; margin: 20px 0;">De R$227,18 por apenas R$24,99</h3>
-                <p style="font-size: 1.4rem; max-width: 800px; margin: 0 auto;">Economize mais de R$200 e transforme sua
-                    gestão financeira hoje mesmo!</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Premium Bonus Section -->
-    <section id="premium-bonus">
-        <div class="container">
-            <div class="bonus-title">
-                <h2>BÔNUS PREMIUM INCLUSOS</h2>
-                <p>Você também receberá estes 10 projetos e ebooks completos sem custo adicional</p>
-            </div>
-
-            <div class="premium-bonus">
-                <h3>10 PROJETOS E EBOOKS QUE VOCÊ VAI RECEBER</h3>
-                <p>Todos estes bônus com desconto total - de R$97 a R$0!</p>
-
-                <div class="bonus-grid">
-                    <!-- Bônus 1 -->
-                    <div class="bonus-item fade-in">
-                        <div class="bonus-header">
-                            <h4>Projeto: Sistema de Vendas Online</h4>
-                            <div class="bonus-price">
-                                <div class="original-price">De R$97,00</div>
-                                <div class="discount-price">Por R$0,00</div>
-                            </div>
-                        </div>
-                        <div class="bonus-content">
-                            <p>Sistema completo para gerenciar vendas online com integração a marketplaces e redes
-                                sociais.</p>
-                            <span class="bonus-tag">Economize R$97,00</span>
-                        </div>
-                    </div>
-
-                    <!-- Bônus 2 -->
-                    <div class="bonus-item fade-in">
-                        <div class="bonus-header">
-                            <h4>Ebook: Marketing Digital para PE</h4>
-                            <div class="bonus-price">
-                                <div class="original-price">De R$87,00</div>
-                                <div class="discount-price">Por R$0,00</div>
-                            </div>
-                        </div>
-                        <div class="bonus-content">
-                            <p>Guia completo com estratégias de marketing digital de baixo custo e alto impacto.</p>
-                            <span class="bonus-tag">Economize R$87,00</span>
-                        </div>
-                    </div>
-
-                    <!-- Bônus 3 -->
-                    <div class="bonus-item fade-in">
-                        <div class="bonus-header">
-                            <h4>Projeto: Controle de Estoque Avançado</h4>
-                            <div class="bonus-price">
-                                <div class="original-price">De R$127,00</div>
-                                <div class="discount-price">Por R$0,00</div>
-                            </div>
-                        </div>
-                        <div class="bonus-content">
-                            <p>Sistema de gestão de estoque com alertas de reposição e controle de validade.</p>
-                            <span class="bonus-tag">Economize R$127,00</span>
-                        </div>
-                    </div>
-
-                    <!-- Bônus 4 -->
-                    <div class="bonus-item fade-in">
-                        <div class="bonus-header">
-                            <h4>Ebook: Finanças Pessoais para Empreendedores</h4>
-                            <div class="bonus-price">
-                                <div class="original-price">De R$67,00</div>
-                                <div class="discount-price">Por R$0,00</div>
-                            </div>
-                        </div>
-                        <div class="bonus-content">
-                            <p>Como separar finanças pessoais e empresariais e otimizar seus investimentos.</p>
-                            <span class="bonus-tag">Economize R$67,00</span>
-                        </div>
-                    </div>
-
-                    <!-- Bônus 5 -->
-                    <div class="bonus-item fade-in">
-                        <div class="bonus-header">
-                            <h4>Projeto: CRM para Pequenos Negócios</h4>
-                            <div class="bonus-price">
-                                <div class="original-price">De R$147,00</div>
-                                <div class="discount-price">Por R$0,00</div>
-                            </div>
-                        </div>
-                        <div class="bonus-content">
-                            <p>Sistema de gestão de relacionamento com clientes integrado ao WhatsApp.</p>
-                            <span class="bonus-tag">Economize R$147,00</span>
-                        </div>
-                    </div>
-
-                    <!-- Bônus 6 -->
-                    <div class="bonus-item fade-in">
-                        <div class="bonus-header">
-                            <h4>Ebook: Vendas com WhatsApp Business</h4>
-                            <div class="bonus-price">
-                                <div class="original-price">De R$77,00</div>
-                                <div class="discount-price">Por R$0,00</div>
-                            </div>
-                        </div>
-                        <div class="bonus-content">
-                            <p>Estratégias comprovadas para vender mais usando o WhatsApp como ferramenta principal.</p>
-                            <span class="bonus-tag">Economize R$77,00</span>
-                        </div>
-                    </div>
-
-                    <!-- Bônus 7 -->
-                    <div class="bonus-item fade-in">
-                        <div class="bonus-header">
-                            <h4>Projeto: Gestão de Entregas e Logística</h4>
-                            <div class="bonus-price">
-                                <div class="original-price">De R$157,00</div>
-                                <div class="discount-price">Por R$0,00</div>
-                            </div>
-                        </div>
-                        <div class="bonus-content">
-                            <p>Sistema para controle de entregas, rotas e custos logísticos para e-commerce.</p>
-                            <span class="bonus-tag">Economize R$157,00</span>
-                        </div>
-                    </div>
-
-                    <!-- Bônus 8 -->
-                    <div class="bonus-item fade-in">
-                        <div class="bonus-header">
-                            <h4>Ebook: SEO para Pequenas Empresas</h4>
-                            <div class="bonus-price">
-                                <div class="original-price">De R$97,00</div>
-                                <div class="discount-price">Por R$0,00</div>
-                            </div>
-                        </div>
-                        <div class="bonus-content">
-                            <p>Guia prático para melhorar o posicionamento do seu negócio no Google.</p>
-                            <span class="bonus-tag">Economize R$97,00</span>
-                        </div>
-                    </div>
-
-                    <!-- Bônus 9 -->
-                    <div class="bonus-item fade-in">
-                        <div class="bonus-header">
-                            <h4>Projeto: Sistema de Cobrança Automática</h4>
-                            <div class="bonus-price">
-                                <div class="original-price">De R$137,00</div>
-                                <div class="discount-price">Por R$0,00</div>
-                            </div>
-                        </div>
-                        <div class="bonus-content">
-                            <p>Automatize cobranças recorrentes e reduza inadimplência com este sistema completo.</p>
-                            <span class="bonus-tag">Economize R$137,00</span>
-                        </div>
-                    </div>
-
-                    <!-- Bônus 10 -->
-                    <div class="bonus-item fade-in">
-                        <div class="bonus-header">
-                            <h4>Ebook: Branding para Microempreendedores</h4>
-                            <div class="bonus-price">
-                                <div class="original-price">De R$87,00</div>
-                                <div class="discount-price">Por R$0,00</div>
-                            </div>
-                        </div>
-                        <div class="bonus-content">
-                            <p>Como construir uma marca forte mesmo com orçamento limitado.</p>
-                            <span class="bonus-tag">Economize R$87,00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="total-savings">
-                    Economia total com os bônus:
-                    <span>R$1.262,00</span>
-                </div>
+                <h3 style="font-size: 1.8rem; margin: 15px 0; color: white;">De R$ 997,00 por apenas R$27,99</h3>
+                <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: #e5e7eb;">Economize mais de 89% e transforme sua gestão financeira hoje mesmo!</p>
+                <a href="#offer" class="btn btn-gold btn-lg" style="margin-top: 30px;">QUERO MEU DESCONTO AGORA</a>
             </div>
         </div>
     </section>
@@ -1878,132 +998,171 @@
                 <p>Um investimento ZERO RISCO com retorno garantido</p>
             </div>
 
-            <div class="offer-card fade-in">
-                <div class="offer-header">
-                    <h3>HOJE VOCÊ LEVA O KIT COMPLETO DE SOBREVIVÊNCIA FINANCEIRA</h3>
-                    <p>Tudo que você precisa para transformar o caos em controle - por menos que um jantar fora!</p>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-dark);">HOJE VOCÊ LEVA O KIT COMPLETO DE SOBREVIVÊNCIA FINANCEIRA</h3>
+                <p style="font-size: 1.2rem;">Tudo que você precisa para transformar o caos em controle - por menos que um jantar fora!</p>
+            </div>
+
+            <div class="plans-grid">
+                <!-- Plano Essencial -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PLANO ESSENCIAL</h3>
+                        <div class="plan-price">R$10,00</div>
+                        <p>Acesso ao Dashboard Financeiro</p>
+                    </div>
+                    
+                    <ul class="plan-features">
+                        <li>Dashboard Financeiro Pro</li>
+                        <li>Painel de Controle de Estoque</li>
+                        <li>Sistema de Gestão de Vendas</li>
+                        <li>Módulo de Fluxo de Caixa Automático</li>
+                        <li>Relatórios de Lucratividade</li>
+                        <li>Acesso vitalício e atualizações</li>
+                    </ul>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-primary">QUERO O DASHBOARD (R$10,00)</a>
+                    </div>
                 </div>
-                <div class="offer-columns">
-                    <div class="offer-features">
-                        <h4>O QUE VOCÊ RECEBE</h4>
-                        <ul class="feature-list">
-                            <li>Dashboard Financeiro Pro</li>
-                            <li>Painel de Controle de Estoque</li>
-                            <li>Sistema de Gestão de Vendas</li>
-                            <li>Módulo de Fluxo de Caixa Automático</li>
-                            <li>Relatórios de Lucratividade</li>
-                            <li>Acesso vitalício e atualizações</li>
+                
+                <!-- Plano Premium -->
+                <div class="plan-card premium">
+                    <div class="plan-header">
+                        <h3>PLANO PREMIUM</h3>
+                        <div class="plan-price">R$27,99</div>
+                        <p>Dashboard + Todos os Bônus</p>
+                    </div>
+                    
+                    <ul class="plan-features">
+                        <li>Tudo do Plano Essencial</li>
+                        <li>Acesso imediato a todos os 10 bônus</li>
+                        <li>Material prático e aplicável</li>
+                        <li>Atualizações vitalícias</li>
+                        <li>Suporte prioritário</li>
+                        <li>Versão mobile premium</li>
+                    </ul>
+                    
+                    <div style="background: #fffbeb; border-radius: 10px; padding: 15px; margin-top: 20px;">
+                        <h4 style="text-align: center; margin-bottom: 10px; color: var(--accent);">BÔNUS INCLUSOS</h4>
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 8px; padding-left: 25px; position: relative;">
+                                <i class="fas fa-gift" style="position: absolute; left: 0; color: var(--accent);"></i>
+                                10 projetos/ebooks completos
+                            </li>
+                            <li style="margin-bottom: 8px; padding-left: 25px; position: relative;">
+                                <i class="fas fa-gift" style="position: absolute; left: 0; color: var(--accent);"></i>
+                                Mais de 1.200 páginas de conteúdo
+                            </li>
+                            <li style="padding-left: 25px; position: relative;">
+                                <i class="fas fa-gift" style="position: absolute; left: 0; color: var(--accent);"></i>
+                                Economia de R$1.400,00
+                            </li>
                         </ul>
                     </div>
-
-                    <div class="bonus-section">
-                        <h4>BÔNUS INCLUÍDOS</h4>
-                        <ul class="bonus-list">
-                            <li>10 projetos/ebooks completos</li>
-                            <li>Mais de 1.200 páginas de conteúdo</li>
-                            <li>Material prático e aplicável</li>
-                            <li>Acesso imediato após compra</li>
-                        </ul>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-gold">QUERO TUDO + BÔNUS (R$27,99)</a>
                     </div>
                 </div>
-
-                <div style="text-align: center; margin-top: 50px;">
-                    <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-primary btn-lg">🚨 QUERO O DASHBOARD + 10
-                        BÔNUS (R$24,99)</a>
-                </div>
-
-                <div class="guarantee">
-                    <h4>GARANTIA DE SATISFAÇÃO</h4>
-                    <p>Se em 7 dias você não estiver completamente satisfeito, devolvemos seu dinheiro sem
-                        questionamentos. Sem risco, sem burocracia.</p>
-                </div>
+            </div>
+            
+            <div class="guarantee">
+                <h3>GARANTIA DE SATISFAÇÃO DE 7 DIAS</h3>
+                <p>Se em 7 dias você não estiver completamente satisfeito, devolvemos seu dinheiro sem questionamentos. Sem risco, sem burocracia.</p>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq">
+    <section style="background-color: #f9fafb;">
         <div class="container">
             <div class="section-title">
                 <h2>PERGUNTAS FREQUENTES</h2>
                 <p>Tudo o que você precisa saber antes de começar</p>
             </div>
 
-            <div class="faq-container">
-                <div class="faq-item fade-in">
+            <div class="faq-grid">
+                <div class="faq-item">
                     <div class="faq-question">
                         <span>Funciona em computadores antigos?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>SIM! Nosso sistema é 100% baseado em nuvem e roda até em computadores com Windows XP ou
-                            celulares antigos. Tudo que você precisa é de uma conexão com internet para acessar o Google
-                        </p>
+                        <div class="faq-answer-content">
+                            SIM! Nosso sistema é 100% baseado em nuvem e roda até em computadores com Windows XP ou celulares antigos. Tudo que você precisa é de uma conexão com internet para acessar o Google
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item fade-in">
+                <div class="faq-item">
                     <div class="faq-question">
                         <span>Preciso pagar mensalidade depois?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>NUNCA! O dashboard básico é gratuito para sempre, sem taxas escondidas ou mensalidades.
-                            Oferecemos cursos e consultorias adicionais opcionais, mas o sistema essencial é seu para
-                            sempre sem custos.</p>
+                        <div class="faq-answer-content">
+                            NUNCA! O dashboard básico é gratuito para sempre, sem taxas escondidas ou mensalidades. Oferecemos cursos e consultorias adicionais opcionais, mas o sistema essencial é seu para sempre sem custos.
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item fade-in">
+                <div class="faq-item">
                     <div class="faq-question">
                         <span>Consigo usar pelo celular?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>TOTALMENTE! Nosso sistema é otimizado para dispositivos móveis. Você pode registrar vendas na
-                            feira, conferir estoque no depósito e analisar relatórios no sofá - tudo pelo
-                            seu celular.</p>
+                        <div class="faq-answer-content">
+                            TOTALMENTE! Nosso sistema é otimizado para dispositivos móveis. Você pode registrar vendas na feira, conferir estoque no depósito e analisar relatórios no sofá - tudo pelo seu celular.
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item fade-in">
+                <div class="faq-item">
                     <div class="faq-question">
                         <span>Preciso ser expert em Excel?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Se você sabe enviar mensagem no WhatsApp, vai dominar nosso sistema em 1 hora! </p>
+                        <div class="faq-answer-content">
+                            Se você sabe enviar mensagem no WhatsApp, vai dominar nosso sistema em 1 hora! Não precisa de conhecimentos avançados em Excel ou contabilidade.
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item fade-in">
+                <div class="faq-item">
                     <div class="faq-question">
                         <span>Quanto tempo leva para ver resultados?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>94,3% dos nossos usuários identificaram pelo menos um vazamento financeiro nos primeiros 15
-                            dias de uso. Resultados significativos (redução de perdas acima de 30%) são observados em
-                            média em 30 dias.</p>
+                        <div class="faq-answer-content">
+                            94,3% dos nossos usuários identificaram pelo menos um vazamento financeiro nos primeiros 15 dias de uso. Resultados significativos (redução de perdas acima de 30%) são observados em média em 30 dias.
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item fade-in">
+                <div class="faq-item">
                     <div class="faq-question">
                         <span>Funciona para qualquer tipo de negócio?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Sim! Nosso dashboard já foi implementado com sucesso em mais de 15 segmentos: comércio
-                            varejista, serviços, alimentação, artesanato, consultorias, e-commerce e muito mais. Temus
-                            modelos específicos para diferentes necessidades.</p>
+                        <div class="faq-answer-content">
+                            Sim! Nosso dashboard já foi implementado com sucesso em mais de 15 segmentos: comércio varejista, serviços, alimentação, artesanato, consultorias, e-commerce e muito mais. Temos modelos específicos para diferentes necessidades.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-   
+    <footer style="background: var(--dark); color: white; text-align: center; padding: 30px 0;">
+        <div class="container">
+            <p>© 2023 Dashboard Financeiro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <script>
         // FAQ Accordion
@@ -2025,20 +1184,20 @@
         const slideCount = slides.length;
 
         // Create dots
-        slides.forEach((_, i) => {
+        for (let i = 0; i < slideCount; i++) {
             const dot = document.createElement('div');
             dot.classList.add('slider-dot');
             if (i === 0) dot.classList.add('active');
             dot.addEventListener('click', () => goToSlide(i));
             dotsContainer.appendChild(dot);
-        });
+        }
 
         const dots = document.querySelectorAll('.slider-dot');
 
         function goToSlide(slideIndex) {
             slider.style.transform = `translateX(-${slideIndex * 100}%)`;
             currentSlide = slideIndex;
-
+            
             // Update active dot
             dots.forEach(dot => dot.classList.remove('active'));
             dots[slideIndex].classList.add('active');
@@ -2058,29 +1217,7 @@
         prevBtn.addEventListener('click', prevSlide);
 
         // Auto slide
-        
-
-        // Fade-in animations for scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        fadeElements.forEach(el => {
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
+        setInterval(nextSlide, 5000);
     </script>
 </body>
-
 </html>
