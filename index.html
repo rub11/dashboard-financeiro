@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '594941097000290');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '594941097000290');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Financeiro | Controle Financeiro Simplificado</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;       /* Azul principal */
-            --primary-dark: #1d4ed8;  /* Azul escuro */
-            --secondary: #059669;     /* Verde sucesso */
-            --accent: #d97706;        /* Dourado */
-            --light: #f9fafb;         /* Fundo claro */
-            --dark: #1f2937;          /* Texto escuro */
-            --danger: #dc2626;        /* Vermelho perigo */
-            --gray: #6b7280;          /* Cinza */
-            --light-gray: #e5e7eb;    /* Cinza claro */
+            --primary: #2563eb;
+            /* Azul principal */
+            --primary-dark: #1d4ed8;
+            /* Azul escuro */
+            --secondary: #059669;
+            /* Verde sucesso */
+            --accent: #d97706;
+            /* Dourado */
+            --light: #f9fafb;
+            /* Fundo claro */
+            --dark: #1f2937;
+            /* Texto escuro */
+            --danger: #dc2626;
+            /* Vermelho perigo */
+            --gray: #6b7280;
+            /* Cinza */
+            --light-gray: #e5e7eb;
+            /* Cinza claro */
             --border-radius: 12px;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --transition: all 0.3s ease;
@@ -143,7 +156,7 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
             padding: 100px 0;
             position: relative;
             overflow: hidden;
-           
+
         }
 
         .hero-content {
@@ -328,7 +341,7 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             padding: 100px 0;
-            
+
         }
 
         .comparison-grid {
@@ -568,9 +581,17 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
 
         /* Animations */
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         /* Responsive Design */
@@ -578,11 +599,11 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero-content p {
                 font-size: 1.2rem;
             }
-            
+
             section {
                 padding: 60px 0;
             }
@@ -592,22 +613,22 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
             .section-title h2 {
                 font-size: 2rem;
             }
-            
+
             .hero-content h1 {
                 font-size: 2rem;
             }
-            
+
             .section-title p {
                 font-size: 1.1rem;
             }
-            
+
             .plan-card.premium::before {
                 top: 15px;
                 right: -50px;
                 padding: 6px 40px;
                 font-size: 0.8rem;
             }
-            
+
             .slide-placeholder {
                 height: 300px;
             }
@@ -617,30 +638,30 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
             .section-title h2 {
                 font-size: 1.8rem;
             }
-            
+
             .hero-badge {
                 font-size: 1rem;
                 padding: 8px 20px;
             }
-            
+
             .hero-content h1 {
                 font-size: 1.8rem;
             }
-            
+
             .section-title p {
                 font-size: 1rem;
             }
-            
+
             .btn {
                 padding: 12px 25px;
                 font-size: 1rem;
             }
-            
+
             .btn-lg {
                 padding: 14px 30px;
                 font-size: 1.1rem;
             }
-            
+
             .plan-card.premium::before {
                 top: 12px;
                 right: -55px;
@@ -650,24 +671,28 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
         }
     </style>
 </head>
+
 <body>
     <!-- Hero Section -->
     <section id="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">Voê já perdeu alguma venda ou esqueceu que tinha um item sobrando no estoque porque anotou num papel solto e depois sumiu?</div>
+                <div class="hero-badge">Voê já perdeu alguma venda ou esqueceu que tinha um item sobrando no estoque
+                    porque anotou num papel OU CONVERSA PESSOAL Do Whatsapp e depois sumiu?</div>
                 <p>
-                    Eu já passei por essa situação foi pensando nisso que eu desenvolvi um aplicativo pra me ajudar a gerenciar todo o meu estoque e vendas.
+                    Eu já passei por essa situação foi pensando nisso que eu desenvolvi um Sistema completo pra me ajudar a
+                    gerenciar todo o meu estoque e vendas.
                 </p>
-                <p>
-                    Veja um pouco mais sobre o app nesse video abaixo.
-                </p>
+
 
                 <!-- Video abaixo de teste (alteralo)-->
-               <div>   <iframe width="100%" height="400px" src="https://www.youtube.com/embed/IIcIFh38Bfo?si=_GqcUTHdh-ijPDTS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </div>
-              
+                 <h1>VEJA MAIS SOBRE NOSSO SISTEMA COMPLETO</h1>
 
+                 <iframe width="560" height="315" src="https://www.youtube.com/embed/zJvI35P2cus?si=toYNeitzb0Zh_7Kw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
+
+
+        </div>
         </div>
     </section>
 
@@ -680,13 +705,16 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
             </div>
 
             <div class="pain-intro">
-                <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-                    Você anota vendas no WhatsApp, valores no caderno, notas fiscais na gaveta... e no fim do mês não sabe para onde foi cada centavo. Enquanto isso, seu lucro está sendo drenado por problemas que você nem enxerga!
+                <p
+                    style="text-align: center; margin-bottom: 40px; font-size: 1.2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    Você anota vendas no WhatsApp, valores no caderno, notas fiscais na gaveta... e no fim do mês não
+                    sabe para onde foi cada centavo. Enquanto isso, seu lucro está sendo drenado por problemas que você
+                    nem enxerga!
                 </p>
             </div>
 
             <div class="section-title">
-                <h2>VEJA O QUE ACONTECE ENQUANTO VOCÊ DECIDE FAZER TUDO SOZINHO NO MANUAL</h2>
+                <h2>VEJA O QUE ACONTECE ENQUANTO VOCÊ DECIDE FAZER TUDO SOZINHO</h2>
             </div>
 
             <div class="grid-2">
@@ -694,7 +722,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 <div class="card card-danger">
                     <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     <h3>Anarquia de Dados</h3>
-                    <p>Informações espalhadas em 7 lugares diferentes, sem integração. Você nunca tem uma visão completa das finanças.</p>
+                    <p>Informações espalhadas em 7 lugares diferentes, sem integração. Você nunca tem uma visão completa
+                        das finanças.</p>
                     <div class="stat">Resultado: +15h/mês perdidas</div>
                 </div>
 
@@ -702,7 +731,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 <div class="card card-danger">
                     <div class="card-icon"><i class="fas fa-box-open"></i></div>
                     <h3>Estoque Fantasma</h3>
-                    <p>Produtos que somem como mágica, enquanto dívidas aparecem do nada. Seu dinheiro literalmente evaporando!</p>
+                    <p>Produtos que somem como mágica, enquanto dívidas aparecem do nada. Seu dinheiro literalmente
+                        evaporando!</p>
                     <div class="stat">Perda média: R$3.200/trimestre</div>
                 </div>
 
@@ -710,7 +740,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 <div class="card card-danger">
                     <div class="card-icon"><i class="fas fa-money-bill-wave"></i></div>
                     <h3>Custo Oculto</h3>
-                    <p>Aquela "pequena compra" que virou R$1.500/mês sem você notar. Pequenos vazamentos que viram enchentes.</p>
+                    <p>Aquela "pequena compra" que virou R$1.500/mês sem você notar. Pequenos vazamentos que viram
+                        enchentes.</p>
                     <div class="stat">+27% de custos desnecessários</div>
                 </div>
 
@@ -726,7 +757,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 <div class="card card-danger">
                     <div class="card-icon"><i class="fas fa-clock"></i></div>
                     <h3>Tempo Perdido</h3>
-                    <p>Finais de semana reconciliando planilhas que nunca fecham. Tempo que poderia ser usado para vender mais!</p>
+                    <p>Finais de semana reconciliando planilhas que nunca fecham. Tempo que poderia ser usado para
+                        vender mais!</p>
                     <div class="stat">22h/mês em trabalho improdutivo</div>
                 </div>
 
@@ -750,8 +782,10 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
             </div>
 
             <div class="pain-intro">
-                <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-                    Com nosso Dashboard Financeiro, você transforma dados em decisões poderosas. Cada aspecto da sua gestão se torna mais eficiente, lucrativa e estratégica. Veja como:
+                <p
+                    style="text-align: center; margin-bottom: 40px; font-size: 1.2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    Com nosso Dashboard Financeiro, você transforma dados em decisões poderosas. Cada aspecto da sua
+                    gestão se torna mais eficiente, lucrativa e estratégica. Veja como:
                 </p>
             </div>
 
@@ -760,7 +794,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 <div class="card card-success">
                     <div class="card-icon"><i class="fas fa-chart-network"></i></div>
                     <h3>Integração Perfeita</h3>
-                    <p>Todas as informações financeiras centralizadas em um único lugar. Tenha uma visão holística do seu negócio com dados integrados e harmonizados.</p>
+                    <p>Todas as informações financeiras centralizadas em um único lugar. Tenha uma visão holística do
+                        seu negócio com dados integrados e harmonizados.</p>
                     <div class="stat">Economia: +15h/mês ganhas</div>
                 </div>
 
@@ -768,7 +803,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 <div class="card card-success">
                     <div class="card-icon"><i class="fas fa-boxes"></i></div>
                     <h3>Estoque Otimizado</h3>
-                    <p>Controle preciso de entrada e saída de produtos. Nunca mais perca vendas por falta de estoque nem tenha capital parado em excesso.</p>
+                    <p>Controle preciso de entrada e saída de produtos. Nunca mais perca vendas por falta de estoque nem
+                        tenha capital parado em excesso.</p>
                     <div class="stat">Ganho médio: R$3.200/trimestre</div>
                 </div>
 
@@ -776,7 +812,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 <div class="card card-success">
                     <div class="card-icon"><i class="fas fa-money-check-alt"></i></div>
                     <h3>Custos Sob Controle</h3>
-                    <p>Identifique oportunidades de redução de custos e maximize sua margem de lucro. Cada centavo é contabilizado e otimizado.</p>
+                    <p>Identifique oportunidades de redução de custos e maximize sua margem de lucro. Cada centavo é
+                        contabilizado e otimizado.</p>
                     <div class="stat">Redução de até 27% em custos</div>
                 </div>
 
@@ -784,7 +821,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 <div class="card card-success">
                     <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
                     <h3>Decisões Estratégicas</h3>
-                    <p>Baseie suas escolhas em dados concretos e análises precisas. Saiba quando reinvestir, expandir ou otimizar operações.</p>
+                    <p>Baseie suas escolhas em dados concretos e análises precisas. Saiba quando reinvestir, expandir ou
+                        otimizar operações.</p>
                     <div class="stat">+73% de decisões acertadas</div>
                 </div>
 
@@ -792,7 +830,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 <div class="card card-success">
                     <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
                     <h3>Tempo Valorizado</h3>
-                    <p>Automatize processos manuais e recupere horas preciosas. Foque no que realmente importa: crescer seu negócio.</p>
+                    <p>Automatize processos manuais e recupere horas preciosas. Foque no que realmente importa: crescer
+                        seu negócio.</p>
                     <div class="stat">Economia de 22h/mês</div>
                 </div>
 
@@ -800,7 +839,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 <div class="card card-success">
                     <div class="card-icon"><i class="fas fa-rocket"></i></div>
                     <h3>Crescimento Acelerado</h3>
-                    <p>Com controle financeiro sólido, seu negócio ganha a base necessária para escalar com segurança e previsibilidade.</p>
+                    <p>Com controle financeiro sólido, seu negócio ganha a base necessária para escalar com segurança e
+                        previsibilidade.</p>
                     <div class="stat">Oportunidades capturadas: R$14.700/ano</div>
                 </div>
             </div>
@@ -815,15 +855,17 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
     <section>
         <div class="container">
             <div class="section-title">
-                <h2>SEU PAINEL DE CONTROLE ANTI-APAGÕES</h2>
-                <p>Imagine um sistema que transforma o caos em controle total, mostrando EXATAMENTE onde cada centavo está indo</p>
+                <h2>SEU PAINEL DE CONTROLE TOTALMENTE NA PALMA DA SUA MÂO</h2>
+                <p>Imagine um sistema que transforma todas as suas anotações bagunçadas em controle total, mostrando EXATAMENTE onde cada centavo
+                    está indo</p>
             </div>
 
             <div class="grid-2">
                 <div class="card">
                     <div class="card-icon" style="color: var(--primary);"><i class="fas fa-heart-pulse"></i></div>
                     <h3>DIAGNOSTICA SANGRIA</h3>
-                    <p>Aponta EXATAMENTE onde você perde R$ com precisão cirúrgica. Identifica vazamentos que ninguém mais vê!</p>
+                    <p>Aponta EXATAMENTE onde você perde R$ com precisão,  Identifica prdas de ganhos que ninguém
+                        mais vê!</p>
                     <ul style="list-style: none; margin-top: 20px;">
                         <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="position: absolute; left: 0; color: var(--secondary);"></i>
@@ -847,7 +889,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 <div class="card">
                     <div class="card-icon" style="color: var(--primary);"><i class="fas fa-crystal-ball"></i></div>
                     <h3>PREVISÕES QUE PROTEGEM</h3>
-                    <p>Antecipe crises e oportunidades com projeções baseadas em IA simples. Tome decisões com 3 meses de vantagem!</p>
+                    <p>Antecipe crises e oportunidades com projeções baseadas em IA simples. Tome decisões com 3 meses
+                        de vantagem!</p>
                     <ul style="list-style: none; margin-top: 20px;">
                         <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="position: absolute; left: 0; color: var(--secondary);"></i>
@@ -870,7 +913,7 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
             </div>
 
             <div class="section-title" style="margin-top: 70px;">
-                <h2>VEJA O DASHBOARD EM AÇÃO</h2>
+                <h2>VEJA O NOSSO SISTEMA EM AÇÃO</h2>
                 <p>Leve cada métrica do seu negócio na palma da mão com controle e relatórios em um clique</p>
             </div>
 
@@ -880,16 +923,16 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                         <img width="100%" src="img/Captura de tela 2025-07-11 091149.png" alt="">
                     </div>
                     <div class="slide">
-                       <img width="100%" src="img/Captura de tela 2025-07-11 091228.png" alt="">
+                        <img width="100%" src="img/Captura de tela 2025-07-11 091228.png" alt="">
                     </div>
                     <div class="slide">
-                       <img width="100%" src="img/Captura de tela 2025-07-11 091358.png" alt="">
+                        <img width="100%" src="img/Captura de tela 2025-07-11 091358.png" alt="">
                     </div>
                     <div class="slide">
                         <img width="100%" src="img/Captura de tela 2025-07-11 091427.png" alt="">
                     </div>
                     <div class="slide">
-                       <img width="100%" src="img/Captura de tela 2025-07-11 091512.png" alt="">
+                        <img width="100%" src="img/Captura de tela 2025-07-11 091512.png" alt="">
                     </div>
                 </div>
                 <div class="slider-controls">
@@ -900,27 +943,38 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
             </div>
 
             <div class="card" style="max-width: 800px; margin: 0 auto;">
-                <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-dark);">VEJA O QUE ACONTECE QUANDO VOCÊ REGISTRA UMA VENDA</h3>
+                <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-dark);">VEJA O QUE ACONTECE
+                    QUANDO VOCÊ REGISTRA UMA VENDA</h3>
                 <div style="background: #f0f7ff; padding: 20px; border-radius: 10px;">
                     <ul style="list-style: none;">
                         <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">1</div>
+                            <div
+                                style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                1</div>
                             Você registra 1 venda em 15 segundos
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">2</div>
+                            <div
+                                style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                2</div>
                             Estoque diminui AUTOMATICAMENTE
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">3</div>
+                            <div
+                                style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                3</div>
                             Fluxo de caixa é ATUALIZADO
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">4</div>
+                            <div
+                                style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                4</div>
                             Lucro projetado é REAJUSTADO
                         </li>
                         <li style="padding-left: 30px; position: relative;">
-                            <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">5</div>
+                            <div
+                                style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                5</div>
                             Alertas de risco são ACIONADOS
                         </li>
                     </ul>
@@ -942,27 +996,38 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
 
             <div class="grid-2">
                 <div class="card">
-                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">1</div>
+                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">
+                        1</div>
                     <div class="card-icon" style="color: var(--primary);"><i class="fas fa-download"></i></div>
-                    <h3>CLIQUE SALVADOR</h3>
-                    <p>"Quero Meu Kit Sobrevivência" > Download IMEDIATO do arquivo. Sem cadastros complexos, sem pagamentos, sem enrolação.</p>
-                    <div style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">Tempo: 30 segundos</div>
+                    <h3>CLIQUE SALVADOR EM PDF</h3>
+                    <p>"Quero Meu Kit Sobrevivência" > Download IMEDIATO do arquivo. Sem cadastros complexos, sem
+                        pagamentos, sem enrolação.</p>
+                    <div
+                        style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">
+                        Tempo: 30 segundos</div>
                 </div>
 
                 <div class="card">
-                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">2</div>
+                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">
+                        2</div>
                     <div class="card-icon" style="color: var(--primary);"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <h3>ABERTURA ANTICRISE</h3>
+                    <h3>NADA DE BAIXAR SISTEMAS DUVDOSOS</h3>
                     <p>sim (sem instalar NADA). Compatível com qualquer dispositivo - até celular antigo!</p>
-                    <div style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">Tempo: 1 minuto</div>
+                    <div
+                        style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">
+                        Tempo: 1 minuto</div>
                 </div>
 
                 <div class="card">
-                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">3</div>
+                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">
+                        3</div>
                     <div class="card-icon" style="color: var(--primary);"><i class="fas fa-chart-line"></i></div>
-                    <h3>CONTROLE ANTICRISE</h3>
-                    <p>Comece a registrar vendas e já veja em tempo real onde está seu dinheiro. Pare de apagar incêndio e comece a prevenir!</p>
-                    <div style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">Tempo: 7 minutos</div>
+                    <h3>CONTROLE COMPLETO DE VENDAS E ESTOQUE</h3>
+                    <p>Comece a registrar vendas e já veja em tempo real onde está seu dinheiro. Pare de apagar incêndio
+                        e comece a prevenir!</p>
+                    <div
+                        style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">
+                        Tempo: 7 minutos</div>
                 </div>
             </div>
         </div>
@@ -1006,26 +1071,138 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 40px;">
-                <div class="discount-badge">+ de 89% DE DESCONTO EXCLUSIVO!</div>
-               
-                <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: #e5e7eb;">Economize mais de 89% e transforme sua gestão financeira hoje mesmo!</p>
-               
-            </div>
+           
         </div>
     </section>
 
     <!-- Offer Section -->
     <section id="offer">
         <div class="container">
-            <div class="section-title">
-                <h2>SUA TRANQUILIDADE FINANCEIRA GARANTIDA</h2>
-                <p>Um investimento ZERO RISCO com retorno garantido</p>
-            </div>
+           
 
             <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
-                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-dark);">HOJE VOCÊ LEVA O KIT COMPLETO DE SOBREVIVÊNCIA FINANCEIRA</h3>
-                <p style="font-size: 1.2rem;">Tudo que você precisa para transformar o caos em controle - por menos que um jantar fora!</p>
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-dark);">HOJE VOCÊ LEVA O KIT
+                    COMPLETO DE SOBREVIVÊNCIA FINANCEIRA</h3>
+
+            <!-- Bonus Projects Section -->
+            <section style="background-color: #f9fafb;">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>+10 FERRAMENTAS DE BONÛS QUE VÃO REVOLUCIONAR SEU NEGÓCIO</h2>
+                        <p>Além do Dashboard Financeiro, você receberá estes projetos extras para maximizar seus
+                            resultados</p>
+                    </div>
+
+                    <div class="grid-2">
+                        <!-- Bonus 1 -->
+                        <div class="card">
+                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-calculator"></i></div>
+                            <h3>Calculadora de montagem de Kit Promocional</h3>
+                            <h3 style="color: rebeccapurple;">De <s>R$ 97,00</s> por R$ 0</h3>
+
+                            <p>Crie combos de produtos com precisão matemática, maximizando seu lucro em promoções sem
+                                perder dinheiro.</p> <br>
+
+                        </div>
+
+                        <!-- Bonus 2 -->
+                        <div class="card">
+                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h3>Calculadora de Preço de produto por Unidade de venda</h3>
+                            <h3 style="color: rebeccapurple;">De <s>R$ 127,00</s> por R$ 0</h3>
+                            <p>Determine o preço ideal por unidade considerando todos os custos, garantindo sua margem
+                                de lucro.</p>
+
+                        </div>
+
+                        <!-- Bonus 3 -->
+                        <div class="card">
+                            <div class="card-icon" style="color: var(--accent);"><i
+                                    class="fas fa-file-invoice-dollar"></i></div>
+                            <h3>Calculadora de Preço de produos por % de retorno</h3>
+                            <h3 style="color: rebeccapurple;">De <s>R$ 197,00</s> por R$ 0</h3>
+                            <p>Calcule preços competitivos baseados em seus custos, concorrência e valor percebido pelo
+                                cliente.</p>
+
+                        </div>
+
+                        <!-- Bonus 4 -->
+                        <div class="card">
+                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-calculator"></i></div>
+                            <h3>Calculadora Financeira pessoal / emresarial</h3>
+                            <h3 style="color: rebeccapurple;">De <s>R$ 37,00</s> por R$ 0</h3>
+                            <p>Simule financiamentos, parcelamentos e investimentos para tomar decisões financeiras
+                                inteligentes.</p>
+
+                        </div>
+
+                        <!-- Bonus 5 -->
+                        <div class="card">
+                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-tag"></i></div>
+                            <h3>Gerador de Nomes e Slogans para qualquer negocio</h3>
+                            <h3 style="color: rebeccapurple;">De <s>R$ 87,00</s> por R$ 0</h3>
+                            <p>Crie nomes memoráveis e slogans impactantes para seus produtos com nossa IA
+                                especializada.</p>
+
+                        </div>
+
+                        <!-- Bonus 6 -->
+                        <div class="card">
+                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-comment-dots"></i>
+                            </div>
+                            <h3>Gerador de Frases para turbinar posts, storys etc... nas suas Redes Sociais</h3>
+                            <h3 style="color: rebeccapurple;">De <s>R$ 127,00</s> por R$ 0</h3>
+                            <p>Gere conteúdo atraente para suas redes sociais em segundos, aumentando seu engajamento.
+                            </p>
+
+                        </div>
+
+                        <!-- Bonus 7 -->
+                        <div class="card">
+                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-chart-pie"></i></div>
+                            <h3>Gráfico de todos os Gastos Instantâneos e perpetuos</h3>
+                            <h3 style="color: rebeccapurple;">De <s>R$ 297,00</s> por R$ 0</h3>
+                            <p>Visualize onde seu dinheiro está indo com gráficos interativos e categorias
+                                personalizáveis.</p>
+
+                        </div>
+
+                        <!-- Bonus 8 -->
+                        <div class="card">
+                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-tasks"></i></div>
+                            <h3>Checklist Geral Personalizado</h3>
+                            <h3 style="color: rebeccapurple;">De <s>R$ 167,00</s> por R$ 0</h3>
+                            <p>Nunca mais esqueça tarefas importantes com checklists automatizados para sua operação.
+                            </p>
+
+                        </div>
+
+                        <!-- Bonus 9 -->
+                        <div class="card">
+                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <h3>Mega Planner de Pedidos</h3>
+                            <h3 style="color: rebeccapurple;">De <s>R$ 257,00</s> por R$ 0</h3>
+                            <p>Organize seus pedidos diários, priorize tarefas e nunca mais perca um prazo de entrega.
+                            </p>
+
+                        </div>
+
+                        <!-- Bonus 10 -->
+                        <div class="card">
+                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-truck"></i></div>
+                            <h3>Simulador de Frete Embutido para produtos de entrega</h3>
+                            <h3 style="color: rebeccapurple;">De <s>R$ 197,00</s> por R$ 0</h3>
+                            <p>Calcule custos de frete e determine como embutí-los no preço sem perder competitividade.
+                            </p>
+
+                        </div>
+                    </div>
+
+
+                <p style="font-size: 1.2rem;">Tudo que você precisa para transformar o caos em controle - por menos que
+                    um jantar fora!</p>
             </div>
 
             <div class="plans-grid">
@@ -1036,21 +1213,18 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                         <div class="plan-price">R$10,00</div>
                         <p>Acesso ao Dashboard Financeiro</p>
                     </div>
-                    
+
                     <ul class="plan-features">
-                        <li>Dashboard Financeiro Pro</li>
-                        <li>Painel de Controle de Estoque</li>
-                        <li>Sistema de Gestão de Vendas</li>
-                        <li>Módulo de Fluxo de Caixa Automático</li>
-                        <li>Relatórios de Lucratividade</li>
-                        <li>Acesso vitalício e atualizações</li>
+                        <li>Dashboard Financeiro ( normal )</li>
+                     
                     </ul>
-                    
+
                     <div style="text-align: center; margin-top: 20px;">
-                        <a href="https://pay.kiwify.com.br/2y51rOJ" class="btn btn-primary">QUERO O DASHBOARD (R$10,00)</a>
+                        <a href="https://pay.kiwify.com.br/2y51rOJ" class="btn btn-primary">QUERO O DASHBOARD
+                            (R$10,00)</a>
                     </div>
                 </div>
-                
+
                 <!-- Plano Premium -->
                 <div class="plan-card premium">
                     <div class="plan-header">
@@ -1058,500 +1232,394 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                         <div class="plan-price">R$27,99</div>
                         <p>Dashboard + Todos os Bônus</p>
                     </div>
-                    
+
                     <ul class="plan-features">
-                        <li>Tudo do Plano Essencial</li>
+                        <li>Dashboard Financeiro ( MEGA PLUS COMPLETO )</li>
                         <li>Acesso imediato a todos os 10 bônus</li>
                         <li>Material prático e aplicável</li>
                         <li>Atualizações vitalícias</li>
                         <li>Suporte prioritário</li>
                         <li>Versão mobile premium</li>
-                        <li>Calculadora de Kit Promocional</li>
-                        <li>Calculadora de Preço por Unidade</li>
-                        <li>Calculadora de Preço</li>
-                        <li>calculadora financeira</li>
-                        <li>Gerador de nomes de slogans para confeitaria</li>
-                        <li>Gerador de Frases para Redes Sociais</li>
-                        <li>grafico de gastos instantaneos</li>
-                        <li>Meu Checklist Personalizado</li>
-                        <li>Mini Planner de Pedidos</li>
-                        <li>Quanto guardar por mês para micro empreendedores</li>
-                        <li>grafico de gastos instantaneos</li>
-                        <li>Simulador de Frete Embutido</li>
+                      
                     </ul>
-                    
-              
-                    
+
+
+
                     <div style="text-align: center; margin-top: 20px;">
-                        <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-gold">QUERO TUDO + BÔNUS (R$27,99)</a>
+                        <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-gold">QUERO TUDO + BÔNUS
+                            (R$27,99)</a>
                     </div>
                 </div>
-            </div>   
-
-
-<!-- Bonus Projects Section -->
-<section style="background-color: #f9fafb;">
-    <div class="container">
-        <div class="section-title">
-            <h2>BÔNUS EXCLUSIVOS: 10 FERRAMENTAS QUE VÃO REVOLUCIONAR SEU NEGÓCIO</h2>
-            <p>Além do Dashboard Financeiro, você receberá estes projetos extras para maximizar seus resultados</p>
-        </div>
-
-        <div class="grid-2">
-            <!-- Bonus 1 -->
-            <div class="card">
-                <div class="card-icon" style="color: var(--accent);"><i class="fas fa-calculator"></i></div>
-                <h3>Calculadora de Kit Promocional</h3>
-                <h3 style="color: rebeccapurple;">De <s>R$ 97,00</s> por R$ 0</h3>
-
-                <p>Crie combos de produtos com precisão matemática, maximizando seu lucro em promoções sem perder dinheiro.</p> <br>
-                
             </div>
 
-            <!-- Bonus 2 -->
-            <div class="card">
-                <div class="card-icon" style="color: var(--accent);"><i class="fas fa-balance-scale"></i></div>
-                <h3>Calculadora de Preço por Unidade</h3>
-                <h3 style="color: rebeccapurple;">De <s>R$ 127,00</s> por R$ 0</h3>
-                <p>Determine o preço ideal por unidade considerando todos os custos, garantindo sua margem de lucro.</p>
-             
+
+
+                    <div style="text-align: center; margin-top: 50px;">
+                        <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-primary btn-lg">QUERO TODOS OS BÔNUS
+                            AGORA</a>
+
+                    </div>
+                </div>
+            </section>
+
+            <div class="premium-offer-container">
+                <div class="premium-offer-card">
+                    <div class="offer-header">
+                        <div class="header-left">
+
+                            <span style="text-align: center; margin: auto auto;" class="product-category">ORGANIZAÇÃO
+                                EXTREMA</span>
+                        </div>
+                        <div class="header-right">
+
+                        </div>
+                    </div>
+
+                    <div class="product-mockup">
+                        <div class="mockup-placeholder">
+                            <div class="device laptop"></div>
+                            <div class="device tablet"></div>
+                            <div class="device phone"></div>
+                        </div>
+                    </div>
+
+                    <div class="product-title">
+                        <h1>Pacote completo para organizar e Turbinar seu negocio</h1>
+                    </div>
+
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <div class="check-icon">✓</div>
+                            <p>Acesso imediato </p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="check-icon">✓</div>
+                            <p> Organização Extrema completo e estruturado para você e seu negocio.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="check-icon">✓</div>
+                            <p>Suporte em caso de dúvidas.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="check-icon">✓</div>
+                            <p>+10 Bônus para potencializar sua jornada.</p>
+                        </div>
+                    </div>
+
+                    <div class="pricing-section">
+                        <div class="original-price">
+                            <span>De: <s>R$997,00</s></span>
+                        </div>
+                        <div class="promo-price">
+                            <span class="installments">Por 6x</span>
+                            <span class="price-value">R$5,25</span>
+                        </div>
+                        <div class="cash-price">
+                            <span>OU R$27,99 À VISTA</span>
+                        </div>
+                        <div class="lifetime-access">
+                            <span>ACESSO VITALÍCIO, PAGAMENTO ÚNICO!</span>
+                        </div>
+                    </div>
+                    <a style="text-decoration: none;" href="https://pay.kiwify.com.br/tGXNRa6"><button
+                            class="cta-button">Quero meu acesso agora!</button></a>
+
+                </div>
             </div>
 
-            <!-- Bonus 3 -->
-            <div class="card">
-                <div class="card-icon" style="color: var(--accent);"><i class="fas fa-file-invoice-dollar"></i></div>
-                <h3>Calculadora de Preço</h3>
-                <h3 style="color: rebeccapurple;">De <s>R$ 197,00</s> por R$ 0</h3>
-                <p>Calcule preços competitivos baseados em seus custos, concorrência e valor percebido pelo cliente.</p>
-               
-            </div>
+            <style>
+                .premium-offer-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh;
+                    padding: 20px;
+                    background: linear-gradient(135deg, #0d1f33, #1a334d);
+                    position: relative;
+                    overflow: hidden;
+                    font-family: 'Poppins', sans-serif;
+                }
 
-            <!-- Bonus 4 -->
-            <div class="card">
-                <div class="card-icon" style="color: var(--accent);"><i class="fas fa-calculator"></i></div>
-                <h3>Calculadora Financeira</h3>
-                <h3 style="color: rebeccapurple;">De <s>R$ 37,00</s> por R$ 0</h3>
-                <p>Simule financiamentos, parcelamentos e investimentos para tomar decisões financeiras inteligentes.</p>
-               
-            </div>
+                .premium-offer-container::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background:
+                        radial-gradient(circle at 20% 30%, rgba(43, 108, 176, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(43, 108, 176, 0.15) 0%, transparent 40%),
+                        linear-gradient(to bottom, rgba(13, 31, 51, 0.8), rgba(13, 31, 51, 0.9));
+                    z-index: 0;
+                }
 
-            <!-- Bonus 5 -->
-            <div class="card">
-                <div class="card-icon" style="color: var(--accent);"><i class="fas fa-tag"></i></div>
-                <h3>Gerador de Nomes e Slogans</h3>
-                <h3 style="color: rebeccapurple;">De <s>R$ 87,00</s> por R$ 0</h3>
-                <p>Crie nomes memoráveis e slogans impactantes para seus produtos com nossa IA especializada.</p>
-                
-            </div>
+                .premium-offer-card {
+                    position: relative;
+                    z-index: 10;
+                    width: 100%;
+                    max-width: 500px;
+                    background: linear-gradient(135deg, #1a334d, #15293e);
+                    border-radius: 20px;
+                    overflow: hidden;
+                    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+                    border: 1px solid rgba(43, 108, 176, 0.3);
+                }
 
-            <!-- Bonus 6 -->
-            <div class="card">
-                <div class="card-icon" style="color: var(--accent);"><i class="fas fa-comment-dots"></i></div>
-                <h3>Gerador de Frases para Redes Sociais</h3>
-                <h3 style="color: rebeccapurple;">De <s>R$ 127,00</s> por R$ 0</h3>
-                <p>Gere conteúdo atraente para suas redes sociais em segundos, aumentando seu engajamento.</p>
-              
-            </div>
+                .offer-header {
+                    padding: 20px;
+                    background: rgba(13, 31, 51, 0.7);
+                    border-bottom: 1px solid rgba(43, 108, 176, 0.3);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
 
-            <!-- Bonus 7 -->
-            <div class="card">
-                <div class="card-icon" style="color: var(--accent);"><i class="fas fa-chart-pie"></i></div>
-                <h3>Gráfico de Gastos Instantâneos</h3>
-                <h3 style="color: rebeccapurple;">De <s>R$ 297,00</s> por R$ 0</h3>
-                <p>Visualize onde seu dinheiro está indo com gráficos interativos e categorias personalizáveis.</p>
-             
-            </div>
+                .header-left {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                }
 
-            <!-- Bonus 8 -->
-            <div class="card">
-                <div class="card-icon" style="color: var(--accent);"><i class="fas fa-tasks"></i></div>
-                <h3>Checklist Personalizado</h3>
-                <h3 style="color: rebeccapurple;">De <s>R$ 167,00</s> por R$ 0</h3>
-                <p>Nunca mais esqueça tarefas importantes com checklists automatizados para sua operação.</p>
-               
-            </div>
+                .menu-icon {
+                    font-size: 24px;
+                    color: #2d8cf0;
+                    cursor: pointer;
+                }
 
-            <!-- Bonus 9 -->
-            <div class="card">
-                <div class="card-icon" style="color: var(--accent);"><i class="fas fa-clipboard-list"></i></div>
-                <h3>Mini Planner de Pedidos</h3>
-                <h3 style="color: rebeccapurple;">De <s>R$ 257,00</s> por R$ 0</h3>
-                <p>Organize seus pedidos diários, priorize tarefas e nunca mais perca um prazo de entrega.</p>
-              
-            </div>
+                .product-category {
+                    color: white;
+                    font-size: 14px;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                }
 
-            <!-- Bonus 10 -->
-            <div class="card">
-                <div class="card-icon" style="color: var(--accent);"><i class="fas fa-truck"></i></div>
-                <h3>Simulador de Frete Embutido</h3>
-                <h3 style="color: rebeccapurple;">De <s>R$ 197,00</s> por R$ 0</h3>
-                <p>Calcule custos de frete e determine como embutí-los no preço sem perder competitividade.</p>
-               
-            </div>
-        </div>
+                .header-right .share-icon {
+                    font-size: 20px;
+                    color: #2d8cf0;
+                    cursor: pointer;
+                }
 
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-primary btn-lg">QUERO TODOS OS BÔNUS AGORA</a>
-            
-        </div>
-    </div>
-</section>
+                .product-mockup {
+                    padding: 30px;
+                    background: rgba(13, 31, 51, 0.5);
+                    display: flex;
+                    justify-content: center;
+                }
 
-<div class="premium-offer-container">
-    <div class="premium-offer-card">
-        <div class="offer-header">
-            <div class="header-left">
-                
-                <span style="text-align: center; margin: auto auto;" class="product-category">ORGANIZAÇÃO EXTREMA</span>
-            </div>
-            <div class="header-right">
-                
-            </div>
-        </div>
-        
-        <div class="product-mockup">
-            <div class="mockup-placeholder">
-                <div class="device laptop"></div>
-                <div class="device tablet"></div>
-                <div class="device phone"></div>
-            </div>
-        </div>
-        
-        <div class="product-title">
-            <h1>Pacote completo para organizar e Turbinar seu negocio</h1>
-        </div>
-        
-        <div class="benefits-list">
-            <div class="benefit-item">
-                <div class="check-icon">✓</div>
-                <p>Acesso imediato </p>
-            </div>
-            <div class="benefit-item">
-                <div class="check-icon">✓</div>
-                <p> Organização Extrema completo e estruturado para você e seu negocio.</p>
-            </div>
-            <div class="benefit-item">
-                <div class="check-icon">✓</div>
-                <p>Suporte em caso de dúvidas.</p>
-            </div>
-            <div class="benefit-item">
-                <div class="check-icon">✓</div>
-                <p>+10 Bônus para potencializar sua jornada.</p>
-            </div>
-        </div>
-        
-        <div class="pricing-section">
-            <div class="original-price">
-                <span>De: <s>R$997,00</s></span>
-            </div>
-            <div class="promo-price">
-                <span class="installments">Por 6x</span>
-                <span class="price-value">R$5,25</span>
-            </div>
-            <div class="cash-price">
-                <span>OU R$27,99 À VISTA</span>
-            </div>
-            <div class="lifetime-access">
-                <span>ACESSO VITALÍCIO, PAGAMENTO ÚNICO!</span>
-            </div>
-        </div>
-        <a style="text-decoration: none;" href="https://pay.kiwify.com.br/tGXNRa6"><button class="cta-button">Quero meu acesso agora!</button></a>
-   
-    </div>
-</div>
+                .mockup-placeholder {
+                    width: 100%;
+                    height: 180px;
+                    background: rgba(26, 51, 77, 0.8);
+                    border-radius: 10px;
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 30px;
+                }
 
-<style>
-.premium-offer-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    background: linear-gradient(135deg, #0d1f33, #1a334d);
-    position: relative;
-    overflow: hidden;
-    font-family: 'Poppins', sans-serif;
-}
+                .device {
+                    position: relative;
+                    background: #0d1f33;
+                    border: 1px solid rgba(43, 108, 176, 0.5);
+                    border-radius: 8px;
+                    overflow: hidden;
+                }
 
-.premium-offer-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(43, 108, 176, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(43, 108, 176, 0.15) 0%, transparent 40%),
-        linear-gradient(to bottom, rgba(13, 31, 51, 0.8), rgba(13, 31, 51, 0.9));
-    z-index: 0;
-}
+                .device::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(45deg, #1a334d, #2d8cf0);
+                    opacity: 0.7;
+                }
 
-.premium-offer-card {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 500px;
-    background: linear-gradient(135deg, #1a334d, #15293e);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(43, 108, 176, 0.3);
-}
+                .laptop {
+                    width: 160px;
+                    height: 100px;
+                    border-radius: 10px;
+                }
 
-.offer-header {
-    padding: 20px;
-    background: rgba(13, 31, 51, 0.7);
-    border-bottom: 1px solid rgba(43, 108, 176, 0.3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+                .tablet {
+                    width: 70px;
+                    height: 100px;
+                    border-radius: 8px;
+                }
 
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
+                .phone {
+                    width: 40px;
+                    height: 70px;
+                    border-radius: 6px;
+                }
 
-.menu-icon {
-    font-size: 24px;
-    color: #2d8cf0;
-    cursor: pointer;
-}
+                .product-title {
+                    padding: 25px 30px 15px;
+                    text-align: center;
+                }
 
-.product-category {
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
+                .product-title h1 {
+                    color: white;
+                    font-size: 28px;
+                    font-weight: 800;
+                    margin: 0;
+                    line-height: 1.3;
+                }
 
-.header-right .share-icon {
-    font-size: 20px;
-    color: #2d8cf0;
-    cursor: pointer;
-}
+                .benefits-list {
+                    padding: 0 30px 25px;
+                }
 
-.product-mockup {
-    padding: 30px;
-    background: rgba(13, 31, 51, 0.5);
-    display: flex;
-    justify-content: center;
-}
+                .benefit-item {
+                    display: flex;
+                    gap: 15px;
+                    margin-bottom: 20px;
+                    align-items: flex-start;
+                }
 
-.mockup-placeholder {
-    width: 100%;
-    height: 180px;
-    background: rgba(26, 51, 77, 0.8);
-    border-radius: 10px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
+                .check-icon {
+                    min-width: 26px;
+                    height: 26px;
+                    background: #00c853;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: white;
+                }
 
-.device {
-    position: relative;
-    background: #0d1f33;
-    border: 1px solid rgba(43, 108, 176, 0.5);
-    border-radius: 8px;
-    overflow: hidden;
-}
+                .benefit-item p {
+                    color: #e0e0e0;
+                    margin: 0;
+                    font-size: 16px;
+                    line-height: 1.5;
+                }
 
-.device::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #1a334d, #2d8cf0);
-    opacity: 0.7;
-}
+                .pricing-section {
+                    padding: 0 30px 25px;
+                    text-align: center;
+                }
 
-.laptop {
-    width: 160px;
-    height: 100px;
-    border-radius: 10px;
-}
+                .original-price {
+                    color: #b0bec5;
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                }
 
-.tablet {
-    width: 70px;
-    height: 100px;
-    border-radius: 8px;
-}
+                .original-price s {
+                    color: #ef5350;
+                }
 
-.phone {
-    width: 40px;
-    height: 70px;
-    border-radius: 6px;
-}
+                .promo-price {
+                    margin-bottom: 10px;
+                }
 
-.product-title {
-    padding: 25px 30px 15px;
-    text-align: center;
-}
+                .installments {
+                    color: #64dd17;
+                    font-size: 20px;
+                    font-weight: 600;
+                    margin-right: 10px;
+                }
 
-.product-title h1 {
-    color: white;
-    font-size: 28px;
-    font-weight: 800;
-    margin: 0;
-    line-height: 1.3;
-}
+                .price-value {
+                    color: #64dd17;
+                    font-size: 42px;
+                    font-weight: 800;
+                }
 
-.benefits-list {
-    padding: 0 30px 25px;
-}
+                .cash-price {
+                    color: #e0e0e0;
+                    font-size: 18px;
+                    margin-bottom: 15px;
+                }
 
-.benefit-item {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-    align-items: flex-start;
-}
+                .lifetime-access {
+                    background: rgba(45, 140, 240, 0.2);
+                    padding: 12px;
+                    border-radius: 8px;
+                    color: #64dd17;
+                    font-size: 14px;
+                    font-weight: 700;
+                    letter-spacing: 0.5px;
+                    text-transform: uppercase;
+                }
 
-.check-icon {
-    min-width: 26px;
-    height: 26px;
-    background: #00c853;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-}
+                .cta-button {
+                    display: block;
+                    width: calc(100% - 60px);
+                    margin: 0 30px 30px;
+                    padding: 18px;
+                    background: #2d8cf0;
+                    color: white;
+                    font-size: 18px;
+                    font-weight: 700;
+                    border: none;
+                    border-radius: 50px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 5px 15px rgba(45, 140, 240, 0.4);
+                }
 
-.benefit-item p {
-    color: #e0e0e0;
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.5;
-}
+                .cta-button:hover {
+                    background: #1e7ae6;
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 20px rgba(45, 140, 240, 0.6);
+                }
 
-.pricing-section {
-    padding: 0 30px 25px;
-    text-align: center;
-}
+                /* Responsividade */
+                @media (max-width: 600px) {
+                    .product-title h1 {
+                        font-size: 24px;
+                    }
 
-.original-price {
-    color: #b0bec5;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
+                    .mockup-placeholder {
+                        gap: 15px;
+                    }
 
-.original-price s {
-    color: #ef5350;
-}
+                    .laptop {
+                        width: 130px;
+                        height: 80px;
+                    }
 
-.promo-price {
-    margin-bottom: 10px;
-}
+                    .tablet {
+                        width: 60px;
+                        height: 85px;
+                    }
 
-.installments {
-    color: #64dd17;
-    font-size: 20px;
-    font-weight: 600;
-    margin-right: 10px;
-}
+                    .phone {
+                        width: 35px;
+                        height: 60px;
+                    }
 
-.price-value {
-    color: #64dd17;
-    font-size: 42px;
-    font-weight: 800;
-}
+                    .price-value {
+                        font-size: 36px;
+                    }
+                }
 
-.cash-price {
-    color: #e0e0e0;
-    font-size: 18px;
-    margin-bottom: 15px;
-}
+                @media (max-width: 480px) {
+                    .mockup-placeholder {
+                        flex-direction: column;
+                        height: 220px;
+                        padding: 15px;
+                    }
 
-.lifetime-access {
-    background: rgba(45, 140, 240, 0.2);
-    padding: 12px;
-    border-radius: 8px;
-    color: #64dd17;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
+                    .device {
+                        transform: scale(0.9);
+                    }
+                }
+            </style>
 
-.cta-button {
-    display: block;
-    width: calc(100% - 60px);
-    margin: 0 30px 30px;
-    padding: 18px;
-    background: #2d8cf0;
-    color: white;
-    font-size: 18px;
-    font-weight: 700;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(45, 140, 240, 0.4);
-}
 
-.cta-button:hover {
-    background: #1e7ae6;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(45, 140, 240, 0.6);
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-    .product-title h1 {
-        font-size: 24px;
-    }
-    
-    .mockup-placeholder {
-        gap: 15px;
-    }
-    
-    .laptop {
-        width: 130px;
-        height: 80px;
-    }
-    
-    .tablet {
-        width: 60px;
-        height: 85px;
-    }
-    
-    .phone {
-        width: 35px;
-        height: 60px;
-    }
-    
-    .price-value {
-        font-size: 36px;
-    }
-}
-
-@media (max-width: 480px) {
-    .mockup-placeholder {
-        flex-direction: column;
-        height: 220px;
-        padding: 15px;
-    }
-    
-    .device {
-        transform: scale(0.9);
-    }
-}
-</style>
-
-            
             <div class="guarantee">
                 <h3>GARANTIA DE SATISFAÇÃO DE 7 DIAS</h3>
-                <p>Se em 7 dias você não estiver completamente satisfeito, devolvemos seu dinheiro sem questionamentos. Sem risco, sem burocracia.</p>
+                <p>Se em 7 dias você não estiver completamente satisfeito, devolvemos seu dinheiro sem questionamentos.
+                    Sem risco, sem burocracia.</p>
             </div>
         </div>
     </section>
@@ -1572,7 +1640,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            SIM! Nosso sistema é 100% baseado em nuvem e roda até em computadores com Windows XP ou celulares antigos. Tudo que você precisa é de uma conexão com internet para acessar o Google
+                            SIM! Nosso sistema é 100% baseado em nuvem e roda até em computadores com Windows XP ou
+                            celulares antigos. Tudo que você precisa é de uma conexão com internet para acessar o Google
                         </div>
                     </div>
                 </div>
@@ -1584,7 +1653,9 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            NUNCA! O dashboard básico é gratuito para sempre, sem taxas escondidas ou mensalidades. Oferecemos cursos e consultorias adicionais opcionais, mas o sistema essencial é seu para sempre sem custos.
+                            NUNCA! O dashboard básico é gratuito para sempre, sem taxas escondidas ou mensalidades.
+                            Oferecemos cursos e consultorias adicionais opcionais, mas o sistema essencial é seu para
+                            sempre sem custos.
                         </div>
                     </div>
                 </div>
@@ -1596,7 +1667,9 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            TOTALMENTE! Nosso sistema é otimizado para dispositivos móveis. Você pode registrar vendas na feira, conferir estoque no depósito e analisar relatórios no sofá - tudo pelo seu celular.
+                            TOTALMENTE! Nosso sistema é otimizado para dispositivos móveis. Você pode registrar vendas
+                            na feira, conferir estoque no depósito e analisar relatórios no sofá - tudo pelo seu
+                            celular.
                         </div>
                     </div>
                 </div>
@@ -1608,7 +1681,8 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Se você sabe enviar mensagem no WhatsApp, vai dominar nosso sistema em 1 hora! Não precisa de conhecimentos avançados em Excel ou contabilidade.
+                            Se você sabe enviar mensagem no WhatsApp, vai dominar nosso sistema em 1 hora! Não precisa
+                            de conhecimentos avançados em Excel ou contabilidade.
                         </div>
                     </div>
                 </div>
@@ -1620,7 +1694,9 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            94,3% dos nossos usuários identificaram pelo menos um vazamento financeiro nos primeiros 15 dias de uso. Resultados significativos (redução de perdas acima de 30%) são observados em média em 30 dias.
+                            94,3% dos nossos usuários identificaram pelo menos um vazamento financeiro nos primeiros 15
+                            dias de uso. Resultados significativos (redução de perdas acima de 30%) são observados em
+                            média em 30 dias.
                         </div>
                     </div>
                 </div>
@@ -1632,7 +1708,9 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Sim! Nosso dashboard já foi implementado com sucesso em mais de 15 segmentos: comércio varejista, serviços, alimentação, artesanato, consultorias, e-commerce e muito mais. Temos modelos específicos para diferentes necessidades.
+                            Sim! Nosso dashboard já foi implementado com sucesso em mais de 15 segmentos: comércio
+                            varejista, serviços, alimentação, artesanato, consultorias, e-commerce e muito mais. Temos
+                            modelos específicos para diferentes necessidades.
                         </div>
                     </div>
                 </div>
@@ -1642,7 +1720,7 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
 
     <footer style="background: var(--dark); color: white; text-align: center; padding: 30px 0;">
         <div class="container">
-          
+
         </div>
     </footer>
 
@@ -1679,7 +1757,7 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
         function goToSlide(slideIndex) {
             slider.style.transform = `translateX(-${slideIndex * 100}%)`;
             currentSlide = slideIndex;
-            
+
             // Update active dot
             dots.forEach(dot => dot.classList.remove('active'));
             dots[slideIndex].classList.add('active');
@@ -1705,4 +1783,5 @@ src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1"
 
 
 </body>
+
 </html>
