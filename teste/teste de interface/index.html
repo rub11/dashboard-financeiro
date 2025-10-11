@@ -50,6 +50,10 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--medium-gray);
+            position: sticky;
+            top: 0;
+            background-color: var(--dark-bg);
+            z-index: 100;
         }
 
         .logo {
@@ -93,16 +97,17 @@
         /* Main Content */
         .main-content {
             flex: 1;
-            padding: 3rem 2rem;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
         .welcome-message {
             text-align: center;
             margin-bottom: 3rem;
-            max-width: 600px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .welcome-message h1 {
@@ -120,27 +125,39 @@
             line-height: 1.6;
         }
 
+        .category-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ruby-red);
+            display: inline-block;
+        }
+
         .systems-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            width: 100%;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
         .system-card {
             background-color: var(--dark-gray);
             border-radius: 16px;
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
-            align-items: center;
             text-align: center;
             border: 1px solid transparent;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
         }
 
         .system-card::before {
@@ -160,15 +177,15 @@
         }
 
         .card-icon {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--ruby-red) 0%, var(--dark-ruby) 100%);
             border-radius: 16px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
             transition: var(--transition);
         }
 
@@ -177,7 +194,7 @@
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
@@ -185,15 +202,16 @@
         .card-description {
             color: var(--light-gray);
             line-height: 1.5;
-            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .card-status {
             display: flex;
             align-items: center;
+            justify-content: center;
             font-size: 0.9rem;
             color: var(--light-gray);
-            margin-top: auto;
+            margin-top: 1rem;
         }
 
         .status-indicator {
@@ -233,7 +251,7 @@
         @media (max-width: 768px) {
             .systems-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 1.5rem;
+                gap: 1.2rem;
             }
             
             .welcome-message h1 {
@@ -245,6 +263,10 @@
             }
             
             .logo {
+                font-size: 1.5rem;
+            }
+            
+            .category-title {
                 font-size: 1.5rem;
             }
         }
@@ -272,137 +294,275 @@
             <p>Ferramentas especializadas para otimizar seus negócios, aumentar sua lucratividade e simplificar suas operações.</p>
         </div>
 
-        <div class="systems-grid">
-            <!-- Produto 1 -->
-            <div class="system-card">
-                <div class="card-icon">
-                    <i class="fas fa-calculator"></i>
-                </div>
-                <h3 class="card-title">Calculadora de Kit Promocional</h3>
-                <p class="card-description">Crie combos de produtos com precisão matemática, maximizando seu lucro em promoções sem perder dinheiro.</p>
-                <div class="card-status">
-                    <div class="status-indicator"></div>
-                    <span>Disponível</span>
-                </div>
-            </div>
+        <!-- 💼 Gestão e Organização -->
+        <section class="category-section">
+            <h2 class="category-title">💼 Gestão e Organização</h2>
+            <div class="systems-grid">
+                <a href="https://devruby.com/controle-assinaturas" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3 class="card-title">Controle de Assinaturas</h3>
+                    <p class="card-description">Gerencie assinaturas mensais com alertas automáticos de renovação e total gasto mensal.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
 
-            <!-- Produto 2 -->
-            <div class="system-card">
-                <div class="card-icon">
-                    <i class="fas fa-tag"></i>
-                </div>
-                <h3 class="card-title">Calculadora de Preço por Unidade</h3>
-                <p class="card-description">Determine o preço ideal por unidade considerando todos os custos, garantindo sua margem de lucro.</p>
-                <div class="card-status">
-                    <div class="status-indicator"></div>
-                    <span>Disponível</span>
-                </div>
-            </div>
+                <a href="https://devruby.com/gerenciador-clientes" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="card-title">Gerenciador de Clientes</h3>
+                    <p class="card-description">CRM simplificado com cadastro, histórico de compras e lembrete de contato.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
 
-            <!-- Produto 3 -->
-            <div class="system-card">
-                <div class="card-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3 class="card-title">Calculadora de Preço por % de Retorno</h3>
-                <p class="card-description">Calcule preços competitivos baseados em seus custos, concorrência e valor percebido pelo cliente.</p>
-                <div class="card-status">
-                    <div class="status-indicator"></div>
-                    <span>Disponível</span>
-                </div>
-            </div>
+                <a href="https://devruby.com/controle-servicos" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3 class="card-title">Controle de Serviços</h3>
+                    <p class="card-description">Ideal para quem vende serviços. Registre atendimentos, status e valores pendentes.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
 
-            <!-- Produto 4 -->
-            <div class="system-card">
-                <div class="card-icon">
-                    <i class="fas fa-piggy-bank"></i>
-                </div>
-                <h3 class="card-title">Calculadora Financeira</h3>
-                <p class="card-description">Simule financiamentos, parcelamentos e investimentos para tomar decisões financeiras inteligentes.</p>
-                <div class="card-status">
-                    <div class="status-indicator"></div>
-                    <span>Disponível</span>
-                </div>
-            </div>
+                <a href="https://devruby.com/controle-manutencao" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="card-title">Controle de Manutenção</h3>
+                    <p class="card-description">Registre revisões, trocas e datas de manutenção de equipamentos e veículos.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
 
-            <!-- Produto 5 -->
-            <div class="system-card">
-                <div class="card-icon">
-                    <i class="fas fa-lightbulb"></i>
-                </div>
-                <h3 class="card-title">Gerador de Nomes e Slogans</h3>
-                <p class="card-description">Crie nomes memoráveis e slogans impactantes para seus produtos com nossa IA especializada.</p>
-                <div class="card-status">
-                    <div class="status-indicator"></div>
-                    <span>Disponível</span>
-                </div>
+                <a href="https://devruby.com/painel-metas" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="card-title">Painel de Metas Semanais</h3>
+                    <p class="card-description">Crie, acompanhe e visualize metas com barras de progresso automáticas.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
             </div>
+        </section>
 
-            <!-- Produto 6 -->
-            <div class="system-card">
-                <div class="card-icon">
-                    <i class="fas fa-quote-right"></i>
-                </div>
-                <h3 class="card-title">Gerador de Frases para Redes Sociais</h3>
-                <p class="card-description">Gere conteúdo atraente para suas redes sociais em segundos, aumentando seu engajamento.</p>
-                <div class="card-status">
-                    <div class="status-indicator"></div>
-                    <span>Disponível</span>
-                </div>
-            </div>
+        <!-- 💰 Finanças e Vendas -->
+        <section class="category-section">
+            <h2 class="category-title">💰 Finanças e Vendas</h2>
+            <div class="systems-grid">
+                <a href="https://devruby.com/simulador-lucro" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="card-title">Simulador de Lucro Líquido</h3>
+                    <p class="card-description">Mostra quanto realmente sobra após impostos, taxas e custos operacionais.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
 
-            <!-- Produto 7 -->
-            <div class="system-card">
-                <div class="card-icon">
-                    <i class="fas fa-chart-pie"></i>
-                </div>
-                <h3 class="card-title">Gráfico de Gastos Instantâneos</h3>
-                <p class="card-description">Visualize onde seu dinheiro está indo com gráficos interativos e categorias personalizáveis.</p>
-                <div class="card-status">
-                    <div class="status-indicator"></div>
-                    <span>Disponível</span>
-                </div>
-            </div>
+                <a href="https://devruby.com/relatorios-financeiros" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="card-title">Gerador de Relatórios Financeiros</h3>
+                    <p class="card-description">Gera relatórios mensais automáticos com gráficos, totais e porcentagens.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
 
-            <!-- Produto 8 -->
-            <div class="system-card">
-                <div class="card-icon">
-                    <i class="fas fa-tasks"></i>
-                </div>
-                <h3 class="card-title">Checklist Geral Personalizado</h3>
-                <p class="card-description">Nunca mais esqueça tarefas importantes com checklists automatizados para sua operação.</p>
-                <div class="card-status">
-                    <div class="status-indicator"></div>
-                    <span>Disponível</span>
-                </div>
-            </div>
+                <a href="https://devruby.com/simulador-parcelas" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="card-title">Simulador de Parcelas Inteligente</h3>
+                    <p class="card-description">Mostra o preço final e os juros reais de cada forma de pagamento.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
 
-            <!-- Produto 9 -->
-            <div class="system-card">
-                <div class="card-icon">
-                    <i class="fas fa-clipboard-list"></i>
-                </div>
-                <h3 class="card-title">Mega Planner de Pedidos</h3>
-                <p class="card-description">Organize seus pedidos diários, priorize tarefas e nunca mais perca um prazo de entrega.</p>
-                <div class="card-status">
-                    <div class="status-indicator"></div>
-                    <span>Disponível</span>
-                </div>
-            </div>
+                <a href="https://devruby.com/calculadora-metas" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Calculadora de Meta de Vendas Diária</h3>
+                    <p class="card-description">Divide a meta mensal em metas diárias, com barra de progresso e alertas.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
 
-            <!-- Produto 10 -->
-            <div class="system-card">
-                <div class="card-icon">
-                    <i class="fas fa-shipping-fast"></i>
-                </div>
-                <h3 class="card-title">Simulador de Frete Embutido</h3>
-                <p class="card-description">Simule e calcule fretes de forma integrada para produtos de entrega.</p>
-                <div class="card-status">
-                    <div class="status-indicator"></div>
-                    <span>Disponível</span>
-                </div>
+                <a href="https://devruby.com/painel-dividas" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="card-title">Painel de Controle de Dívidas e Receitas</h3>
+                    <p class="card-description">Separa valores a pagar e a receber, com notificações de vencimento.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
             </div>
-        </div>
+        </section>
+
+        <!-- 🧠 Marketing e Criatividade -->
+        <section class="category-section">
+            <h2 class="category-title">🧠 Marketing e Criatividade</h2>
+            <div class="systems-grid">
+                <a href="https://devruby.com/gerador-ideias" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="card-title">Gerador de Ideias de Campanhas</h3>
+                    <p class="card-description">Baseado em palavras-chave e público, gera ideias de campanhas promocionais.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
+
+                <a href="https://devruby.com/planejador-lancamentos" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="card-title">Planejador de Lançamentos</h3>
+                    <p class="card-description">Organize as etapas de lançamento — pré-venda, divulgação, entrega e pós-venda.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
+
+                <a href="https://devruby.com/analisador-redes-sociais" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="card-title">Analisador de Desempenho em Redes Sociais</h3>
+                    <p class="card-description">Registra engajamentos e mostra a evolução das suas redes sociais.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
+
+                <a href="https://devruby.com/gerador-ofertas" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3 class="card-title">Gerador de Ofertas e Promoções</h3>
+                    <p class="card-description">Cria textos prontos e ideias de promoções com base no produto e público.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
+
+                <a href="https://devruby.com/planejador-conteudo" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="card-title">Planejador de Conteúdo Semanal</h3>
+                    <p class="card-description">Monte o cronograma de postagens com horários ideais e tipo de conteúdo.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 📦 Estoque e Logística -->
+        <section class="category-section">
+            <h2 class="category-title">📦 Estoque e Logística</h2>
+            <div class="systems-grid">
+                <a href="https://devruby.com/controle-validade" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-hourglass-end"></i>
+                    </div>
+                    <h3 class="card-title">Controle de Validade de Produtos</h3>
+                    <p class="card-description">Mostra o prazo de validade e avisa quando um produto está prestes a vencer.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
+
+                <a href="https://devruby.com/controle-fornecedores" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="card-title">Controle de Fornecedores</h3>
+                    <p class="card-description">Cadastre fornecedores, datas de entrega, contatos e status dos pedidos.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
+
+                <a href="https://devruby.com/simulador-embalagens" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3 class="card-title">Simulador de Embalagens e Custos</h3>
+                    <p class="card-description">Calcula custo de envio com base no peso, tamanho e destino.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 📊 Análise e Produtividade -->
+        <section class="category-section">
+            <h2 class="category-title">📊 Análise e Produtividade</h2>
+            <div class="systems-grid">
+                <a href="https://devruby.com/dashboard-desempenho" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="card-title">Dashboard de Desempenho Geral</h3>
+                    <p class="card-description">Integra dados de todos os sistemas e mostra um resumo em tempo real.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
+
+                <a href="https://devruby.com/relogio-produtividade" class="system-card" target="_blank">
+                    <div class="card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="card-title">Relógio de Produtividade (Pomodoro Pro)</h3>
+                    <p class="card-description">Temporizador para dividir o trabalho em blocos com pausas automáticas.</p>
+                    <div class="card-status">
+                        <div class="status-indicator"></div>
+                        <span>Disponível</span>
+                    </div>
+                </a>
+            </div>
+        </section>
     </main>
 
     <!-- Botão Flutuante -->
