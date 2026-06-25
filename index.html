@@ -1,1680 +1,2503 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Financeiro | Controle Financeiro Simplificado</title>
-
-    <!-- Meta Pixel Code -->
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-            n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1191858829812080');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1191858829812080&ev=PageView&noscript=1" /></noscript>
-    <!-- End Meta Pixel Code -->
-    <noscript>
-        <img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=594941097000290&ev=PageView&noscript=1">
-    </noscript>
-    <!-- End Meta Pixel Code -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #059669;
-            --accent: #d97706;
-            --light: #f9fafb;
-            --dark: #1f2937;
-            --danger: #dc2626;
-            --gray: #6b7280;
-            --light-gray: #e5e7eb;
-            --border-radius: 12px;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--primary-dark);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 20px auto 0;
-            color: var(--gray);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-align: center;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-        }
-
-        .btn-lg {
-            padding: 16px 40px;
-            font-size: 1.2rem;
-        }
-
-        .btn-gold {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: white;
-            font-weight: 700;
-        }
-
-        .btn-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.2);
-        }
-
-        /* Hero Section */
-        #hero {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            animation: pulse 2s infinite;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            line-height: 1.2;
-        }
-
-        .hero-content p {
-            font-size: 1.4rem;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Pain Points Section */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card-danger {
-            border-left: 4px solid var(--danger);
-        }
-
-        .card-success {
-            border-left: 4px solid var(--secondary);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--danger);
-        }
-
-        .card-success .card-icon {
-            color: var(--secondary);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            margin-bottom: 15px;
-            color: var(--gray);
-        }
-
-        .stat {
-            font-weight: 700;
-            color: var(--danger);
-        }
-
-        .card-success .stat {
-            color: var(--secondary);
-        }
-
-        /* Slider Section */
-        .slider-container {
-            max-width: 900px;
-            margin: 70px auto;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        .slider {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .slide {
-            min-width: 100%;
-            position: relative;
-        }
-
-        .slide-placeholder {
-            height: 400px;
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .slider-controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 15px;
-            z-index: 10;
-        }
-
-        .slider-btn {
-            background: transparent;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .slider-btn:hover {
-            background: white;
-            transform: scale(1.1);
-        }
-
-        .slider-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-dot.active {
-            background: white;
-            transform: scale(1.2);
-        }
-
-        /* Comparison Section */
-        .comparison {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 100px 0;
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .comparison-col {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .comparison-col h3 {
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .comparison-list {
-            list-style: none;
-        }
-
-        .comparison-list li {
-            padding: 12px 0;
-            position: relative;
-            padding-left: 35px;
-            font-size: 1.1rem;
-        }
-
-        .without .comparison-list li:before {
-            content: '✖';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.3rem;
-            color: #fca5a5;
-        }
-
-        .with .comparison-list li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.3rem;
-            color: #86efac;
-        }
-
-        .discount-badge {
-            background: var(--accent);
-            color: white;
-            border-radius: 30px;
-            padding: 12px 25px;
-            font-weight: 700;
-            display: inline-block;
-            margin: 30px 0 20px;
-        }
-
-        /* Plans Section */
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .plan-card {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 35px 30px;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-            border: 2px solid var(--light-gray);
-        }
-
-        .plan-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .plan-card.premium {
-            border-color: var(--accent);
-            position: relative;
-        }
-
-        .plan-card.premium::before {
-            content: 'RECOMENDADO';
-            position: absolute;
-            top: 20px;
-            right: -45px;
-            background: var(--accent);
-            color: white;
-            padding: 8px 45px;
-            transform: rotate(45deg);
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        .plan-header {
-            text-align: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .plan-header h3 {
-            font-size: 1.8rem;
-            color: var(--dark);
-            margin-bottom: 10px;
-        }
-
-        .plan-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .plan-card.premium .plan-price {
-            color: var(--accent);
-        }
-
-        .plan-features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .plan-features li {
-            padding: 12px 0;
-            position: relative;
-            padding-left: 35px;
-            font-size: 1.05rem;
-        }
-
-        .plan-features li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 25px;
-            height: 25px;
-            background: #dcfce7;
-            color: var(--secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-        }
-
-        .plan-card.premium .plan-features li:before {
-            background: #fef3c7;
-            color: var(--accent);
-        }
-
-        /* FAQ Section */
-        .faq-grid {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            margin-bottom: 20px;
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .faq-question {
-            padding: 20px;
-            background-color: var(--primary);
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .faq-answer-content {
-            padding: 20px 0;
-            font-size: 1.05rem;
-            color: var(--gray);
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-        }
-
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-
-        .faq-question i {
-            transition: transform 0.3s ease;
-        }
-
-        /* Guarantee Section */
-        .guarantee {
-            background: var(--secondary);
-            color: white;
-            padding: 40px;
-            border-radius: var(--border-radius);
-            margin-top: 50px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-
-        .guarantee h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        /* Premium Offer Section */
-        .premium-offer-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            background: linear-gradient(135deg, #0d1f33, #1a334d);
-            position: relative;
-            overflow: hidden;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .premium-offer-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 20% 30%, rgba(43, 108, 176, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(43, 108, 176, 0.15) 0%, transparent 40%),
-                linear-gradient(to bottom, rgba(13, 31, 51, 0.8), rgba(13, 31, 51, 0.9));
-            z-index: 0;
-        }
-
-        .premium-offer-card {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 500px;
-            background: linear-gradient(135deg, #1a334d, #15293e);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(43, 108, 176, 0.3);
-        }
-
-        .offer-header {
-            padding: 20px;
-            background: rgba(13, 31, 51, 0.7);
-            border-bottom: 1px solid rgba(43, 108, 176, 0.3);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .product-category {
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-align: center;
-            margin: auto;
-        }
-
-        .product-mockup {
-            padding: 30px;
-            background: rgba(13, 31, 51, 0.5);
-            display: flex;
-            justify-content: center;
-        }
-
-        .mockup-placeholder {
-            width: 100%;
-            height: 180px;
-            background: rgba(26, 51, 77, 0.8);
-            border-radius: 10px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .device {
-            position: relative;
-            background: #0d1f33;
-            border: 1px solid rgba(43, 108, 176, 0.5);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .device::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #1a334d, #2d8cf0);
-            opacity: 0.7;
-        }
-
-        .laptop {
-            width: 160px;
-            height: 100px;
-            border-radius: 10px;
-        }
-
-        .tablet {
-            width: 70px;
-            height: 100px;
-            border-radius: 8px;
-        }
-
-        .phone {
-            width: 40px;
-            height: 70px;
-            border-radius: 6px;
-        }
-
-        .product-title {
-            padding: 25px 30px 15px;
-            text-align: center;
-        }
-
-        .product-title h1 {
-            color: white;
-            font-size: 28px;
-            font-weight: 800;
-            margin: 0;
-            line-height: 1.3;
-        }
-
-        .benefits-list {
-            padding: 0 30px 25px;
-        }
-
-        .benefit-item {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            align-items: flex-start;
-        }
-
-        .check-icon {
-            min-width: 26px;
-            height: 26px;
-            background: #00c853;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: bold;
-            color: white;
-        }
-
-        .benefit-item p {
-            color: #e0e0e0;
-            margin: 0;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .pricing-section {
-            padding: 0 30px 25px;
-            text-align: center;
-        }
-
-        .original-price {
-            color: #b0bec5;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .original-price s {
-            color: #ef5350;
-        }
-
-        .promo-price {
-            margin-bottom: 10px;
-        }
-
-        .installments {
-            color: #64dd17;
-            font-size: 20px;
-            font-weight: 600;
-            margin-right: 10px;
-        }
-
-        .price-value {
-            color: #64dd17;
-            font-size: 42px;
-            font-weight: 800;
-        }
-
-        .cash-price {
-            color: #e0e0e0;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .lifetime-access {
-            background: rgba(45, 140, 240, 0.2);
-            padding: 12px;
-            border-radius: 8px;
-            color: #64dd17;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .cta-button {
-            display: block;
-            width: calc(100% - 60px);
-            margin: 0 30px 30px;
-            padding: 18px;
-            background: #2d8cf0;
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(45, 140, 240, 0.4);
-        }
-
-        .cta-button:hover {
-            background: #1e7ae6;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(45, 140, 240, 0.6);
-        }
-
-        /* Animations */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .section-title p {
-                font-size: 1.1rem;
-            }
-
-            .plan-card.premium::before {
-                top: 15px;
-                right: -50px;
-                padding: 6px 40px;
-                font-size: 0.8rem;
-            }
-
-            .slide-placeholder {
-                height: 300px;
-            }
-
-            .product-title h1 {
-                font-size: 24px;
-            }
-
-            .mockup-placeholder {
-                gap: 15px;
-            }
-
-            .laptop {
-                width: 130px;
-                height: 80px;
-            }
-
-            .tablet {
-                width: 60px;
-                height: 85px;
-            }
-
-            .phone {
-                width: 35px;
-                height: 60px;
-            }
-
-            .price-value {
-                font-size: 36px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-
-            .hero-badge {
-                font-size: 1rem;
-                padding: 8px 20px;
-            }
-
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .section-title p {
-                font-size: 1rem;
-            }
-
-            .btn {
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
-
-            .btn-lg {
-                padding: 14px 30px;
-                font-size: 1.1rem;
-            }
-
-            .plan-card.premium::before {
-                top: 12px;
-                right: -55px;
-                padding: 5px 35px;
-                font-size: 0.7rem;
-            }
-
-            .mockup-placeholder {
-                flex-direction: column;
-                height: 220px;
-                padding: 15px;
-            }
-
-            .device {
-                transform: scale(0.9);
-            }
-        }
-
-        /* Additional Styles */
-        .pain-intro p {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.2rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .bonus-item h3 {
-            color: rebeccapurple;
-            margin: 10px 0;
-        }
-
-        .bonus-item h3 s {
-            color: #ef5350;
-        }
-
-
-
-        .video-demo {
-            width: 100%;
-            max-width: 320px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            border-radius: 12px;
-        }
-
-        /* Tablet */
-        @media (min-width: 768px) {
-            .video-demo {
-                max-width: 520px;
-            }
-        }
-
-        /* Notebook / desktop */
-        @media (min-width: 1024px) {
-            .video-demo {
-                max-width: 720px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Financeiro · Controle total</title>
+  <!-- Font Awesome 6 (gratuita) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & base ─── */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #060B14;
+      --card: #0C1220;
+      --cardAlt: #0F172A;
+      --border: #1E2D45;
+      --blue: #3B82F6;
+      --blueLight: #60A5FA;
+      --green: #10B981;
+      --greenLight: #34D399;
+      --purple: #8B5CF6;
+      --purpleLight: #A78BFA;
+      --red: #EF4444;
+      --text: #F1F5F9;
+      --muted: #64748B;
+      --dimmed: #334155;
+      --radius: 0.75rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--blue);
+      border-radius: 10px;
+      animation: pulse-glow 2s infinite;
+    }
+
+    /* ─── Container ─── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ─── Badge ─── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.27);
+      color: var(--blue);
+      transition: all 0.3s;
+    }
+    .badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+    }
+    .badge-red {
+      background: rgba(239, 68, 68, 0.12);
+      border-color: rgba(239, 68, 68, 0.27);
+      color: var(--red);
+    }
+    .badge-red:hover {
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+    }
+    .badge-green {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.27);
+      color: var(--green);
+    }
+    .badge-green:hover {
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+    }
+    .badge-purple {
+      background: rgba(139, 92, 246, 0.12);
+      border-color: rgba(139, 92, 246, 0.27);
+      color: var(--purple);
+    }
+    .badge-purple:hover {
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+    }
+
+    /* ─── Buttons ─── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 2rem;
+      border-radius: 0.75rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, var(--blue), var(--purple), var(--green));
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: -1;
+      filter: blur(4px);
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(59, 130, 246, 0.6);
+    }
+    .btn-primary:hover::after {
+      opacity: 1;
+    }
+    .btn-primary:active {
+      transform: scale(0.97);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 2rem;
+      border-radius: 0.75rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: transparent;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: var(--blue);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+    .btn-outline:hover {
+      background: var(--blue);
+      color: var(--bg);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
+    }
+    .btn-outline:active {
+      transform: scale(0.97);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 0.75rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+    }
+
+    /* ─── Section headers ─── */
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      animation: fade-slide-up 0.8s ease both;
+    }
+    .section-sub {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      animation: fade-slide-up 0.8s ease 0.15s both;
+    }
+
+    /* ─── Cards ─── */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.03), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.5s;
+      pointer-events: none;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 40px rgba(59, 130, 246, 0.05);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+    .card:hover::before {
+      opacity: 1;
+    }
+    .card .icon-wrap {
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .card:hover .icon-wrap {
+      transform: scale(1.15) rotate(-5deg);
+    }
+
+    /* ─── Grid background ─── */
+    .grid-bg {
+      background-image: radial-gradient(circle, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      animation: grid-pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes grid-pulse {
+      0%, 100% { background-size: 28px 28px; opacity: 1; }
+      50% { background-size: 32px 32px; opacity: 0.7; }
+    }
+
+    /* ─── Gradient text ─── */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--blueLight), var(--purpleLight), var(--greenLight));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradient-shift 6s ease-in-out infinite;
+    }
+
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ─── Glow helpers ─── */
+    .glow-blue {
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.2), 0 0 60px rgba(59, 130, 246, 0.05);
+      animation: glow-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.2), 0 0 60px rgba(59, 130, 246, 0.05); }
+      50% { box-shadow: 0 0 50px rgba(59, 130, 246, 0.35), 0 0 80px rgba(59, 130, 246, 0.1); }
+    }
+
+    /* ─── Progress bar ─── */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--purple), var(--green));
+      transform-origin: left;
+      z-index: 999;
+      transition: transform 0.1s;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+
+    /* ─── Nav ─── */
+    .navbar {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 1.2rem 0;
+      transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s, box-shadow 0.4s;
+    }
+    .navbar.scrolled {
+      background: rgba(6, 11, 20, 0.93);
+      backdrop-filter: blur(20px);
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    }
+    .navbar .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: transform 0.3s;
+    }
+    .logo:hover {
+      transform: scale(1.02);
+    }
+    .logo-icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.5rem;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      animation: rotate-slow 10s linear infinite;
+    }
+
+    @keyframes rotate-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      padding: 8rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero .glow1 {
+      position: absolute;
+      top: 10%;
+      left: -15%;
+      width: 50%;
+      height: 70%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 70%);
+      pointer-events: none;
+      animation: float-glow 8s ease-in-out infinite;
+    }
+    .hero .glow2 {
+      position: absolute;
+      bottom: 0;
+      right: -10%;
+      width: 40%;
+      height: 60%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 70%);
+      pointer-events: none;
+      animation: float-glow 10s ease-in-out infinite reverse;
+    }
+
+    @keyframes float-glow {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(20px, -20px) scale(1.1); }
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+    @media (min-width: 768px) {
+      .hero-content {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    /* ─── Mock dashboard ─── */
+    .mock-dash {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      overflow: hidden;
+      width: 100%;
+      transition: transform 0.4s, box-shadow 0.4s;
+      animation: float-card 6s ease-in-out infinite;
+    }
+    .mock-dash:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
+    }
+
+    @keyframes float-card {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .mock-dash .title-bar {
+      background: var(--cardAlt);
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mock-dash .title-bar .dot {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+    .mock-dash .title-bar .dot:hover {
+      transform: scale(1.5);
+    }
+    .mock-dash .title-bar .dot.red {
+      background: var(--red);
+    }
+    .mock-dash .title-bar .dot.yellow {
+      background: #F59E0B;
+    }
+    .mock-dash .title-bar .dot.green {
+      background: var(--green);
+    }
+    .mock-dash .title-bar span {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--dimmed);
+      margin-left: 0.5rem;
+    }
+    .mock-dash .body {
+      padding: 1.2rem;
+    }
+    .mock-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .mock-card {
+      background: var(--cardAlt);
+      border-radius: 0.5rem;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .mock-card:hover {
+      border-color: var(--blue);
+      transform: scale(1.02);
+    }
+    .mock-card .label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+    .mock-card .value {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--text);
+    }
+    .mock-card .trend {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 0.7rem;
+      color: var(--green);
+      font-weight: 700;
+      animation: pulse-text 2s infinite;
+    }
+
+    @keyframes pulse-text {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    .mock-bar-chart {
+      height: 2.5rem;
+      display: flex;
+      align-items: flex-end;
+      gap: 0.2rem;
+      margin-top: 0.3rem;
+    }
+    .mock-bar {
+      flex: 1;
+      border-radius: 2px 2px 0 0;
+      background: var(--blue);
+      opacity: 0.5;
+      transition: height 1s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s;
+      height: 0%;
+      animation: bar-grow 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes bar-grow {
+      0% { height: 0%; opacity: 0; }
+      100% { height: var(--h); opacity: 0.7; }
+    }
+
+    /* ─── Alert box ─── */
+    .alert-box {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.27);
+      border-radius: 0.5rem;
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+      animation: alert-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes alert-pulse {
+      0%, 100% { border-color: rgba(239, 68, 68, 0.27); }
+      50% { border-color: rgba(239, 68, 68, 0.6); }
+    }
+
+    .alert-box .icon {
+      color: var(--red);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+      animation: shake 2s infinite;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      5% { transform: rotate(10deg); }
+      10% { transform: rotate(-10deg); }
+      15% { transform: rotate(0deg); }
+    }
+
+    /* ─── Steps ─── */
+    .step-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 2.8rem;
+      font-weight: 700;
+      opacity: 0.2;
+      color: var(--blueLight);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .step-number:hover {
+      opacity: 0.5;
+      transform: scale(1.1);
+    }
+
+    /* ─── 3 steps ─── */
+    .three-step {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: fade-slide-up 0.7s ease both;
+    }
+    .three-step:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--blue);
+      box-shadow: 0 12px 40px rgba(59, 130, 246, 0.1);
+    }
+    .three-step .time {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--blueLight);
+      background: rgba(59, 130, 246, 0.15);
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-top: 0.8rem;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .three-step:hover .time {
+      background: rgba(59, 130, 246, 0.3);
+      transform: scale(1.05);
+    }
+
+    @keyframes fade-slide-up {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── COMPARATIVO ─── */
+    .compare-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    @media (min-width: 768px) {
+      .compare-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+      }
+    }
+
+    .compare-col {
+      padding: 2rem 1.8rem;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .compare-col::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s;
+      pointer-events: none;
+    }
+    .compare-col:hover {
+      transform: scale(1.01);
+      z-index: 2;
+    }
+    .compare-col.sem {
+      background: var(--card);
+      border-right: 1px solid var(--border);
+    }
+    .compare-col.sem::before {
+      background: radial-gradient(circle at 20% 50%, rgba(239, 68, 68, 0.06), transparent 70%);
+    }
+    .compare-col.sem:hover::before {
+      opacity: 1;
+    }
+    .compare-col.sem .col-header {
+      color: var(--red);
+    }
+    .compare-col.sem .col-header i {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--red);
+    }
+    .compare-col.sem ul li {
+      color: var(--muted);
+    }
+    .compare-col.sem ul li i {
+      color: var(--red);
+      opacity: 0.6;
+    }
+
+    .compare-col.com {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(16, 185, 129, 0.05));
+      border-left: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    .compare-col.com::before {
+      background: radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.06), transparent 70%);
+    }
+    .compare-col.com:hover::before {
+      opacity: 1;
+    }
+    .compare-col.com .col-header {
+      color: var(--greenLight);
+    }
+    .compare-col.com .col-header i {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--greenLight);
+    }
+    .compare-col.com ul li {
+      color: var(--text);
+    }
+    .compare-col.com ul li i {
+      color: var(--green);
+    }
+
+    .compare-col .col-header {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .compare-col .col-header i {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .compare-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .compare-col ul li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.95rem;
+      transition: padding-left 0.3s, color 0.3s;
+    }
+    .compare-col ul li:hover {
+      padding-left: 0.4rem;
+    }
+    .compare-col ul li i {
+      width: 1.2rem;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+      transition: transform 0.3s;
+    }
+    .compare-col ul li:hover i {
+      transform: scale(1.2);
+    }
+    .compare-col .code-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--dimmed);
+      margin-bottom: 0.2rem;
+      opacity: 0.6;
+    }
+
+    /* VS divisor */
+    .vs-divider {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0;
+      z-index: 5;
+    }
+    @media (min-width: 768px) {
+      .vs-divider {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+      }
+    }
+    .vs-circle {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--blue);
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), inset 0 0 30px rgba(59, 130, 246, 0.05);
+      animation: vs-pulse 2.5s ease-in-out infinite;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .vs-circle:hover {
+      transform: scale(1.15);
+    }
+    @keyframes vs-pulse {
+      0%, 100% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), inset 0 0 30px rgba(59, 130, 246, 0.05); }
+      50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.5), inset 0 0 40px rgba(59, 130, 246, 0.1); }
+    }
+
+    /* ─── Bonus grid (10 itens em 4 colunas) ─── */
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .bonus-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .bonus-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .bonus-item {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.2rem;
+      border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: fade-slide-up 0.6s ease both;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+    }
+    .bonus-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--blue);
+      box-shadow: 0 12px 40px rgba(59, 130, 246, 0.1);
+    }
+    .bonus-item .main-icon {
+      font-size: 2.2rem;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s;
+    }
+    .bonus-item:hover .main-icon {
+      transform: scale(1.2) rotate(-5deg);
+      color: var(--purple);
+    }
+    .bonus-item .main-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .bonus-item .price-old {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .bonus-item .price-old strong {
+      color: var(--greenLight);
+      font-weight: 700;
+    }
+    .bonus-item .desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+    .bonus-item .free-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--greenLight);
+      background: rgba(16, 185, 129, 0.15);
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      display: inline-block;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .bonus-item:hover .free-badge {
+      background: rgba(16, 185, 129, 0.3);
+      transform: scale(1.05);
+    }
+
+    /* ─── TESTIMONIALS (9 depoimentos em 3 colunas) ─── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .testimonial {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: fade-slide-up 0.7s ease both;
+      display: flex;
+      flex-direction: column;
+    }
+    .testimonial:hover {
+      transform: translateY(-6px) scale(1.01);
+      border-color: var(--blue);
+      box-shadow: 0 12px 40px rgba(59, 130, 246, 0.05);
+    }
+    .testimonial .stars {
+      color: #F59E0B;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      animation: star-pulse 2s infinite;
+    }
+    @keyframes star-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .testimonial .text {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      transition: color 0.3s;
+      flex-grow: 1;
+    }
+    .testimonial:hover .text {
+      color: var(--text);
+    }
+    .testimonial .name {
+      font-weight: 700;
+      color: var(--text);
+    }
+    .testimonial .role {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ─── Pricing ─── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .plan {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: fade-slide-up 0.7s ease both;
+    }
+    .plan:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+    }
+    .plan.premium {
+      border: 2px solid var(--blue);
+      position: relative;
+      transform: scale(1.02);
+      box-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+      animation: premium-glow 3s ease-in-out infinite;
+    }
+    .plan.premium:hover {
+      transform: scale(1.04) translateY(-6px);
+      box-shadow: 0 0 60px rgba(59, 130, 246, 0.2);
+    }
+
+    @keyframes premium-glow {
+      0%, 100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.1); }
+      50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.25); }
+    }
+
+    .plan.premium .badge-top {
+      position: absolute;
+      top: -0.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: #fff;
+      padding: 0.2rem 1.2rem;
+      border-radius: 30px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      animation: badge-float 2s ease-in-out infinite;
+    }
+
+    @keyframes badge-float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-4px); }
+    }
+
+    .plan .price {
+      font-family: 'Space Mono', monospace;
+    }
+    .plan .price .old {
+      font-size: 0.9rem;
+      color: var(--dimmed);
+      text-decoration: line-through;
+    }
+    .plan .price .new {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--text);
+      transition: color 0.3s;
+    }
+    .plan:hover .price .new {
+      color: var(--blueLight);
+    }
+    .plan .price .cents {
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+    .plan ul {
+      list-style: none;
+      margin: 1.5rem 0;
+      flex-grow: 1;
+    }
+    .plan ul li {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.3s, padding-left 0.3s;
+    }
+    .plan ul li:hover {
+      color: var(--text);
+      padding-left: 0.3rem;
+    }
+    .plan ul li i {
+      color: var(--green);
+      width: 1.1rem;
+      transition: transform 0.3s;
+    }
+    .plan ul li:hover i {
+      transform: scale(1.2);
+    }
+    .plan .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ─── FAQ ─── */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: fade-slide-up 0.6s ease both;
+    }
+    .faq-item.open {
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.05);
+    }
+    .faq-item .question {
+      width: 100%;
+      background: var(--cardAlt);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .faq-item .question:hover {
+      background: var(--card);
+      color: var(--blueLight);
+    }
+    .faq-item .question i {
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s;
+      color: var(--blue);
+    }
+    .faq-item.open .question i {
+      transform: rotate(180deg);
+    }
+    .faq-item .question:hover i {
+      color: var(--purple);
+    }
+    .faq-item .answer {
+      padding: 0 1.5rem 1.2rem;
+      color: var(--muted);
+      line-height: 1.7;
+      display: none;
+      animation: fade-slide-up 0.3s ease both;
+    }
+    .faq-item.open .answer {
+      display: block;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: #030508;
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem 1.5rem;
+    }
+    footer .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      footer .inner {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
+    }
+    footer .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    footer .brand i {
+      color: var(--blue);
+      transition: transform 0.3s;
+    }
+    footer .brand:hover i {
+      transform: rotate(-10deg) scale(1.1);
+    }
+    footer .links a {
+      display: block;
+      padding: 0.3rem 0;
+      color: var(--dimmed);
+      transition: color 0.3s, padding-left 0.3s;
+      font-size: 0.9rem;
+    }
+    footer .links a:hover {
+      color: var(--blue);
+      padding-left: 0.5rem;
+    }
+    footer .social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      margin-right: 0.5rem;
+    }
+    footer .social a:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+    }
+    footer .copy {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--dimmed);
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      margin-top: 1rem;
+      transition: color 0.3s;
+    }
+    footer .copy:hover {
+      color: var(--muted);
+    }
+
+    /* ─── Responsive utilities ─── */
+    .text-center {
+      text-align: center;
+    }
+    .mt-2 {
+      margin-top: 0.5rem;
+    }
+    .mt-4 {
+      margin-top: 1rem;
+    }
+    .mt-8 {
+      margin-top: 2rem;
+    }
+    .mt-12 {
+      margin-top: 3rem;
+    }
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+    .mb-12 {
+      margin-bottom: 3rem;
+    }
+    .gap-4 {
+      gap: 1rem;
+    }
+    .gap-6 {
+      gap: 1.5rem;
+    }
+    .flex-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .flex-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ─── Scroll reveal (via JS) ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px) scale(0.96);
+      transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Delay helpers for stagger */
+    .reveal:nth-child(1) { transition-delay: 0.05s; }
+    .reveal:nth-child(2) { transition-delay: 0.12s; }
+    .reveal:nth-child(3) { transition-delay: 0.19s; }
+    .reveal:nth-child(4) { transition-delay: 0.26s; }
+    .reveal:nth-child(5) { transition-delay: 0.33s; }
+    .reveal:nth-child(6) { transition-delay: 0.40s; }
+    .reveal:nth-child(7) { transition-delay: 0.47s; }
+    .reveal:nth-child(8) { transition-delay: 0.54s; }
+    .reveal:nth-child(9) { transition-delay: 0.61s; }
+    .reveal:nth-child(10) { transition-delay: 0.68s; }
+
+    /* ─── Urgency section ─── */
+    .urgency {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+      border-top: 1px solid rgba(59, 130, 246, 0.2);
+      padding: 3rem 1.5rem;
+      animation: urgency-pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes urgency-pulse {
+      0%, 100% { background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15)); }
+      50% { background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(139, 92, 246, 0.25)); }
+    }
+
+    /* ─── Loading spinner for counters ─── */
+    .counter-loading {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 2px solid var(--border);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ─── Particle effect (CSS only) ─── */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--blue);
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: particle-float 12s infinite linear;
+    }
+    .particle:nth-child(1) { left: 10%; animation-duration: 14s; animation-delay: 0s; width: 3px; height: 3px; }
+    .particle:nth-child(2) { left: 20%; animation-duration: 16s; animation-delay: 1s; width: 5px; height: 5px; }
+    .particle:nth-child(3) { left: 30%; animation-duration: 12s; animation-delay: 2s; width: 4px; height: 4px; }
+    .particle:nth-child(4) { left: 40%; animation-duration: 18s; animation-delay: 0.5s; width: 6px; height: 6px; }
+    .particle:nth-child(5) { left: 50%; animation-duration: 15s; animation-delay: 1.5s; width: 3px; height: 3px; }
+    .particle:nth-child(6) { left: 60%; animation-duration: 13s; animation-delay: 3s; width: 5px; height: 5px; }
+    .particle:nth-child(7) { left: 70%; animation-duration: 17s; animation-delay: 0.8s; width: 4px; height: 4px; }
+    .particle:nth-child(8) { left: 80%; animation-duration: 11s; animation-delay: 2.5s; width: 3px; height: 3px; }
+    .particle:nth-child(9) { left: 90%; animation-duration: 19s; animation-delay: 1.2s; width: 5px; height: 5px; }
+    .particle:nth-child(10) { left: 15%; animation-duration: 20s; animation-delay: 0.3s; width: 6px; height: 6px; }
+    .particle:nth-child(11) { left: 45%; animation-duration: 14s; animation-delay: 2.8s; width: 4px; height: 4px; }
+    .particle:nth-child(12) { left: 75%; animation-duration: 16s; animation-delay: 1.8s; width: 3px; height: 3px; }
+
+    @keyframes particle-float {
+      0% { transform: translateY(100vh) rotate(0deg) scale(0); opacity: 0; }
+      10% { opacity: 0.15; }
+      90% { opacity: 0.15; }
+      100% { transform: translateY(-100vh) rotate(720deg) scale(1); opacity: 0; }
+    }
+
+    /* ─── Typing cursor effect for counters ─── */
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 0.7s step-end infinite;
+      color: var(--blue);
+      font-weight: 300;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ─── Hover 3D tilt (via JS) ─── */
+    .tilt-card {
+      transition: transform 0.1s;
+      will-change: transform;
+    }
+
+    /* ─── Responsive tweaks ─── */
+    @media (max-width: 768px) {
+      .navbar .inner {
+        padding: 0 1rem;
+      }
+      .hero {
+        padding: 6rem 0 2rem;
+      }
+      .plan.premium {
+        transform: scale(1);
+      }
+      .plan.premium:hover {
+        transform: scale(1.02) translateY(-6px);
+      }
+      .compare-col {
+        padding: 1.5rem 1rem;
+      }
+      .compare-col .col-header {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* ─── NOVA SEÇÃO: AUTOMAÇÃO COM LINHA ANIMADA ─── */
+    .flow-container {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .flow-line {
+      position: absolute;
+      top: 3.5rem;
+      left: 5%;
+      right: 5%;
+      height: 2px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    .flow-line-progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--blue), var(--purple), var(--green));
+      transition: width 1.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+
+    .flow-line-progress.animated {
+      width: 100%;
+    }
+
+    .flow-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+      gap: 0.5rem;
+    }
+
+    .flow-step-item {
+      flex: 1 1 100px;
+      min-width: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0.5rem 0.2rem;
+      transition: transform 0.3s;
+      cursor: default;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fade-slide-up 0.6s ease forwards;
+    }
+
+    .flow-step-item:nth-child(1) { animation-delay: 0.1s; }
+    .flow-step-item:nth-child(2) { animation-delay: 0.25s; }
+    .flow-step-item:nth-child(3) { animation-delay: 0.40s; }
+    .flow-step-item:nth-child(4) { animation-delay: 0.55s; }
+    .flow-step-item:nth-child(5) { animation-delay: 0.70s; }
+
+    .flow-step-item:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    .flow-step-item .step-circle {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: var(--card);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      transition: all 0.3s;
+      position: relative;
+      z-index: 2;
+    }
+
+    .flow-step-item:hover .step-circle {
+      border-color: var(--blue);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+      transform: scale(1.1);
+    }
+
+    .flow-step-item .step-circle .num {
+      color: var(--blue);
+      font-size: 0.8rem;
+    }
+
+    .flow-step-item .step-label {
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.15rem;
+    }
+
+    .flow-step-item .step-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--blueLight);
+      background: rgba(59, 130, 246, 0.12);
+      padding: 0.1rem 0.6rem;
+      border-radius: 30px;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+
+    .flow-step-item:hover .step-tag {
+      background: rgba(59, 130, 246, 0.25);
+    }
+
+    .flow-result {
+      margin-top: 2.5rem;
+      display: inline-block;
+      padding: 0.8rem 2.5rem;
+      border-radius: var(--radius);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--greenLight);
+      font-size: 1.1rem;
+      transition: all 0.3s;
+    }
+
+    .flow-result:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      .flow-line {
+        display: none;
+      }
+      .flow-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+      }
+      .flow-step-item {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 280px;
+        flex-direction: row;
+        gap: 1rem;
+        text-align: left;
+      }
+      .flow-step-item .step-circle {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+      .flow-step-item .step-info {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    /* ─── VÍDEO ─── */
+    .video-wrapper {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .video-wrapper:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(59, 130, 246, 0.08);
+    }
+    .video-wrapper video {
+      width: 100%;
+      display: block;
+      background: #000;
+    }
+    .video-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1.2rem;
+      background: var(--cardAlt);
+      border-top: 1px solid var(--border);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .video-controls .time {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .video-controls .time i {
+      color: var(--blue);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .video-controls .time i:hover {
+      color: var(--blueLight);
+    }
+    .video-controls .duration {
+      color: var(--dimmed);
+    }
+    .video-controls .play-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: color 0.3s, transform 0.2s;
+      padding: 0 0.3rem;
+    }
+    .video-controls .play-btn:hover {
+      color: var(--blue);
+      transform: scale(1.1);
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">Já comprou mercadoria de novo porque achou que tinha acabado — e depois
-                    encontrou produto parado?</div>
-                <p>Eu também já passei por isso — e foi por isso que criei um sistema simples para controlar estoque,
-                    vendas e lucro em um só lugar.</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- Pain Points Section -->
-    <section>
+  <!-- ─── Particles ─── -->
+  <div class="particles" aria-hidden="true">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
 
-        <div class="container">
-            <div class="section-title">
-                <h2>Você vende, vende… e mesmo assim precisa recorrer ao cartão no fim do mês.</h2>
+  <!-- Progress Bar -->
+  <div id="progress-bar" style="transform: scaleX(0);"></div>
 
-                <p>Enquanto você resolve os problemas do dia, pequenos erros continuam tirando dinheiro do seu caixa.
-                </p>
-            </div>
-
-
-
-            <div class="section-title">
-                <h2>Veja o que acontece quando o controle fica no improviso</h2>
-            </div>
-
-            <div class="grid-2">
-                <!-- Pain Point Cards -->
-                <div class="card card-danger">
-                    <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                    <h3>Anarquia de Dados</h3>
-                    <p>Informações espalhadas em 7 lugares diferentes, sem integração. Você nunca tem uma visão completa
-                        das finanças.</p>
-                    <div class="stat">Resultado: +15h/mês perdidas</div>
-                </div>
-
-                <div class="card card-danger">
-                    <div class="card-icon"><i class="fas fa-box-open"></i></div>
-                    <h3>Estoque Fantasma</h3>
-                    <p>Produtos que somem como mágica, enquanto dívidas aparecem do nada. Seu dinheiro literalmente
-                        evaporando!</p>
-                    <div class="stat">Perda média: R$3.200/trimestre</div>
-                </div>
-
-                <div class="card card-danger">
-                    <div class="card-icon"><i class="fas fa-money-bill-wave"></i></div>
-                    <h3>Custo Oculto</h3>
-                    <p>Aquela "pequena compra" que virou R$1.500/mês sem você notar. Pequenos vazamentos que viram
-                        enchentes.</p>
-                    <div class="stat">+27% de custos desnecessários</div>
-                </div>
-
-                <div class="card card-danger">
-                    <div class="card-icon"><i class="fas fa-dice"></i></div>
-                    <h3>Decisão no Escuro</h3>
-                    <p>Reinvestir? Cortar gastos? Comprar estoque? Você joga dardo no escuro sem dados confiáveis!</p>
-                    <div class="stat">73% das decisões erradas</div>
-                </div>
-
-                <div class="card card-danger">
-                    <div class="card-icon"><i class="fas fa-clock"></i></div>
-                    <h3>Tempo Perdido</h3>
-                    <p>Finais de semana reconciliando planilhas que nunca fecham. Tempo que poderia ser usado para
-                        vender mais!</p>
-                    <div class="stat">22h/mês em trabalho improdutivo</div>
-                </div>
-
-                <div class="card card-danger">
-                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Crescimento Travado</h3>
-                    <p>Sem controle, sem previsibilidade, sem segurança para investir. Seu negócio não decola.</p>
-                    <div class="stat">Oportunidades perdidas: R$14.700/ano</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section style="background-color: #f0f7ff;">
-        <div class="container">
-            <div class="section-title">
-                <h2>Agora veja o que muda quando você coloca suas vendas e estoque sob controle</h2>
-                <p>Entenda como organizar vendas, estoque e caixa pode mudar o resultado do seu negócio.</p>
-            </div>
-
-            <div class="pain-intro">
-                <p>Com o Dashboard Financeiro, você registra suas vendas, acompanha o estoque e entende com clareza
-                    quanto entrou, quanto saiu e quanto realmente sobrou.</p>
-            </div>
-
-            <div class="grid-2">
-                <!-- Benefit Cards -->
-                <div class="card card-success">
-                    <div class="card-icon"><i class="fas fa-chart-network"></i></div>
-                    <h3>Integração Perfeita</h3>
-                    <p>Todas as informações financeiras centralizadas em um único lugar. Tenha uma visão holística do
-                        seu negócio com dados integrados e harmonizados.</p>
-                    <div class="stat">Economia: +15h/mês ganhas</div>
-                </div>
-
-                <div class="card card-success">
-                    <div class="card-icon"><i class="fas fa-boxes"></i></div>
-                    <h3>Estoque Otimizado</h3>
-                    <p>Controle preciso de entrada e saída de produtos. Nunca mais perca vendas por falta de estoque nem
-                        tenha capital parado em excesso.</p>
-                    <div class="stat">Ganho médio: R$3.200/trimestre</div>
-                </div>
-
-                <div class="card card-success">
-                    <div class="card-icon"><i class="fas fa-money-check-alt"></i></div>
-                    <h3>Custos Sob Controle</h3>
-                    <p>Identifique oportunidades de redução de custos e maximize sua margem de lucro. Cada centavo é
-                        contabilizado e otimizado.</p>
-                    <div class="stat">Redução de até 27% em custos</div>
-                </div>
-
-                <div class="card card-success">
-                    <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3>Decisões Estratégicas</h3>
-                    <p>Baseie suas escolhas em dados concretos e análises precisas. Saiba quando reinvestir, expandir ou
-                        otimizar operações.</p>
-                    <div class="stat">+73% de decisões acertadas</div>
-                </div>
-
-                <div class="card card-success">
-                    <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
-                    <h3>Tempo Valorizado</h3>
-                    <p>Automatize processos manuais e recupere horas preciosas. Foque no que realmente importa: crescer
-                        seu negócio.</p>
-                    <div class="stat">Economia de 22h/mês</div>
-                </div>
-
-                <div class="card card-success">
-                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Crescimento Acelerado</h3>
-                    <p>Com controle financeiro sólido, seu negócio ganha a base necessária para escalar com segurança e
-                        previsibilidade.</p>
-                    <div class="stat">Oportunidades capturadas: R$14.700/ano</div>
-                </div>
-            </div>
-
-            <div class="section-title" style="margin-top: 70px;">
-                <h2>Veja como controlar vendas e estoque pode ficar simples</h2>
-            </div>
-
-            <video class="video-demo" src="video/video proto.mp4" controls></video>
-
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="#offer" class="btn btn-primary btn-lg">QUERO MEU DASHBOARD AGORA</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Section -->
-    <section>
-        <div class="container">
-            <div class="section-title">
-                <h2>Controle suas vendas, estoque e lucro em um só lugar</h2>
-                <p>Pare de depender de anotações soltas e veja com clareza o que vendeu, o que saiu e o que sobrou.</p>
-            </div>
-
-            <div class="grid-2">
-                <div class="card">
-                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">
-                        1</div>
-                    <div class="card-icon" style="color: var(--primary);"><i class="fas fa-heart-pulse"></i></div>
-                    <h3>Veja onde o dinheiro está escapando</h3>
-                    <p>Entenda com clareza quais gastos estão pesando no caixa, quais produtos dão mais retorno e onde o
-                        lucro está ficando pelo caminho.</p>
-                    <ul style="list-style: none; margin-top: 20px;">
-                        <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>
-                            Identifique gastos que passam despercebidos no dia a dia</li>
-                        <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>Veja a
-                            margem de lucro de cada produto com mais clareza</li>
-                        <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>Acompanhe
-                            entradas e saídas em um só lugar</li>
-                        <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Receba
-                            alertas quando o estoque estiver acabando</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">
-                        2</div>
-                    <div class="card-icon" style="color: var(--primary);"><i class="fas fa-crystal-ball"></i></div>
-                    <h3>Planeje os próximos passos com mais segurança</h3>
-                    <p>Acompanhe tendências das suas vendas, visualize o fluxo de caixa e tome decisões com mais clareza
-                        antes que o problema apareça.</p>
-                    <ul style="list-style: none; margin-top: 20px;">
-                        <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Projeção
-                            de fluxo de caixa futuro</li>
-                        <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Previsão
-                            de sazonalidade de vendas</li>
-                        <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Simulação
-                            de cenários (e se...)</li>
-                        <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>
-                            Recomendações de compra de estoque</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card" style="max-width: 800px; margin: 30px auto 0;">
-                <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-dark);">VEJA O QUE ACONTECE
-                    QUANDO VOCÊ REGISTRA UMA VENDA</h3>
-                <div style="background: #f0f7ff; padding: 20px; border-radius: 10px;">
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <div
-                                style="width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
-                                1</div>
-                            Você registra 1 venda em 15 segundos
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <div
-                                style="width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
-                                2</div>
-                            Estoque diminui AUTOMATICAMENTE
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <div
-                                style="width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
-                                3</div>
-                            Fluxo de caixa é ATUALIZADO
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <div
-                                style="width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
-                                4</div>
-                            Lucro projetado é REAJUSTADO
-                        </li>
-                        <li style="display: flex; align-items: center;">
-                            <div
-                                style="width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
-                                5</div>
-                            Alertas de risco são ACIONADOS
-                        </li>
-                    </ul>
-                    <div style="text-align: center; margin-top: 20px; font-weight: 700; color: var(--primary);">
-                        Resultado: Controle total com mínimo esforço
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Steps Section -->
-    <section style="background-color: #f0f7ff;">
-        <div class="container">
-            <div class="section-title">
-                <h2>Organize suas vendas e estoque em 3 passos simples</h2>
-                <p>Um processo tão simples que qualquer um pode dominar em minutos</p>
-            </div>
-
-            <div class="grid-2">
-                <div class="card">
-                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">
-                        1</div>
-                    <div class="card-icon" style="color: var(--primary);"><i class="fas fa-download"></i></div>
-                    <h3>CLIQUE SALVAR EM PDF</h3>
-                    <p>"Quero Meu Kit Sobrevivência" > Download IMEDIATO do arquivo. Sem cadastros complexos, sem
-                        pagamentos, sem enrolação.</p>
-                    <div
-                        style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">
-                        Tempo: 30 segundos</div>
-                </div>
-
-                <div class="card">
-                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">
-                        2</div>
-                    <div class="card-icon" style="color: var(--primary);"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <h3>NADA DE BAIXAR SISTEMAS DUVDOSOS</h3>
-                    <p>sim (sem instalar NADA). Compatível com qualquer dispositivo - até celular antigo!</p>
-                    <div
-                        style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">
-                        Tempo: 1 minuto</div>
-                </div>
-
-                <div class="card">
-                    <div style="font-size: 3rem; font-weight: 800; color: rgba(37, 99, 235, 0.1); margin-bottom: 20px;">
-                        3</div>
-                    <div class="card-icon" style="color: var(--primary);"><i class="fas fa-chart-line"></i></div>
-                    <h3>CONTROLE COMPLETO DE VENDAS E ESTOQUE</h3>
-                    <p>Comece a registrar vendas e já veja em tempo real onde está seu dinheiro. Pare de apagar incêndio
-                        e comece a prevenir!</p>
-                    <div
-                        style="display: inline-block; background: #dbeafe; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; margin-top: 15px;">
-                        Tempo: 7 minutos</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Comparison Section -->
-    <section class="comparison">
-        <div class="container">
-            <div class="section-title">
-                <h2 style="color: white;">ANTES vs DEPOIS</h2>
-                <p style="color: #e5e7eb;">Veja a transformação que o Dashboard Financeiro traz para seu negócio</p>
-            </div>
-
-            <div class="comparison-grid">
-                <div class="comparison-col without">
-                    <h3>SEM O DASHBOARD</h3>
-                    <ul class="comparison-list">
-                        <li>Descontrole financeiro constante</li>
-                        <li>Perdas invisíveis de até 27% do lucro</li>
-                        <li>20+ horas mensais em trabalho administrativo</li>
-                        <li>Decisões baseadas em "achismo"</li>
-                        <li>Surpresas desagradáveis no fim do mês</li>
-                        <li>Crescimento limitado e inseguro</li>
-                        <li>Estoque descontrolado e perdas</li>
-                        <li>Dificuldade para conseguir crédito</li>
-                    </ul>
-                </div>
-
-                <div class="comparison-col with">
-                    <h3>COM O DASHBOARD</h3>
-                    <ul class="comparison-list">
-                        <li>Controle financeiro total em tempo real</li>
-                        <li>Identificação e eliminação de perdas</li>
-                        <li>Economia de 18+ horas mensais</li>
-                        <li>Decisões baseadas em dados confiáveis</li>
-                        <li>Previsibilidade financeira mensal</li>
-                        <li>Crescimento sustentável e planejado</li>
-                        <li>Estoque otimizado e sem perdas</li>
-                        <li>Credibilidade para obter financiamento</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Offer Section -->
-    <section id="offer">
-        <div class="container">
-            <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
-                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-dark);">Hoje você leva o sistema
-                    completo + 10 ferramentas extras incluídas para organizar seu negócio, sem pagar nada a mais por
-                    isso</h3>
-            </div>
-
-            <!-- Bonus Projects Section -->
-            <section
-                style="background-color: #f9fafb; padding: 40px 0; border-radius: var(--border-radius); margin-bottom: 40px;">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>+10 ferramentas extras de bônus para facilitar a organização e gestão do seu negócio</h2>
-                        <p>Além do Dashboard Financeiro, você ainda recebe 10 ferramentas extras para facilitar a gestão
-                            do seu negócio</p>
-                    </div>
-
-                    <div class="grid-2">
-                        <div class="card">
-                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-calculator"></i></div>
-                            <h3>Calculadora de Kit Promocional</h3>
-                            <div class="bonus-item">
-                                <h3>De <s>R$ 97,00</s> por R$ 0</h3>
-                            </div>
-                            <p>Monte combos de produtos e descubra quanto cobrar sem ter prejuízo.</p>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-balance-scale"></i>
-                            </div>
-                            <h3>Calculadora de Preço por Unidade</h3>
-                            <div class="bonus-item">
-                                <h3>De <s>R$ 127,00</s> por R$ 0</h3>
-                            </div>
-                            <p>Defina o preço ideal de cada produto considerando seus custos reais.</p>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-icon" style="color: var(--accent);"><i
-                                    class="fas fa-file-invoice-dollar"></i></div>
-                            <h3>Calculadora de Preço por Margem de Lucro</h3>
-                            <div class="bonus-item">
-                                <h3>De <s>R$ 197,00</s> por R$ 0</h3>
-                            </div>
-                            <p>Calcule preços com base no lucro que você quer ter em cada venda.</p>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-calculator"></i></div>
-                            <h3>Calculadora Financeira</h3>
-                            <div class="bonus-item">
-                                <h3>De <s>R$ 37,00</s> por R$ 0</h3>
-                            </div>
-                            <p>Simule gastos, parcelas e decisões financeiras antes de investir.</p>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-tag"></i></div>
-                            <h3>Gerador de Nomes e Slogans</h3>
-                            <div class="bonus-item">
-                                <h3>De <s>R$ 87,00</s> por R$ 0</h3>
-                            </div>
-                            <p>Crie nomes e frases para seu negócio de forma rápida e fácil.</p>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-comment-dots"></i>
-                            </div>
-                            <h3>Gerador de Conteúdo para Redes Sociais</h3>
-                            <div class="bonus-item">
-                                <h3>De <s>R$ 127,00</s> por R$ 0</h3>
-                            </div>
-                            <p>Crie frases e ideias para posts e stories em poucos segundos.</p>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-chart-pie"></i></div>
-                            <h3>Gráficos de Gastos</h3>
-                            <div class="bonus-item">
-                                <h3>De <s>R$ 297,00</s> por R$ 0</h3>
-                            </div>
-                            <p>Veja claramente para onde seu dinheiro está indo no dia a dia.</p>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-tasks"></i></div>
-                            <h3>Checklist de Organização</h3>
-                            <div class="bonus-item">
-                                <h3>De <s>R$ 167,00</s> por R$ 0</h3>
-                            </div>
-                            <p>Não esqueça tarefas importantes da sua rotina de vendas.</p>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-clipboard-list"></i>
-                            </div>
-                            <h3>Planner de Pedidos</h3>
-                            <div class="bonus-item">
-                                <h3>De <s>R$ 257,00</s> por R$ 0</h3>
-                            </div>
-                            <p>Organize seus pedidos e acompanhe tudo sem confusão.</p>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-icon" style="color: var(--accent);"><i class="fas fa-truck"></i></div>
-                            <h3>Simulador de Frete</h3>
-                            <div class="bonus-item">
-                                <h3>De <s>R$ 197,00</s> por R$ 0</h3>
-                            </div>
-                            <p>Calcule o frete e entenda como incluir no preço sem perder lucro.</p>
-
-                        </div>
-
-                    </div>
-            </section>
-
-            <div class="plans-grid">
-                <!-- Plano Essencial -->
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <h3>Dashboard Financeiro</h3>
-                        <div class="plan-price">R$27,00</div>
-                        <p>Controle suas vendas, estoque e lucro em um só lugar</p>
-                    </div>
-                    <ul class="plan-features">
-                        <li>Dashboard Financeiro (normal)</li>
-                    </ul>
-                    <div style="text-align: center; margin-top: 20px;">
-                        <a href="https://pay.kiwify.com.br/2y51rOJ" class="btn btn-primary">QUERO MEU DASHBOARD
-                            (R$27,00)</a>
-                    </div>
-                </div>
-
-                <!-- Plano Premium -->
-                <div class="plan-card premium">
-                    <div class="plan-header">
-                        <h3> CONJUNTO DE SISTEMAS PREMIUM</h3>
-                        <div class="plan-price">R$37,99</div>
-                        <p>Dashboard + 10 ferramentas para organizar tudo</p>
-
-                    </div>
-                    <ul class="plan-features">
-                        <li>Dashboard Financeiro completo</li>
-                        <li>10 ferramentas extras de gestão incluídas</li>
-                        <li>Organização de vendas, estoque e lucro</li>
-                        <li>Ferramentas para precificação e planejamento</li>
-                        <li>Mais controle e visão do seu negócio</li>
-                        <li>Melhor custo-benefício da plataforma</li>
-                    </ul>
-                    <div style="text-align: center; margin-top: 20px;">
-                        <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-gold"> QUERO O MELHOR PACOTE (R$37,99)</a>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="https://pay.kiwify.com.br/tGXNRa6" class="btn btn-primary btn-lg">QUERO TODOS OS BÔNUS
-                    AGORA</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Premium Offer Card -->
-    <div class="premium-offer-container">
-        <div class="premium-offer-card">
-            <div class="offer-header">
-                <div class="product-category">CONTROLE TOTAL DAS SUAS VENDAS E ESTOQUE</div>
-            </div>
-            <div class="product-mockup">
-                <div class="mockup-placeholder">
-                    <div class="device laptop"></div>
-                    <div class="device tablet"></div>
-                    <div class="device phone"></div>
-                </div>
-            </div>
-            <div class="product-title">
-                
-            </div>
-            <div class="benefits-list">
-                
-               
-               
-            </div>
-            <div class="pricing-section">
-                <div class="original-price">
-                </div>
-                
-                <div class="cash-price">
-                <span>ACESSO COMPLETO POR APENAS R$27,99</span>
-                </div>
-                <div class="lifetime-access">
-                     <span>ACESSO VITALÍCIO • PAGAMENTO ÚNICO</span>
-                </div>
-            </div>
-            <a style="text-decoration: none;" href="https://pay.kiwify.com.br/tGXNRa6"><button class="cta-button">   Quero meu acesso agora</button></a>
-        </div>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="inner">
+      <div class="logo">
+        <div class="logo-icon"><i class="fas fa-activity"></i></div>
+        Dashboard <span style="color: var(--blue);">Financeiro</span>
+      </div>
+      <button class="btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">
+        COMEÇAR AGORA
+      </button>
     </div>
+  </nav>
 
-    <!-- Guarantee Section -->
-    <div class="guarantee">
-        <h3>GARANTIA DE SATISFAÇÃO DE 7 DIAS</h3>
-        <p>Se em 7 dias você não estiver completamente satisfeito, devolvemos seu dinheiro sem questionamentos. Sem
-            risco, sem burocracia.</p>
+  <!-- ═══ HERO ═══ -->
+  <section class="hero grid-bg" id="hero">
+    <div class="glow1"></div>
+    <div class="glow2"></div>
+    <div class="container hero-content">
+      <div class="flex-1">
+        <div class="badge" style="animation: fade-slide-up 0.6s ease both;"><i class="fas fa-wifi"></i> Para pequenos negócios e vendedores</div>
+        <h1 class="section-title" style="font-size: clamp(2rem, 4vw, 3.5rem); margin-top: 1.2rem; animation: fade-slide-up 0.7s ease 0.1s both;">
+          Já comprou mercadoria de novo porque achou que tinha acabado — <br />
+          <span class="gradient-text">e depois encontrou produto parado?</span>
+        </h1>
+        <p style="color: var(--muted); font-size: 1.1rem; max-width: 36rem; margin: 1.2rem 0 2rem; animation: fade-slide-up 0.7s ease 0.2s both;">
+          Eu também já passei por isso — e foi por isso que criei um sistema simples para controlar estoque, vendas e lucro em um só lugar.
+        </p>
+        <div style="animation: fade-slide-up 0.7s ease 0.3s both;">
+          <button class="btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">
+            QUERO MEU DASHBOARD AGORA <i class="fas fa-arrow-right"></i>
+          </button>
+          <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.5rem; color: var(--dimmed); font-size: 0.85rem;">
+            <span><i class="fas fa-shield-alt" style="color: var(--green);"></i> Pagamento Único</span>
+            <span><i class="fas fa-check-circle" style="color: var(--green);"></i> Acesso Vitalício</span>
+            <span><i class="fas fa-bolt" style="color: var(--green);"></i> Resultado Imediato</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex-1" style="animation: fade-slide-up 0.8s ease 0.4s both;">
+        <div class="mock-dash glow-blue">
+          <div class="title-bar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span>dashboard.financeiro — visão geral</span>
+          </div>
+          <div class="body">
+            <div class="mock-grid">
+              <div class="mock-card">
+                <div class="label">/ lucro_mes</div>
+                <div class="value">R$ <span class="counter typing-cursor" data-target="8420">0</span></div>
+                <div class="trend"><i class="fas fa-arrow-up"></i> +23% vs último mês</div>
+              </div>
+              <div class="mock-card">
+                <div class="label">/ vendas_hoje</div>
+                <div class="value"><span class="counter typing-cursor" data-target="47">0</span></div>
+                <div class="mock-bar-chart" id="barChart">
+                  <div class="mock-bar" style="--h:40%;" data-h="40"></div>
+                  <div class="mock-bar" style="--h:60%;" data-h="60"></div>
+                  <div class="mock-bar" style="--h:30%;" data-h="30"></div>
+                  <div class="mock-bar" style="--h:80%;" data-h="80"></div>
+                  <div class="mock-bar" style="--h:50%;" data-h="50"></div>
+                  <div class="mock-bar" style="--h:100%;" data-h="100"></div>
+                  <div class="mock-bar" style="--h:70%;" data-h="70"></div>
+                </div>
+              </div>
+            </div>
+            <div class="alert-box">
+              <i class="fas fa-exclamation-triangle icon"></i>
+              <div>
+                <div style="font-family: 'Space Mono', monospace; font-size:0.7rem; color: var(--red); font-weight:700;">ALERT: estoque_critico</div>
+                <div style="font-family: 'Space Mono', monospace; font-size:0.7rem; color: var(--muted);"><span class="counter" data-target="3">0</span> itens abaixo do mínimo</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-family: 'Space Mono', monospace; font-size:0.65rem; color: var(--muted); margin-bottom:0.3rem;">receita_semanal[]</div>
+              <div class="mock-bar-chart" id="weeklyChart">
+                <div class="mock-bar" style="--h:30%;" data-h="30"></div>
+                <div class="mock-bar" style="--h:45%;" data-h="45"></div>
+                <div class="mock-bar" style="--h:25%;" data-h="25"></div>
+                <div class="mock-bar" style="--h:65%;" data-h="65"></div>
+                <div class="mock-bar" style="--h:40%;" data-h="40"></div>
+                <div class="mock-bar" style="--h:85%;" data-h="85"></div>
+                <div class="mock-bar" style="--h:58%;" data-h="58"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- FAQ Section -->
-    <section style="background-color: #f9fafb;">
-        <div class="container">
-            <div class="section-title">
-                <h2>PERGUNTAS FREQUENTES</h2>
-                <p>Tudo o que você precisa saber antes de começar</p>
-            </div>
-
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Funciona em computadores antigos?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            SIM! Nosso sistema é 100% baseado em nuvem e roda até em computadores com Windows XP ou
-                            celulares antigos. Tudo que você precisa é de uma conexão com internet para acessar o
-                            Google.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Preciso pagar mensalidade depois?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            NUNCA! O dashboard básico é gratuito para sempre, sem taxas escondidas ou mensalidades.
-                            Oferecemos cursos e consultorias adicionais opcionais, mas o sistema essencial é seu para
-                            sempre sem custos.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Consigo usar pelo celular?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            TOTALMENTE! Nosso sistema é otimizado para dispositivos móveis. Você pode registrar vendas
-                            na feira, conferir estoque no depósito e analisar relatórios no sofá - tudo pelo seu
-                            celular.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Preciso ser expert em Excel?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Se você sabe enviar mensagem no WhatsApp, vai dominar nosso sistema em 1 hora! Não precisa
-                            de conhecimentos avançados em Excel ou contabilidade.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Quanto tempo leva para ver resultados?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            94,3% dos nossos usuários identificaram pelo menos um vazamento financeiro nos primeiros 15
-                            dias de uso. Resultados significativos (redução de perdas acima de 30%) são observados em
-                            média em 30 dias.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Funciona para qualquer tipo de negócio?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Sim! Nosso dashboard já foi implementado com sucesso em mais de 15 segmentos: comércio
-                            varejista, serviços, alimentação, artesanato, consultorias, e-commerce e muito mais. Temos
-                            modelos específicos para diferentes necessidades.
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- ═══ STAT STRIP ═══ -->
+  <div style="background: var(--cardAlt); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:1.5rem 0;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr; gap:1rem; text-align:center;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem 4rem;">
+          <div class="reveal" style="transition-delay:0.05s;">
+            <div style="font-family: 'Space Mono', monospace; font-weight:700; font-size:2rem; color: var(--green);">R$ 3.200</div>
+            <div style="font-size:0.75rem; color: var(--muted);">recuperados por trimestre</div>
+          </div>
+          <div class="reveal" style="transition-delay:0.15s;">
+            <div style="font-family: 'Space Mono', monospace; font-weight:700; font-size:2rem; color: var(--blue);">22h</div>
+            <div style="font-size:0.75rem; color: var(--muted);">economizadas por mês</div>
+          </div>
+          <div class="reveal" style="transition-delay:0.25s;">
+            <div style="font-family: 'Space Mono', monospace; font-weight:700; font-size:2rem; color: var(--purple);">73%</div>
+            <div style="font-size:0.75rem; color: var(--muted);">mais decisões acertadas</div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
 
-    <footer style="background: var(--dark); color: white; text-align: center; padding: 30px 0;">
-        <div class="container">
-            <p>&copy; 2025 Dashboard Financeiro | Todos os direitos reservados</p>
+  <!-- ═══ DIAGNÓSTICO ═══ -->
+  <section style="padding:4rem 1.5rem; background: var(--bg); position:relative; overflow:hidden;">
+    <div class="container">
+      <div class="text-center mb-12">
+        <div class="badge badge-red" style="animation: fade-slide-up 0.6s ease both;"><i class="fas fa-exclamation-triangle"></i> diagnóstico do sistema</div>
+        <h2 class="section-title" style="animation: fade-slide-up 0.7s ease 0.1s both;">Veja o que acontece quando o controle fica no improviso</h2>
+        <p class="section-sub" style="font-size:1.05rem; animation: fade-slide-up 0.7s ease 0.2s both;">
+          Você vende, vende… e mesmo assim precisa recorrer ao cartão no fim do mês.
+          Pequenos erros continuam tirando dinheiro do seu caixa.
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="icon-wrap"><i class="fas fa-database" style="font-size:1.8rem; color:var(--red); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Anarquia de Dados</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Informações espalhadas em 7 lugares diferentes, sem integração. Você nunca tem uma visão completa das finanças.</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:#FCA5A5; background:rgba(239,68,68,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-down"></i> +15h/mês perdidas</div>
         </div>
-    </footer>
+        <div class="card reveal">
+          <div class="icon-wrap"><i class="fas fa-box" style="font-size:1.8rem; color:var(--red); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Estoque Fantasma</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Produtos que somem como mágica, enquanto dívidas aparecem do nada. Seu dinheiro literalmente evaporando!</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:#FCA5A5; background:rgba(239,68,68,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-down"></i> Perda média: R$3.200/trimestre</div>
+        </div>
+        <div class="card reveal">
+          <div class="icon-wrap"><i class="fas fa-chart-line" style="font-size:1.8rem; color:var(--red); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Custo Oculto</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Aquela 'pequena compra' que virou R$1.500/mês sem você notar. Pequenos vazamentos que viram enchentes.</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:#FCA5A5; background:rgba(239,68,68,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-down"></i> +27% de custos desnecessários</div>
+        </div>
+        <div class="card reveal">
+          <div class="icon-wrap"><i class="fas fa-lightbulb" style="font-size:1.8rem; color:var(--red); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Decisão no Escuro</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Reinvestir? Cortar gastos? Comprar estoque? Você joga dardo no escuro sem dados confiáveis!</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:#FCA5A5; background:rgba(239,68,68,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-down"></i> 73% das decisões erradas</div>
+        </div>
+        <div class="card reveal">
+          <div class="icon-wrap"><i class="fas fa-clock" style="font-size:1.8rem; color:var(--red); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Tempo Perdido</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Finais de semana reconciliando planilhas que nunca fecham. Tempo que poderia ser usado para vender mais!</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:#FCA5A5; background:rgba(239,68,68,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-down"></i> 22h/mês improdutivas</div>
+        </div>
+        <div class="card reveal">
+          <div class="icon-wrap"><i class="fas fa-rocket" style="font-size:1.8rem; color:var(--red); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Crescimento Travado</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Sem controle, sem previsibilidade, sem segurança para investir. Seu negócio não decola.</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:#FCA5A5; background:rgba(239,68,68,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-down"></i> R$14.700/ano perdidos</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                faqItem.classList.toggle('active');
-            });
+  <!-- ═══ SOLUÇÃO ═══ -->
+  <section style="padding:4rem 1.5rem; background: var(--cardAlt);">
+    <div class="container">
+      <div class="text-center mb-12">
+        <div class="badge badge-green" style="animation: fade-slide-up 0.6s ease both;"><i class="fas fa-check-circle"></i> solução instalada</div>
+        <h2 class="section-title" style="animation: fade-slide-up 0.7s ease 0.1s both;">O que muda quando você tem <span class="gradient-text">controle total</span></h2>
+        <p class="section-sub" style="font-size:1.05rem; animation: fade-slide-up 0.7s ease 0.2s both;">
+          Com o Dashboard Financeiro, você registra suas vendas, acompanha o estoque e entende com clareza quanto entrou, quanto saiu e quanto realmente sobrou.
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="card reveal" style="border-left:3px solid var(--blue);">
+          <div class="icon-wrap"><i class="fas fa-th-large" style="font-size:1.8rem; color:var(--blue); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Integração Perfeita</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Todas as informações financeiras centralizadas em um único lugar. Visão holística com dados integrados.</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--blue); background:rgba(59,130,246,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-up"></i> +15h/mês ganhas</div>
+        </div>
+        <div class="card reveal" style="border-left:3px solid var(--green);">
+          <div class="icon-wrap"><i class="fas fa-cubes" style="font-size:1.8rem; color:var(--green); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Estoque Otimizado</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Controle preciso de entrada e saída de produtos. Nunca mais perca vendas nem tenha capital parado.</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--green); background:rgba(16,185,129,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-up"></i> R$3.200/trimestre</div>
+        </div>
+        <div class="card reveal" style="border-left:3px solid var(--purple);">
+          <div class="icon-wrap"><i class="fas fa-dollar-sign" style="font-size:1.8rem; color:var(--purple); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Custos Sob Controle</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Identifique oportunidades de redução de custos e maximize sua margem. Cada centavo contabilizado.</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--purple); background:rgba(139,92,246,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-up"></i> Redução de 27%</div>
+        </div>
+        <div class="card reveal" style="border-left:3px solid var(--blue);">
+          <div class="icon-wrap"><i class="fas fa-chart-pie" style="font-size:1.8rem; color:var(--blue); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Decisões Estratégicas</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Baseie suas escolhas em dados concretos. Saiba quando reinvestir, expandir ou otimizar operações.</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--blue); background:rgba(59,130,246,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-up"></i> +73% de acertos</div>
+        </div>
+        <div class="card reveal" style="border-left:3px solid var(--green);">
+          <div class="icon-wrap"><i class="fas fa-bolt" style="font-size:1.8rem; color:var(--green); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Tempo Valorizado</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Automatize processos manuais e recupere horas preciosas para focar no que realmente importa.</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--green); background:rgba(16,185,129,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-up"></i> 22h/mês economizadas</div>
+        </div>
+        <div class="card reveal" style="border-left:3px solid var(--purple);">
+          <div class="icon-wrap"><i class="fas fa-arrow-trend-up" style="font-size:1.8rem; color:var(--purple); margin-bottom:0.5rem; display:block;"></i></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">Crescimento Acelerado</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Seu negócio ganha a base necessária para escalar com segurança e previsibilidade total.</p>
+          <div style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--purple); background:rgba(139,92,246,0.15); padding:0.3rem 0.8rem; border-radius:30px; display:inline-block;"><i class="fas fa-arrow-up"></i> R$14.700/ano gerados</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS (2 steps + VÍDEO) ═══ -->
+  <section style="padding:4rem 1.5rem; background: var(--bg);">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="section-title" style="animation: fade-slide-up 0.7s ease both;">Veja como controlar vendas e estoque pode ficar simples</h2>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="reveal" style="display:flex; flex-direction:column; gap:1rem; max-width:900px; margin:0 auto;">
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem;">
+          <div style="flex:1; min-width:250px;">
+            <div class="step-number">01</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.5rem;">Veja onde o dinheiro está escapando</h3>
+            <p style="color:var(--muted); margin:0.5rem 0 1rem;">Entenda com clareza quais gastos estão pesando no caixa, quais produtos dão mais retorno e onde o lucro está ficando pelo caminho.</p>
+            <ul style="list-style:none; display:grid; gap:0.5rem;">
+              <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-check-circle" style="color:var(--blue);"></i> Identifique gastos que passam despercebidos no dia a dia</li>
+              <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-check-circle" style="color:var(--blue);"></i> Veja a margem de lucro de cada produto com mais clareza</li>
+              <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-check-circle" style="color:var(--blue);"></i> Acompanhe entradas e saídas em um só lugar</li>
+              <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-check-circle" style="color:var(--blue);"></i> Receba alertas quando o estoque estiver acabando</li>
+            </ul>
+          </div>
+          <div style="flex:1; min-width:150px; background:var(--card); border-radius:var(--radius); padding:2rem; border:1px solid rgba(59,130,246,0.2); text-align:center; transition:transform 0.4s;">
+            <i class="fas fa-chart-simple" style="font-size:4rem; color:var(--blue); opacity:0.4;"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="reveal" style="display:flex; flex-direction:column-reverse; gap:1rem; max-width:900px; margin:0 auto; margin-top:3rem;">
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem; flex-direction:row-reverse;">
+          <div style="flex:1; min-width:250px;">
+            <div class="step-number" style="color:var(--purpleLight);">02</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.5rem;">Planeje os próximos passos com mais segurança</h3>
+            <p style="color:var(--muted); margin:0.5rem 0 1rem;">Acompanhe tendências das suas vendas, visualize o fluxo de caixa e tome decisões com mais clareza antes que o problema apareça.</p>
+            <ul style="list-style:none; display:grid; gap:0.5rem;">
+              <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-check-circle" style="color:var(--purple);"></i> Projeção de fluxo de caixa futuro</li>
+              <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-check-circle" style="color:var(--purple);"></i> Previsão de sazonalidade de vendas</li>
+              <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-check-circle" style="color:var(--purple);"></i> Simulação de cenários (e se...)</li>
+              <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-check-circle" style="color:var(--purple);"></i> Recomendações de compra de estoque</li>
+            </ul>
+          </div>
+          <div style="flex:1; min-width:150px; background:var(--card); border-radius:var(--radius); padding:2rem; border:1px solid rgba(139,92,246,0.2); text-align:center; transition:transform 0.4s;">
+            <i class="fas fa-arrow-trend-up" style="font-size:4rem; color:var(--purple); opacity:0.4;"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- VÍDEO -->
+      <div class="reveal" style="max-width:700px; margin:3rem auto 2rem;">
+        <div class="video-wrapper">
+          <video id="demoVideo" poster="" controls style="width:100%;">
+            <source src="video.mp4" type="video/mp4" />
+            Seu navegador não suporta vídeos HTML5.
+          </video>
+          <div class="video-controls">
+            <div class="time">
+              <i class="fas fa-play" id="playBtn" style="font-size:0.9rem;"></i>
+              <span id="currentTime">0:00</span>
+            </div>
+            <span class="duration">/ 1:05</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botão -->
+      <div class="text-center" style="margin-top:1.5rem;">
+        <button class="btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">
+          QUERO MEU DASHBOARD AGORA
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ AUTOMAÇÃO COM LINHA ANIMADA ═══ -->
+  <section style="padding:4rem 1.5rem; background: var(--cardAlt);">
+    <div class="container text-center">
+      <div class="badge badge-purple" style="animation: fade-slide-up 0.6s ease both;"><i class="fas fa-microchip"></i> automação em tempo real</div>
+      <h2 class="section-title" style="animation: fade-slide-up 0.7s ease 0.1s both;">VEJA O QUE ACONTECE QUANDO VOCÊ REGISTRA UMA VENDA</h2>
+      <p style="color:var(--muted); animation: fade-slide-up 0.7s ease 0.2s both;">Um registro. Cinco verificações simultâneas.</p>
+
+      <div class="flow-container" id="flowContainer">
+        <div class="flow-line">
+          <div class="flow-line-progress" id="flowLineProgress"></div>
+        </div>
+        <div class="flow-steps">
+          <div class="flow-step-item">
+            <div class="step-circle"><span class="num">1</span></div>
+            <div class="step-info">
+              <div class="step-label">Você registra 1 venda em 15 segundos</div>
+              <span class="step-tag">15 segundos</span>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="step-circle"><span class="num">2</span></div>
+            <div class="step-info">
+              <div class="step-label">Estoque diminui AUTOMATICAMENTE</div>
+              <span class="step-tag">sincronizar()</span>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="step-circle"><span class="num">3</span></div>
+            <div class="step-info">
+              <div class="step-label">Fluxo de caixa é ATUALIZADO</div>
+              <span class="step-tag">em tempo real</span>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="step-circle"><span class="num">4</span></div>
+            <div class="step-info">
+              <div class="step-label">Lucro projetado é REAJUSTADO</div>
+              <span class="step-tag">calc()</span>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="step-circle"><span class="num">5</span></div>
+            <div class="step-info">
+              <div class="step-label">Alertas de risco são ACIONADOS</div>
+              <span class="step-tag">se (crítico)</span>
+            </div>
+          </div>
+        </div>
+        <div class="flow-result reveal">
+          Resultado: Controle total com mínimo esforço
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 3 STEPS ═══ -->
+  <section style="padding:4rem 1.5rem; background: var(--bg);">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="section-title" style="animation: fade-slide-up 0.7s ease both;">Organize suas vendas e estoque em 3 passos simples</h2>
+        <p class="section-sub" style="animation: fade-slide-up 0.7s ease 0.1s both;">Um processo tão simples que qualquer um pode dominar em minutos</p>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr; gap:1.5rem;">
+        <div class="three-step" style="animation-delay:0.05s;">
+          <div style="font-size:2.5rem; font-weight:800; color:var(--blueLight); opacity:0.2;">1</div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">SALVAR EM PDF</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Download IMEDIATO do arquivo. Sem cadastros complexos, sem pagamentos, sem enrolação.</p>
+          <div class="time"><i class="far fa-clock"></i> 30 segundos</div>
+        </div>
+        <div class="three-step" style="animation-delay:0.15s;">
+          <div style="font-size:2.5rem; font-weight:800; color:var(--purpleLight); opacity:0.2;">2</div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">ZERO INSTALAÇÕES</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Sem instalar NADA. Compatível com qualquer dispositivo — até celular antigo!</p>
+          <div class="time"><i class="far fa-clock"></i> 1 minuto</div>
+        </div>
+        <div class="three-step" style="animation-delay:0.25s;">
+          <div style="font-size:2.5rem; font-weight:800; color:var(--greenLight); opacity:0.2;">3</div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;">CONTROLE TOTAL</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Comece a registrar vendas e veja em tempo real onde está seu dinheiro. Pare de apagar incêndio.</p>
+          <div class="time"><i class="far fa-clock"></i> 7 minutos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPARATIVO ═══ -->
+  <section style="padding:4rem 1.5rem; background: var(--bg);">
+    <div class="container">
+      <div class="text-center mb-12">
+        <div class="badge" style="animation: fade-slide-up 0.6s ease both;"><i class="fas fa-arrows-left-right"></i> comparativo</div>
+        <h2 class="section-title" style="animation: fade-slide-up 0.7s ease 0.1s both;">Com ou sem o Dashboard? <span class="gradient-text">A diferença é clara.</span></h2>
+        <p class="section-sub" style="animation: fade-slide-up 0.7s ease 0.2s both;">Veja lado a lado o que muda na gestão do seu negócio.</p>
+      </div>
+      <div class="compare-wrapper">
+        <div class="compare-grid">
+          <div class="compare-col sem reveal" style="border-radius: var(--radius) 0 0 var(--radius);">
+            <div class="code-tag">// sem_o_dashboard</div>
+            <div class="col-header">
+              <i class="fas fa-times"></i> SEM O DASHBOARD
+            </div>
+            <ul>
+              <li><i class="fas fa-times-circle"></i> Descontrole financeiro constante</li>
+              <li><i class="fas fa-times-circle"></i> Perdas invisíveis de até 27% do lucro</li>
+              <li><i class="fas fa-times-circle"></i> 20+ horas mensais em trabalho administrativo</li>
+              <li><i class="fas fa-times-circle"></i> Decisões baseadas em achismo</li>
+              <li><i class="fas fa-times-circle"></i> Surpresas desagradáveis no fim do mês</li>
+              <li><i class="fas fa-times-circle"></i> Crescimento limitado e inseguro</li>
+              <li><i class="fas fa-times-circle"></i> Estoque descontrolado e perdas</li>
+              <li><i class="fas fa-times-circle"></i> Dificuldade para conseguir crédito</li>
+            </ul>
+          </div>
+          <div class="compare-col com reveal" style="border-radius: 0 var(--radius) var(--radius) 0;">
+            <div class="code-tag">// com_o_dashboard</div>
+            <div class="col-header">
+              <i class="fas fa-check"></i> COM O DASHBOARD
+            </div>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Controle financeiro total em tempo real</li>
+              <li><i class="fas fa-check-circle"></i> Identificação e eliminação de perdas</li>
+              <li><i class="fas fa-check-circle"></i> Economia de 18+ horas mensais</li>
+              <li><i class="fas fa-check-circle"></i> Decisões baseadas em dados confiáveis</li>
+              <li><i class="fas fa-check-circle"></i> Previsibilidade financeira mensal</li>
+              <li><i class="fas fa-check-circle"></i> Crescimento sustentável e planejado</li>
+              <li><i class="fas fa-check-circle"></i> Estoque otimizado e sem perdas</li>
+              <li><i class="fas fa-check-circle"></i> Credibilidade para obter financiamento</li>
+            </ul>
+          </div>
+        </div>
+        <div class="vs-divider">
+          <div class="vs-circle">VS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BÔNUS ═══ -->
+  <section style="padding:4rem 1.5rem; background: var(--cardAlt);">
+    <div class="container">
+      <div class="text-center mb-12">
+        <div class="badge badge-purple" style="animation: fade-slide-up 0.6s ease both;"><i class="fas fa-gift"></i> bônus inclusos</div>
+        <h2 class="section-title" style="animation: fade-slide-up 0.7s ease 0.1s both;">Hoje você leva o sistema completo <span class="gradient-text">+ 10 ferramentas extras</span></h2>
+        <p style="color:var(--muted); animation: fade-slide-up 0.7s ease 0.2s both;">Sem pagar nada a mais por isso</p>
+        <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.5rem; animation: fade-slide-up 0.7s ease 0.3s both;">
+          <span style="font-family:'Space Mono',monospace; font-size:1.2rem; text-decoration:line-through; color:var(--dimmed);">R$ 1.590,00</span>
+          <span style="font-family:'Space Mono',monospace; font-size:1.8rem; font-weight:700; color:var(--green);">+ R$ 0,00</span>
+        </div>
+      </div>
+      <div class="bonus-grid">
+        <div class="bonus-item reveal">
+          <i class="fas fa-calculator main-icon"></i>
+          <div class="main-title">Calculadora de Kit Promocional</div>
+          <div class="price-old">De R$ 97,00 por <strong>R$ 0</strong></div>
+          <p class="desc">Monte combos de produtos e descubra quanto cobrar sem ter prejuízo.</p>
+          <span class="free-badge">INCLUSO GRATUITAMENTE</span>
+        </div>
+        <div class="bonus-item reveal">
+          <i class="fas fa-tag main-icon"></i>
+          <div class="main-title">Calculadora de Preço por Unidade</div>
+          <div class="price-old">De R$ 127,00 por <strong>R$ 0</strong></div>
+          <p class="desc">Defina o preço ideal de cada produto considerando seus custos reais.</p>
+          <span class="free-badge">INCLUSO GRATUITAMENTE</span>
+        </div>
+        <div class="bonus-item reveal">
+          <i class="fas fa-percent main-icon"></i>
+          <div class="main-title">Calculadora de Margem de Lucro</div>
+          <div class="price-old">De R$ 197,00 por <strong>R$ 0</strong></div>
+          <p class="desc">Calcule preços com base no lucro que você quer ter em cada venda.</p>
+          <span class="free-badge">INCLUSO GRATUITAMENTE</span>
+        </div>
+        <div class="bonus-item reveal">
+          <i class="fas fa-chart-bar main-icon"></i>
+          <div class="main-title">Calculadora Financeira</div>
+          <div class="price-old">De R$ 37,00 por <strong>R$ 0</strong></div>
+          <p class="desc">Simule gastos, parcelas e decisões financeiras antes de investir.</p>
+          <span class="free-badge">INCLUSO GRATUITAMENTE</span>
+        </div>
+        <div class="bonus-item reveal">
+          <i class="fas fa-pen-fancy main-icon"></i>
+          <div class="main-title">Gerador de Nomes e Slogans</div>
+          <div class="price-old">De R$ 87,00 por <strong>R$ 0</strong></div>
+          <p class="desc">Crie nomes e frases para seu negócio de forma rápida e fácil.</p>
+          <span class="free-badge">INCLUSO GRATUITAMENTE</span>
+        </div>
+        <div class="bonus-item reveal">
+          <i class="fas fa-share-alt main-icon"></i>
+          <div class="main-title">Gerador de Conteúdo para Redes Sociais</div>
+          <div class="price-old">De R$ 127,00 por <strong>R$ 0</strong></div>
+          <p class="desc">Crie frases e ideias para posts e stories em poucos segundos.</p>
+          <span class="free-badge">INCLUSO GRATUITAMENTE</span>
+        </div>
+        <div class="bonus-item reveal">
+          <i class="fas fa-chart-pie main-icon"></i>
+          <div class="main-title">Gráficos de Gastos</div>
+          <div class="price-old">De R$ 297,00 por <strong>R$ 0</strong></div>
+          <p class="desc">Veja claramente para onde seu dinheiro está indo no dia a dia.</p>
+          <span class="free-badge">INCLUSO GRATUITAMENTE</span>
+        </div>
+        <div class="bonus-item reveal">
+          <i class="fas fa-check-double main-icon"></i>
+          <div class="main-title">Checklist de Organização</div>
+          <div class="price-old">De R$ 167,00 por <strong>R$ 0</strong></div>
+          <p class="desc">Não esqueça tarefas importantes da sua rotina de vendas.</p>
+          <span class="free-badge">INCLUSO GRATUITAMENTE</span>
+        </div>
+        <div class="bonus-item reveal">
+          <i class="fas fa-clipboard-list main-icon"></i>
+          <div class="main-title">Planner de Pedidos</div>
+          <div class="price-old">De R$ 257,00 por <strong>R$ 0</strong></div>
+          <p class="desc">Organize seus pedidos e acompanhe tudo sem confusão.</p>
+          <span class="free-badge">INCLUSO GRATUITAMENTE</span>
+        </div>
+        <div class="bonus-item reveal">
+          <i class="fas fa-truck main-icon"></i>
+          <div class="main-title">Simulador de Frete</div>
+          <div class="price-old">De R$ 197,00 por <strong>R$ 0</strong></div>
+          <p class="desc">Calcule o frete e entenda como incluir no preço sem perder lucro.</p>
+          <span class="free-badge">INCLUSO GRATUITAMENTE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIALS ═══ -->
+  <section style="padding:4rem 1.5rem; background: var(--bg);">
+    <div class="container">
+      <div class="text-center mb-12">
+        <div class="badge badge-green" style="animation: fade-slide-up 0.6s ease both;"><i class="fas fa-star"></i> depoimentos</div>
+        <h2 class="section-title" style="animation: fade-slide-up 0.7s ease 0.1s both;">Quem já está no controle</h2>
+        <p class="section-sub" style="animation: fade-slide-up 0.7s ease 0.2s both;">Pessoas reais alcançando resultados reais.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial reveal" style="border-color:rgba(59,130,246,0.3);">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="text">“Antes eu não sabia nem quanto lucrava por mês. Agora vejo tudo em tempo real. Simplesmente incrível!”</div>
+          <div class="name">Maria S. <span class="role">Revendedora</span></div>
+        </div>
+        <div class="testimonial reveal" style="border-color:rgba(139,92,246,0.3);">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="text">“Parei de comprar produto parado no estoque. Em 2 semanas já recuperei o que paguei.”</div>
+          <div class="name">João R. <span class="role">Lojista</span></div>
+        </div>
+        <div class="testimonial reveal" style="border-color:rgba(16,185,129,0.3);">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="text">“Uso no celular, simples demais. Não precisa saber nada de tecnologia.”</div>
+          <div class="name">Fernanda L. <span class="role">Empreendedora</span></div>
+        </div>
+        <div class="testimonial reveal" style="border-color:rgba(59,130,246,0.2);">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="text">“Minha margem de lucro aumentou 18% no primeiro mês. O dashboard me mostrou onde eu estava perdendo dinheiro.”</div>
+          <div class="name">Carlos M. <span class="role">Atacadista</span></div>
+        </div>
+        <div class="testimonial reveal" style="border-color:rgba(139,92,246,0.2);">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="text">“Agora sei exatamente quanto devo comprar de cada produto. Meu estoque nunca mais ficou parado.”</div>
+          <div class="name">Patrícia K. <span class="role">Revendedora de Moda</span></div>
+        </div>
+        <div class="testimonial reveal" style="border-color:rgba(16,185,129,0.2);">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="text">“Em 3 meses, já recuperei mais de R$ 8.000 que estavam 'escondidos' em compras pequenas e despercebidas.”</div>
+          <div class="name">Ricardo A. <span class="role">Dono de Mercearia</span></div>
+        </div>
+        <div class="testimonial reveal" style="border-color:rgba(59,130,246,0.2);">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="text">“O melhor investimento que fiz no meu negócio. O controle é tão simples que até meu funcionário usa sem treinamento.”</div>
+          <div class="name">Simone D. <span class="role">Lojista de Calçados</span></div>
+        </div>
+        <div class="testimonial reveal" style="border-color:rgba(139,92,246,0.2);">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="text">“Minhas decisões de compra agora são baseadas em dados reais. O medo de errar diminuiu 90%.”</div>
+          <div class="name">Eduardo P. <span class="role">E-commerce</span></div>
+        </div>
+        <div class="testimonial reveal" style="border-color:rgba(16,185,129,0.2);">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="text">“Nunca foi tão fácil saber o que está dando certo e o que precisa mudar. O dashboard virou meu melhor consultor.”</div>
+          <div class="name">Ana C. <span class="role">Revendedora de Cosméticos</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section id="pricing" style="padding:4rem 1.5rem; background: var(--cardAlt); position:relative; overflow:hidden;">
+    <div class="container">
+      <div class="text-center mb-12">
+        <div class="badge" style="animation: fade-slide-up 0.6s ease both;"><i class="fas fa-bolt"></i> oferta por tempo limitado</div>
+        <h2 class="section-title" style="animation: fade-slide-up 0.7s ease 0.1s both;">Comece a lucrar mais hoje</h2>
+        <p class="section-sub" style="animation: fade-slide-up 0.7s ease 0.2s both;">Acesso vitalício. Sem mensalidades.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="plan reveal">
+          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted);">// plano_basico</div>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.3rem; margin:0.5rem 0 0.2rem;">Dashboard Financeiro</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Controle suas vendas, estoque e lucro em um só lugar</p>
+          <div class="price" style="margin:1.5rem 0 0.5rem;">
+            <div class="old">R$ 97,00</div>
+            <div><span class="new">R$ 27</span><span class="cents">,00</span></div>
+            <div style="font-size:0.7rem; color:var(--dimmed);">pagamento único</div>
+          </div>
+          <ul>
+            <li><i class="fas fa-check"></i> Dashboard completo</li>
+            <li><i class="fas fa-check"></i> Controle de estoque</li>
+            <li><i class="fas fa-check"></i> Relatórios de lucro</li>
+          </ul>
+          <button class="btn-outline" onclick="alert('🚀 Obrigado pelo interesse! Em uma versão real, você seria redirecionado para o checkout.');">QUERO MEU DASHBOARD (R$27,00)</button>
+        </div>
+        <div class="plan premium reveal">
+          <div class="badge-top">MAIS ESCOLHIDO</div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--blue);">// plano_premium</div>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.3rem; margin:0.5rem 0 0.2rem;">CONJUNTO DE SISTEMAS PREMIUM</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">Dashboard + 10 ferramentas para organizar tudo</p>
+          <div class="price" style="margin:1.5rem 0 0.5rem;">
+            <div class="old">R$ 1.590,00</div>
+            <div><span class="new" style="color:var(--blueLight);">R$ 37</span><span class="cents" style="color:var(--muted);">,99</span></div>
+            <div style="font-size:0.7rem; color:var(--dimmed);">pagamento único</div>
+          </div>
+          <ul>
+            <li><i class="fas fa-check"></i> Dashboard Financeiro completo</li>
+            <li><i class="fas fa-check"></i> 10 ferramentas extras de gestão incluídas</li>
+            <li><i class="fas fa-check"></i> Organização de vendas, estoque e lucro</li>
+            <li><i class="fas fa-check"></i> Ferramentas para precificação e planejamento</li>
+            <li><i class="fas fa-check"></i> Mais controle e visão do seu negócio</li>
+            <li><i class="fas fa-check"></i> Melhor custo-benefício da plataforma</li>
+          </ul>
+          <button class="btn-primary" onclick="alert('🚀 Obrigado pela escolha! Em uma versão real, você seria redirecionado para o checkout.');">QUERO O MELHOR PACOTE (R$37,99)</button>
+        </div>
+      </div>
+      <div class="flex-wrap" style="gap:1.5rem; margin-top:2rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--muted);">
+        <span><i class="fas fa-shield-alt" style="color:var(--green);"></i> Pagamento Seguro</span>
+        <span><i class="fas fa-gift" style="color:var(--blue);"></i> Garantia 7 dias</span>
+        <span><i class="fas fa-star" style="color:var(--purple);"></i> Acesso Vitalício</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ URGENCY ═══ -->
+  <section class="urgency text-center">
+    <div class="container">
+      <div style="font-family:'Space Mono',monospace; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; color:var(--green); text-transform:uppercase;">QUERO TODOS OS BÔNUS AGORA</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.4rem,2.5vw,2.2rem); margin:0.5rem 0;">CONTROLE TOTAL DAS SUAS VENDAS E ESTOQUE</h2>
+      <p style="font-family:'Space Mono',monospace; color:var(--muted);">ACESSO COMPLETO POR APENAS R$27,99</p>
+      <div style="font-family:'Space Mono',monospace; font-size:0.6rem; font-weight:700; background:var(--border); display:inline-block; padding:0.2rem 1.2rem; border-radius:30px; color:var(--blueLight); margin:0.5rem 0 1.5rem;">ACESSO VITALÍCIO • PAGAMENTO ÚNICO</div>
+      <div>
+        <button class="btn-primary" style="padding:1rem 3rem; font-size:1rem;" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Quero meu acesso agora</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GUARANTEE ═══ -->
+  <section style="padding:4rem 1.5rem; background: var(--bg); text-align:center;">
+    <div class="container" style="max-width:700px;">
+      <div style="width:4rem; height:4rem; border-radius:0.75rem; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.3); display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem; transition:transform 0.3s;">
+        <i class="fas fa-shield-alt" style="font-size:2rem; color:var(--green);"></i>
+      </div>
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.6rem,3vw,2.4rem);">GARANTIA DE SATISFAÇÃO DE 7 DIAS</h2>
+      <p style="color:var(--muted); font-size:1.1rem; max-width:600px; margin:0 auto;">Se em 7 dias você não estiver completamente satisfeito, devolvemos seu dinheiro sem questionamentos. Sem risco, sem burocracia.</p>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section style="padding:4rem 1.5rem; background: var(--cardAlt);">
+    <div class="container" style="max-width:800px;">
+      <div class="text-center mb-12">
+        <div class="badge" style="animation: fade-slide-up 0.6s ease both;"><i class="fas fa-database"></i> FAQ</div>
+        <h2 class="section-title" style="animation: fade-slide-up 0.7s ease 0.1s both;">PERGUNTAS FREQUENTES</h2>
+        <p class="section-sub" style="animation: fade-slide-up 0.7s ease 0.2s both;">Tudo o que você precisa saber antes de começar</p>
+      </div>
+      <div style="display:grid; gap:0.75rem;">
+        <div class="faq-item reveal">
+          <button class="question" onclick="toggleFaq(this)">Funciona em computadores antigos? <i class="fas fa-chevron-down"></i></button>
+          <div class="answer">Sim! O Dashboard Financeiro é baseado em arquivo e funciona em qualquer computador, independente da idade ou sistema operacional. Basta ter um programa básico para abrir arquivos.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="question" onclick="toggleFaq(this)">Preciso pagar mensalidade depois? <i class="fas fa-chevron-down"></i></button>
+          <div class="answer">Não! É um pagamento único e você tem acesso vitalício. Sem surpresas, sem cobranças recorrentes.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="question" onclick="toggleFaq(this)">Consigo usar pelo celular? <i class="fas fa-chevron-down"></i></button>
+          <div class="answer">Sim! O sistema é compatível com qualquer dispositivo, incluindo celulares antigos. Você acessa de onde estiver.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="question" onclick="toggleFaq(this)">Preciso ser expert em Excel? <i class="fas fa-chevron-down"></i></button>
+          <div class="answer">Não precisa de nenhum conhecimento técnico. O sistema foi criado para ser simples e intuitivo — qualquer pessoa consegue usar em minutos.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="question" onclick="toggleFaq(this)">Quanto tempo leva para ver resultados? <i class="fas fa-chevron-down"></i></button>
+          <div class="answer">Muitos usuários relatam perceber melhorias no controle financeiro já nos primeiros dias de uso. Em 30 dias, a diferença no entendimento do negócio é significativa.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="question" onclick="toggleFaq(this)">Funciona para qualquer tipo de negócio? <i class="fas fa-chevron-down"></i></button>
+          <div class="answer">Sim! O Dashboard foi desenvolvido para funcionar com qualquer tipo de negócio que venda produtos físicos — loja, revendedora, atacado, varejo e muito mais.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER (sem links) ═══ -->
+  <footer>
+    <div class="inner">
+      <div>
+        <div class="brand"><i class="fas fa-activity"></i> Dashboard <span style="color:var(--blue);">Financeiro</span></div>
+        <p style="color:var(--dimmed); font-size:0.9rem; max-width:300px; margin-top:0.5rem;">Simplificando a gestão de quem faz a economia girar. Feito para pequenos negócios que querem lucro real.</p>
+      </div>
+      <div class="links">
+        <h4 style="font-family:'Space Mono',monospace; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted);">Social</h4>
+        <div class="social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="copy" style="grid-column: 1 / -1; text-align:center; font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--dimmed); border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 1rem;">
+        &copy; 2025 Dashboard Financeiro. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script>
+    // ─── Progress bar ───
+    const progress = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progressVal = docHeight > 0 ? scrollTop / docHeight : 0;
+      progress.style.transform = `scaleX(${progressVal})`;
+    });
+
+    // ─── Navbar scroll ───
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+
+    // ─── Counters with typing effect ───
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        let current = 0;
+        const step = Math.max(1, Math.floor(target / 60));
+        const interval = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(interval);
+            el.classList.remove('typing-cursor');
+          }
+          el.textContent = current.toLocaleString('pt-BR');
+        }, 20);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
+
+    // ─── Bar charts animation ───
+    const bars = document.querySelectorAll('.mock-bar');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const chart = entry.target;
+        const barsInside = chart.querySelectorAll('.mock-bar');
+        barsInside.forEach((bar, index) => {
+          const h = bar.dataset.h;
+          setTimeout(() => {
+            bar.style.height = h + '%';
+            bar.style.opacity = '0.7';
+          }, index * 80);
         });
+        barObserver.unobserve(chart);
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('#barChart, #weeklyChart').forEach(chart => barObserver.observe(chart));
 
-        // Image Slider
-        const slider = document.querySelector('.slider');
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.querySelector('.prev');
-        const nextBtn = document.querySelector('.next');
-        const dotsContainer = document.querySelector('.slider-dots');
-        let currentSlide = 0;
-        const slideCount = slides.length;
-
-        // Create dots
-        for (let i = 0; i < slideCount; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('slider-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
+    // ─── Scroll reveal ───
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(r => revealObserver.observe(r));
 
-        const dots = document.querySelectorAll('.slider-dot');
-
-        function goToSlide(slideIndex) {
-            slider.style.transform = `translateX(-${slideIndex * 100}%)`;
-            currentSlide = slideIndex;
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[slideIndex].classList.add('active');
+    // ─── Animação da linha da automação ───
+    const flowContainer = document.getElementById('flowContainer');
+    const flowLine = document.getElementById('flowLineProgress');
+    const flowObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          flowLine.classList.add('animated');
+          flowObserver.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.3 });
+    if (flowContainer) flowObserver.observe(flowContainer);
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slideCount;
-            goToSlide(currentSlide);
+    // ─── Vídeo: play/pause e tempo ───
+    const video = document.getElementById('demoVideo');
+    const playBtn = document.getElementById('playBtn');
+    const currentTimeDisplay = document.getElementById('currentTime');
+
+    if (video && playBtn) {
+      playBtn.addEventListener('click', () => {
+        if (video.paused) {
+          video.play();
+          playBtn.className = 'fas fa-pause';
+        } else {
+          video.pause();
+          playBtn.className = 'fas fa-play';
         }
+      });
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-            goToSlide(currentSlide);
+      video.addEventListener('timeupdate', () => {
+        const mins = Math.floor(video.currentTime / 60);
+        const secs = Math.floor(video.currentTime % 60);
+        currentTimeDisplay.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+      });
+
+      video.addEventListener('ended', () => {
+        playBtn.className = 'fas fa-play';
+      });
+    }
+
+    // ─── FAQ toggle ───
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      if (!item) return;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // ─── CTA buttons demo ───
+    document.querySelectorAll('.btn-outline, .btn-primary, .btn-ghost').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        if (this.textContent.includes('QUERO') || this.textContent.includes('Quero')) {
+          e.preventDefault();
+          alert('🚀 Obrigado pelo interesse! Em uma versão real, você seria redirecionado para a página de checkout.');
         }
+      });
+    });
 
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
+    // ─── Smooth scroll for nav CTA ───
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId !== '#') {
+          e.preventDefault();
+          document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
 
-        // Auto slide
-        setInterval(nextSlide, 5000);
-    </script>
+    // ─── 3D tilt effect on cards ───
+    document.querySelectorAll('.card, .plan, .testimonial, .three-step, .flow-step-item, .compare-col, .bonus-item').forEach(el => {
+      el.addEventListener('mousemove', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        this.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      });
+      el.addEventListener('mouseleave', function() {
+        this.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';
+      });
+    });
+  </script>
 </body>
-
 </html>
